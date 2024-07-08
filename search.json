@@ -2,15 +2,29 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "VU_CW_R",
+    "title": "Communication Science R Material",
     "section": "",
     "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "pages/functions/data_management/select.html",
+    "href": "pages/functions/data_management/select.html",
+    "title": "select",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "Documentation of the select function"
+  },
+  {
+    "objectID": "pages/functions/0-index.html",
+    "href": "pages/functions/0-index.html",
+    "title": "Functions",
+    "section": "",
+    "text": "This is an overview of the functions used in course material. Use this as a reference if you encounter a function that you do not understand."
+  },
+  {
+    "objectID": "pages/functions/data_management/0-index.html",
+    "href": "pages/functions/data_management/0-index.html",
+    "title": "Data management",
+    "section": "",
+    "text": "Overview of data management functions"
   }
 ]
