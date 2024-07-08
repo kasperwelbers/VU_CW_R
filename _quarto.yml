@@ -2,20 +2,26 @@ project:
   type: website
 
 website:
-  title: "VU_CW_R"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
-
+  title: "Communication Science R Book"
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - "pages/getting-started.qmd"
+      - section: "Overview of functions"
+        href: "pages/functions/0-index.qmd"
+        contents:
+          - section: "Data management"
+            href: "pages/functions/data_management/0-index.qmd"
+            contents:
+              - "pages/functions/data_management/select.qmd"
+    
 format:
   html:
     theme: cosmo
     css: styles.css
     toc: true
 
-editor: visual
 
 execute:
   freeze: auto
