@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>git@github.com:kasperwelbers/VU_CW_R/index.html</loc>
+    <lastmod>2024-07-10T07:19:36.465Z</lastmod>
+  </url>
+  <url>
+    <loc>git@github.com:kasperwelbers/VU_CW_R/2_functions/data_management/select.html</loc>
+    <lastmod>2024-07-10T07:19:35.993Z</lastmod>
+  </url>
+  <url>
+    <loc>git@github.com:kasperwelbers/VU_CW_R/0_getting-started/0_install-r-and-rstudio.html</loc>
+    <lastmod>2024-07-10T07:19:35.009Z</lastmod>
+  </url>
+  <url>
+    <loc>git@github.com:kasperwelbers/VU_CW_R/0_getting-started/1_using-rstudio.html</loc>
+    <lastmod>2024-07-10T07:19:35.449Z</lastmod>
+  </url>
+</urlset>

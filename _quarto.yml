@@ -6,20 +6,13 @@ website:
   sidebar:
     style: "docked"
     search: true
-    contents:
-      - "pages/getting-started.qmd"
-      - section: "Overview of functions"
-        href: "pages/functions/0-index.qmd"
-        contents:
-          - section: "Data management"
-            href: "pages/functions/data_management/0-index.qmd"
-            contents:
-              - "pages/functions/data_management/select.qmd"
+    contents: auto
     
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme: 
+      - cosmo
+      - style.scss
     toc: true
 
 

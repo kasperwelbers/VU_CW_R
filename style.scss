@@ -1,0 +1,7 @@
+/*-- scss:defaults --*/
+
+.continue {
+  @extend .btn;
+  @extend .btn-outline-primary;
+  margin-top: 2rem;
+}
