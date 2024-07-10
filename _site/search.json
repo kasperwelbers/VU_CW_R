@@ -1,17 +1,10 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Communication Science R Material",
-    "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
-  },
-  {
     "objectID": "2_functions/data_management/select.html",
     "href": "2_functions/data_management/select.html",
     "title": "select",
     "section": "",
-    "text": "Documentation of the select function"
+    "text": "Documentation of the select function\n\n\n\n Back to top"
   },
   {
     "objectID": "0_getting-started/0_install-r-and-rstudio.html",
@@ -32,7 +25,7 @@
     "href": "0_getting-started/0_install-r-and-rstudio.html#installing-rstudio",
     "title": "Install R and RStudio",
     "section": "Installing RStudio",
-    "text": "Installing RStudio\nRStudio can be downloaded from the posit.co website, which is the developer of RStudio. Make sure to pick the latest version available for your operating system.\nContinue"
+    "text": "Installing RStudio\nRStudio can be downloaded from the posit.co website, which is the developer of RStudio. Make sure to pick the latest version available for your operating system."
   },
   {
     "objectID": "0_getting-started/1_using-rstudio.html",
@@ -46,7 +39,7 @@
     "href": "0_getting-started/1_using-rstudio.html#running-code-from-the-r-script",
     "title": "How to use RStudio",
     "section": "Running code from the R script",
-    "text": "Running code from the R script\nCopy and paste the following example code into your R Script. For now, don’t bother understanding the syntax itself. Just focus on running it.\n\n3 + 3\n2 * 5\n6 / 2\n\"some text\"\n\"some more text\"\nsum(1,2,3,4,5)\n\nYou can run parts of the code in an R script by pressing Ctrl + Enter (on mac this is command + Enter). This can be done in two ways:\n\nIf you select a piece of text (so that it is highlighted) you can press Ctrl + Enter to run the selection. For example, select the first three lines (the three mathematical operations) and press Ctrl + Enter.\nIf you haven’t made a selection, but your text cursor is in the editor, you can press Ctrl + Enter to run the line where the cursor is at. This will also move the cursor to the next line, so you can walk through the code from top to bottom, running each line. Try starting on the first line, and pressing Ctrl + Enter six times, to run each line separately."
+    "text": "Running code from the R script\nCopy and paste the following example code into your R Script. For now, don’t bother understanding the syntax itself. Just focus on running it.\n\n3 + 3\n2 * 5\n6 / 2\n\"some text\"\n\"some more text\"\nsum(1,2,3,4,5)\n\nYou can run code by selecting the code and clicking on the Run button in the toolbar. However, we highly recommend getting used to using the keyboard shortcut, because this will greatly speed up your process. On Windows (and Linux) the shortcut is Ctrl + Enter. On Mac it’s Command + Enter.\nThere are two ways to run code:\n\nIf you select a specific piece of code (so that it is highlighted) you can run this specific selection. For example, select the first three lines (the three mathematical operations) and press Ctrl + Enter. This should then print the results for these three mathematical expressions. Note that you can also select a specific part on a line. Try selecting just the second 3 on the first line. This should just print the number 3.\nIf you haven’t made a selection, but your text cursor is somewhere on a line in your editor, you can press Ctrl + Enter to run the line where the cursor is at. This will also move the cursor to the next line, so you can walk through the code from top to bottom, running each line. Try starting on the first line, and pressing Ctrl + Enter six times, to run each line separately."
   },
   {
     "objectID": "0_getting-started/1_using-rstudio.html#assigning-values-to-names",
@@ -61,5 +54,47 @@
     "title": "How to use RStudio",
     "section": "Using RStudio projects",
     "text": "Using RStudio projects\nIt is best to put all your code in an RStudio project. This is essentially a folder on your computer in which you can store the R files and data for a project that you are working on. While you do not necessarily need a project to work with R, they are very convenient, and we strongly recommend using them.\nTo create a new project, go to the top-right corner of your RStudio window. Look for the button labeled Project: (None). Click on this button, and select New Project. Follow the instructions to create a new directory with a new project. Name the project “R introduction”.\nNow, open a new R script and immediately save it (select File -&gt; Save in the toolbar, or press ctrl-s). Name the file my_first_r_script.r. In the bottom-right corner, under the Files tab, you’ll now see the file added to the project. The extension .r indicates that the file is an R script."
+  },
+  {
+    "objectID": "0_getting-started/2_names-and-values.html",
+    "href": "0_getting-started/2_names-and-values.html",
+    "title": "Names and Values",
+    "section": "",
+    "text": "In R, and in computer programming in general, the most essential operation is to assign values to names. By value, we then simply mean a piece of information. This can be a anything: a single number, a string (i.e. piece of text), a list of numbers, and even an entire data set. Assigning such values to names is essential, because it allows us to more easily refer to the values.\nIn plain terms, assignment is how you make R remember things by assigning them to a name. To assign a value to a name, we use the arrow notation: name &lt;- value. For example:\nx &lt;- 2\nBy running the code x &lt;- 2, you are saying: Assign the value 2 to the name x. Any values that you assigned to names are stored in your Environment. You can see this environment in the top-right window, under the Environment tab. If you assigned 2 to x, you should see a table called Values, with in the left column the names (x) and in the right column the values (2).\nFrom hereon, when you use the name x in your code, it will refer to the value 2. Run the following lines of code to see this in practice.\nx\nx * 5"
+  },
+  {
+    "objectID": "0_getting-started/2_names-and-values.html#assigning-values-to-names",
+    "href": "0_getting-started/2_names-and-values.html#assigning-values-to-names",
+    "title": "Names and Values",
+    "section": "Assigning values to names",
+    "text": "Assigning values to names\nWhen running the example code, you saw that R automatically evaluates expressions. The calculation 3+3 evaluates to 6, and 2*5 evaluates to 10. You also saw that the function sum(1,2,3,4,5) evaluates to 15 (the sum of the numbers). We’ll address how to use R as a calculator and how to perform functions at a later time. For now, one more thing that you need to know about the R syntax is how values can be assigned to names.\nIn plain terms, assignment is how you make R remember things by assigning them to a name. This works the same way for all sorts of values, from single numbers to entire datasets. You can choose whether you prefer the equal sign (=) or the arrow (&lt;-) for assignment.\n\nx = 2\ny &lt;- \"some text\"\n\nHere we have remembered the number 2 as x and the text “some text” as y. If you are working in RStudio (which you should), you can now also see these names and values in the topright window, under the “Environment” tab.\nWe can now use the names to retrieve the values, or to use these values in new commands.\n\nx * 5\n\nThis should print the value 10 in your R Console (bottom-left window)"
+  },
+  {
+    "objectID": "0_getting-started/2_names-and-values.html#assigning-different-types-of-values",
+    "href": "0_getting-started/2_names-and-values.html#assigning-different-types-of-values",
+    "title": "Names and Values",
+    "section": "Assigning different types of values",
+    "text": "Assigning different types of values\nYou can assign any type of value to a name, and you can use any name, as long as it starts with a letter and doesn’t contain spaces or symbols (but underscores are OK)\n\na_number = 5\nmy_cats_name = \"Hobbes\"\n\nIf you run this code and check you Environment (top-right), you should now see these name-value pairs added."
+  },
+  {
+    "objectID": "0_getting-started/2_names-and-values.html#note-about-when-r-prints-a-value",
+    "href": "0_getting-started/2_names-and-values.html#note-about-when-r-prints-a-value",
+    "title": "Names and Values",
+    "section": "Note about when R prints a value",
+    "text": "Note about when R prints a value\nYou might have noticed that when assigning a value to a name, R does not print the value. For example, if you run the following code, R will print [1] 5 in the Console (bottom-left window).\n\n5\n\n[1] 5\n\n\n\n1:50\n\n [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25\n[26] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50\n\n\nYou can also assign the results of a mathematical expression, or the results of a function (explained in the next section). T"
+  },
+  {
+    "objectID": "0_getting-started/2_names-and-values.html#section",
+    "href": "0_getting-started/2_names-and-values.html#section",
+    "title": "Names and Values",
+    "section": "",
+    "text": "You might have noticed that when assigning a value to a name, R does not print the value. For example, if you run the following code, R will print [1] 5 in the Console (bottom-left window).\n\n5\n\n[1] 5\n\n\n\n1:50\n\n [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25\n[26] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50\n\n\nYou can also assign the results of a mathematical expression, or the results of a function (explained in the next section). T"
+  },
+  {
+    "objectID": "0_getting-started/2_names-and-values.html#assigning-results",
+    "href": "0_getting-started/2_names-and-values.html#assigning-results",
+    "title": "Names and Values",
+    "section": "Assigning results",
+    "text": "Assigning results\nTill now we only directly assigned values to names. This is convenient, but the power of assignment really shines when you use it to store results. For example, we can also do this.\n\nx = 5 + 10\n\nThis a very simple example, but just think for a second what this allows us to do. Since we can assign anything to a name, we can break down any complicated procedure into multiple steps! For now, the key lesson is just to wrap your head around the syntax for assigning values to names. This is fundamental to everything you will be doing in R (and in programming in general)."
   }
 ]

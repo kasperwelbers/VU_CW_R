@@ -17,4 +17,3 @@ To install R, you can download it from the [CRAN (comprehensive R Archive Networ
 
 RStudio can be downloaded from the [posit.co website](https://posit.co/download/rstudio-desktop), which is the developer of RStudio. Make sure to pick the latest version available for your operating system.
 
-[Continue](1_using-rstudio.qmd){.continue role="button"}

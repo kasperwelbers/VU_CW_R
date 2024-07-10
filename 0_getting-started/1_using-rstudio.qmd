@@ -1,5 +1,5 @@
 ---
-title: "How to use RStudio"
+title: How to use RStudio
 ---
 
 
@@ -29,31 +29,13 @@ Copy and paste the following example code into your R Script. For now, don't bot
 sum(1,2,3,4,5)
 ```
 
-You can **run** parts of the code in an R script by pressing Ctrl + Enter (on mac this is command + Enter). This can be done in two ways:
+You can **run** code by selecting the code and clicking on the **Run** button in the toolbar. However, we highly recommend getting used to using the keyboard shortcut, because this will greatly speed up your process. On Windows (and Linux) the shortcut is **Ctrl + Enter**. On Mac it's **Command + Enter**. 
 
--   If you select a piece of text (so that it is highlighted) you can press Ctrl + Enter to run the selection. For example, select the first three lines (the three mathematical operations) and press Ctrl + Enter.
--   If you haven't made a selection, but your text cursor is in the editor, you can press Ctrl + Enter to run the line where the cursor is at. This will also move the cursor to the next line, so you can *walk* through the code from top to bottom, running each line. Try starting on the first line, and pressing Ctrl + Enter six times, to run each line separately.
+There are two ways to run code:
 
-## Assigning values to names
+-   If you select a specific piece of code (so that it is highlighted) you can run this specific selection. For example, select the first three lines (the three mathematical operations) and press Ctrl + Enter. This should then print the results for these three mathematical expressions. Note that you can also select a specific part on a line. Try selecting just the second `3` on the first line. This should just print the number 3. 
+-   If you haven't made a selection, but your text cursor is somewhere on a line in your editor, you can press Ctrl + Enter to run the line where the cursor is at. This will also move the cursor to the next line, so you can *walk* through the code from top to bottom, running each line. Try starting on the first line, and pressing Ctrl + Enter six times, to run each line separately.
 
-When running the example code, you saw that R automatically **evaluates** expressions. The calculation 3+3 evaluates to 6, and 2\*5 evaluates to 10. You also saw that the **function** *sum(1,2,3,4,5)* evaluates to 15 (the sum of the numbers). We'll address how to use R as a calculator and how to perform functions at a later time. For now, one more thing that you need to know about the R syntax is how values can be **assigned** to names.
-
-In plain terms, **assignment** is how you make R remember things by assigning them to a name. This works the same way for all sorts of values, from single numbers to entire datasets. You can choose whether you prefer the equal sign (=) or the arrow (\<-) for assignment.
-
-```{r}
-x = 2
-y <- "some text"
-```
-
-Here we have remembered the number 2 as **x** and the text "some text" as **y**. If you are working in RStudio (which you should), you can now also see these names and values in the topright window, under the "Environment" tab.
-
-We can now use the names to retrieve the values, or to use these values in new commands.
-
-```{r, eval=F}
-x * 5
-```
-
-This should print the value `10` in your R Console (bottom-left window)
 
 ## Using RStudio projects
 
