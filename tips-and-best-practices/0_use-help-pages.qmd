@@ -1,0 +1,12 @@
+---
+title: Use ?function help pages
+---
+
+
+The help page tells you how you can use the function. For `mean`, it shows you that the main form is
+
+```{r, eval=F}
+mean(x, trim = 0, na.rm = FALSE, ...)
+```
+
+What this means is that 
