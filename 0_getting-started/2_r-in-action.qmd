@@ -1,5 +1,5 @@
 ---
-title: R in Action
+title: R in Action (demo)
 editor_options: 
   chunk_output_type: console
 ---

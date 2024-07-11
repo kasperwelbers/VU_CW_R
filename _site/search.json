@@ -11,28 +11,44 @@
     "href": "0_getting-started/1_using-rstudio.html",
     "title": "How to use RStudio",
     "section": "",
-    "text": "Once you have installed R and RStudio, you can start by launching RStudio. If everything was installed correctly, RStudio will automatically launch R as well.\nThe first time you open RStudio, you will likely see three separate windows. The first thing you want to do is open an R Script (!!) to work in. To do so, go to the toolbar and select File -&gt; New File -&gt; R Script.\nYou will now see four windows split evenly over the four corners of your screen:\nWhile you can directly enter code into your console (bottom-left), you should always work with R scripts (top-left). This allows you to keep track of what you are doing and save every step."
+    "text": "Once you have installed R and RStudio, you can start by launching RStudio. If everything was installed correctly, RStudio will automatically launch R as well.\nThe first time you open RStudio, you will likely see three separate windows. The first thing you want to do is open an R Script (!!) to work in. To do so, go to the toolbar and select File -&gt; New File -&gt; R Script.\nYou will now see four windows split evenly over the four corners of your screen:\nWhile you can directly enter code into your console (bottom-left), you should always work with R scripts (top-left). This allows you to keep track of what you are doing and save every step.",
+    "crumbs": [
+      "Getting Started",
+      "How to use RStudio"
+    ]
   },
   {
     "objectID": "0_getting-started/1_using-rstudio.html#running-code-from-the-r-script",
     "href": "0_getting-started/1_using-rstudio.html#running-code-from-the-r-script",
     "title": "How to use RStudio",
     "section": "Running code from the R script",
-    "text": "Running code from the R script\nCopy and paste the following example code into your R Script. For now, don’t bother understanding the syntax itself. Just focus on running it.\n\n3 + 3\n2 * 5\n6 / 2\n\"some text\"\n\"some more text\"\nsum(1,2,3,4,5)\n\nYou can run code by selecting the code and clicking on the Run button in the toolbar. However, we highly recommend getting used to using the keyboard shortcut, because this will greatly speed up your process. On Windows (and Linux) the shortcut is Ctrl + Enter. On Mac it’s Command + Enter.\nThere are two ways to run code:\n\nIf you select a specific piece of code (so that it is highlighted) you can run this specific selection. For example, select the first three lines (the three mathematical operations) and press Ctrl + Enter. This should then print the results for these three mathematical expressions. Note that you can also select a specific part on a line. Try selecting just the second 3 on the first line. This should just print the number 3.\nIf you haven’t made a selection, but your text cursor is somewhere on a line in your editor, you can press Ctrl + Enter to run the line where the cursor is at. This will also move the cursor to the next line, so you can walk through the code from top to bottom, running each line. Try starting on the first line, and pressing Ctrl + Enter six times, to run each line separately."
+    "text": "Running code from the R script\nCopy and paste the following example code into your R Script. For now, don’t bother understanding the syntax itself. Just focus on running it.\n\n3 + 3\n2 * 5\n6 / 2\n\"some text\"\n\"some more text\"\nsum(1,2,3,4,5)\n\nYou can run code by selecting the code and clicking on the Run button in the toolbar. However, we highly recommend getting used to using the keyboard shortcut, because this will greatly speed up your process. On Windows (and Linux) the shortcut is Ctrl + Enter. On Mac it’s Command + Enter.\nThere are two ways to run code:\n\nIf you select a specific piece of code (so that it is highlighted) you can run this specific selection. For example, select the first three lines (the three mathematical operations) and press Ctrl + Enter. This should then print the results for these three mathematical expressions. Note that you can also select a specific part on a line. Try selecting just the second 3 on the first line. This should just print the number 3.\nIf you haven’t made a selection, but your text cursor is somewhere on a line in your editor, you can press Ctrl + Enter to run the line where the cursor is at. This will also move the cursor to the next line, so you can walk through the code from top to bottom, running each line. Try starting on the first line, and pressing Ctrl + Enter six times, to run each line separately.",
+    "crumbs": [
+      "Getting Started",
+      "How to use RStudio"
+    ]
   },
   {
     "objectID": "0_getting-started/1_using-rstudio.html#using-rstudio-projects",
     "href": "0_getting-started/1_using-rstudio.html#using-rstudio-projects",
     "title": "How to use RStudio",
     "section": "Using RStudio projects",
-    "text": "Using RStudio projects\nIt is best to put all your code in an RStudio project. This is essentially a folder on your computer in which you can store the R files and data for a project that you are working on. While you do not necessarily need a project to work with R, they are very convenient, and we strongly recommend using them.\nTo create a new project, go to the top-right corner of your RStudio window. Look for the button labeled Project: (None). Click on this button, and select New Project. Follow the instructions to create a new directory with a new project. Name the project “R introduction”.\nNow, open a new R script and immediately save it (select File -&gt; Save in the toolbar, or press ctrl-s). Name the file my_first_r_script.r. In the bottom-right corner, under the Files tab, you’ll now see the file added to the project. The extension .r indicates that the file is an R script."
+    "text": "Using RStudio projects\nIt is best to put all your code in an RStudio project. This is essentially a folder on your computer in which you can store the R files and data for a project that you are working on. While you do not necessarily need a project to work with R, they are very convenient, and we strongly recommend using them.\nTo create a new project, go to the top-right corner of your RStudio window. Look for the button labeled Project: (None). Click on this button, and select New Project. Follow the instructions to create a new directory with a new project. Name the project “R introduction”.\nNow, open a new R script and immediately save it (select File -&gt; Save in the toolbar, or press ctrl-s). Name the file my_first_r_script.r. In the bottom-right corner, under the Files tab, you’ll now see the file added to the project. The extension .r indicates that the file is an R script.",
+    "crumbs": [
+      "Getting Started",
+      "How to use RStudio"
+    ]
   },
   {
     "objectID": "0_getting-started/5_packages.html",
     "href": "0_getting-started/5_packages.html",
     "title": "Packages",
     "section": "",
-    "text": "Tutorial about how to install and load packages\n\n\n\n Back to top"
+    "text": "Tutorial about how to install and load packages\n\n\n\n Back to top",
+    "crumbs": [
+      "Getting Started",
+      "Packages"
+    ]
   },
   {
     "objectID": "0_getting-started/2_names-and-values.html",
@@ -58,7 +74,7 @@
   {
     "objectID": "tips-and-best-practices/0_use-help-pages.html",
     "href": "tips-and-best-practices/0_use-help-pages.html",
-    "title": "Use ?function help pages",
+    "title": "Function Help Pages",
     "section": "",
     "text": "The help page tells you how you can use the function. For mean, it shows you that the main form is\n\nmean(x, trim = 0, na.rm = FALSE, ...)\n\nWhat this means is that\n\n\n\n Back to top"
   },
@@ -67,21 +83,33 @@
     "href": "0_getting-started/4_functions.html",
     "title": "Functions",
     "section": "",
-    "text": "99% of what you do in R will involve using functions. A function in R is like a mini-program that you can use to perform specific tasks. It takes input, processes it, and gives you an output. For example, there are functions for:\nA function in R has the form: output = function_name(argument1, argument2, ...)\nFor example, the function c combines multiple values into a vector.\nx = c(1,2,3,4)\nNow, we can use the mean function to calculate the mean of these numbers:\nm = mean(x)\nThe calculated mean, 2.5, is now assigned to the name m:\nm\n\n[1] 2.5"
+    "text": "99% of what you do in R will involve using functions. A function in R is like a mini-program that you can use to perform specific tasks. It takes input, processes it, and gives you an output. For example, there are functions for:\nA function in R has the form: output = function_name(argument1, argument2, ...)\nFor example, the function c combines multiple values into a vector.\nx = c(1,2,3,4)\nNow, we can use the mean function to calculate the mean of these numbers:\nm = mean(x)\nThe calculated mean, 2.5, is now assigned to the name m:\nm\n\n[1] 2.5",
+    "crumbs": [
+      "Getting Started",
+      "Functions"
+    ]
   },
   {
     "objectID": "0_getting-started/4_functions.html#optional-arguments",
     "href": "0_getting-started/4_functions.html#optional-arguments",
     "title": "Functions",
     "section": "Optional arguments",
-    "text": "Optional arguments\nIn the c and mean functions above, all the arguments were required. To combine numbers into a vector, we needed to provide a list of numbers. To calculate a mean, we needed to provide a numeric vector.\nIn addition to the required arguments, a function can also have optional arguments, that give you more control over what a function does. For example, suppose we have a range of numbers that also contains a missing value. In R a missing value is called NA, which stands for Not Available:\n\nx_with_missing = c(1, 2, 3, NA, 4)\n\nNow, if we call the mean function, R will say that the mean is unknown, since the third value is unknown:\n\nmean(x_with_missing)\n\n[1] NA\n\n\nThis is statistically a very correct answer. But often, if some values happen to be missing in your data, you want to be able to calculate the mean just for the numbers that are not missing. Fortunately, the mean function has an optional argument na.rm (remove NAs) that you can set to TRUE (or to T, which is short for TRUE) to ignore the NAs:\n\nmean(x, na.rm=TRUE)\n\n[1] 2.5\n\n\nNotice that for the required argument, we directly provide the input x, but for the optional argument we include the argument name na.rm = TRUE. The reason is simply that there are other optional arguments, so we need to specify which one we’re using.\n\n\n\n\n\n\nHow do I know what arguments a function has?\n\n\n\n\n\nTo learn more about what a function does and what arguments it has, you can look it up in the ‘Help’ pane in the bottom right, or run ?function_name in R.\n\n?mean\n\nHere you can learn about the na.rm argument that we just used!\nIf you are just getting to know R, we recommend first finishing the rest of the Getting Started section. Then once you get the hang of things, have a look at the Use ?function help page tutorial."
+    "text": "Optional arguments\nIn the c and mean functions above, all the arguments were required. To combine numbers into a vector, we needed to provide a list of numbers. To calculate a mean, we needed to provide a numeric vector.\nIn addition to the required arguments, a function can also have optional arguments, that give you more control over what a function does. For example, suppose we have a range of numbers that also contains a missing value. In R a missing value is called NA, which stands for Not Available:\n\nx_with_missing = c(1, 2, 3, NA, 4)\n\nNow, if we call the mean function, R will say that the mean is unknown, since the third value is unknown:\n\nmean(x_with_missing)\n\n[1] NA\n\n\nThis is statistically a very correct answer. But often, if some values happen to be missing in your data, you want to be able to calculate the mean just for the numbers that are not missing. Fortunately, the mean function has an optional argument na.rm (remove NAs) that you can set to TRUE (or to T, which is short for TRUE) to ignore the NAs:\n\nmean(x, na.rm=TRUE)\n\n[1] 2.5\n\n\nNotice that for the required argument, we directly provide the input x, but for the optional argument we include the argument name na.rm = TRUE. The reason is simply that there are other optional arguments, so we need to specify which one we’re using.\n\n\n\n\n\n\nHow do I know what arguments a function has?\n\n\n\n\n\nTo learn more about what a function does and what arguments it has, you can look it up in the ‘Help’ pane in the bottom right, or run ?function_name in R.\n\n?mean\n\nHere you can learn about the na.rm argument that we just used!\nIf you are just getting to know R, we recommend first finishing the rest of the Getting Started section. Then once you get the hang of things, have a look at the Use ?function help page tutorial.",
+    "crumbs": [
+      "Getting Started",
+      "Functions"
+    ]
   },
   {
     "objectID": "0_getting-started/4_functions.html#using-pipes",
     "href": "0_getting-started/4_functions.html#using-pipes",
     "title": "Functions",
     "section": "Using pipes",
-    "text": "Using pipes\nThere are two ways for using functions.\n\nThe first is the one shown above, where we put all the arguments between the parentheses: function_name(argument1, argument2, ...).\nThe second way is to pipe the first argument into the function: argument1 |&gt; function_name(argument2, ...)\n\nIf this is your first time seeing pipes, you’re probably wondering why you would want to do this? Why bother having two ways to do the exact same thing? The reason is that when writing code, you shouldn’t just think about what the code does, but also about how easy the code is to read. This not only helps you prevent mistakes, but also makes your analysis transparent.\nAs you’ll see later, you’ll encounter many cases where your analysis requires you to string together multiple functions. In these cases, pipes make your code much easier to read. let’s rewrite our code from above using the pipe notation:\n\nx_with_missing |&gt; mean(na.rm=T)\n\nNotice how our first argument, the required argument x_with_missing, is piped into the mean function. Inside the mean function, we only specify the second argument, the optional argument na.rm.\nNow imagine we would want to round the result (2.5) up to a round number (3). We can do this without pipe notation, but it would be quite ugly and hard to read:\n\nround(mean(x_with_missing, na.rm=T))\n\nThe pipe notation allows us to break this down into a nice pipeline:\n\nx_with_missing |&gt; \n  mean(na.rm=T) |&gt; \n  round()"
+    "text": "Using pipes\nThere are two ways for using functions.\n\nThe first is the one shown above, where we put all the arguments between the parentheses: function_name(argument1, argument2, ...).\nThe second way is to pipe the first argument into the function: argument1 |&gt; function_name(argument2, ...)\n\nIf this is your first time seeing pipes, you’re probably wondering why you would want to do this? Why bother having two ways to do the exact same thing? The reason is that when writing code, you shouldn’t just think about what the code does, but also about how easy the code is to read. This not only helps you prevent mistakes, but also makes your analysis transparent.\nAs you’ll see later, you’ll encounter many cases where your analysis requires you to string together multiple functions. In these cases, pipes make your code much easier to read. let’s rewrite our code from above using the pipe notation:\n\nx_with_missing |&gt; mean(na.rm=T)\n\nNotice how our first argument, the required argument x_with_missing, is piped into the mean function. Inside the mean function, we only specify the second argument, the optional argument na.rm.\nNow imagine we would want to round the result (2.5) up to a round number (3). We can do this without pipe notation, but it would be quite ugly and hard to read:\n\nround(mean(x_with_missing, na.rm=T))\n\nThe pipe notation allows us to break this down into a nice pipeline:\n\nx_with_missing |&gt; \n  mean(na.rm=T) |&gt; \n  round()",
+    "crumbs": [
+      "Getting Started",
+      "Functions"
+    ]
   },
   {
     "objectID": "0_getting-started/3_r-in-action.html",
@@ -109,21 +137,33 @@
     "href": "0_getting-started/0_install-r-and-rstudio.html",
     "title": "Install R and RStudio",
     "section": "",
-    "text": "To work with R, you will need to install two pieces of software.\nBoth programs can be downloaded for free, and are available for all main operating systems (Windows, macOS and Linux)."
+    "text": "To work with R, you will need to install two pieces of software.\nBoth programs can be downloaded for free, and are available for all main operating systems (Windows, macOS and Linux).",
+    "crumbs": [
+      "Getting Started",
+      "Install R and RStudio"
+    ]
   },
   {
     "objectID": "0_getting-started/0_install-r-and-rstudio.html#installing-r",
     "href": "0_getting-started/0_install-r-and-rstudio.html#installing-r",
     "title": "Install R and RStudio",
     "section": "Installing R",
-    "text": "Installing R\nTo install R, you can download it from the CRAN (comprehensive R Archive Network) website. Do not be alarmed by the website’s 90’s aesthetics. R itself is cold, dry, no-nonsense software. The decorations come with RStudio."
+    "text": "Installing R\nTo install R, you can download it from the CRAN (comprehensive R Archive Network) website. Do not be alarmed by the website’s 90’s aesthetics. The website is legit.",
+    "crumbs": [
+      "Getting Started",
+      "Install R and RStudio"
+    ]
   },
   {
     "objectID": "0_getting-started/0_install-r-and-rstudio.html#installing-rstudio",
     "href": "0_getting-started/0_install-r-and-rstudio.html#installing-rstudio",
     "title": "Install R and RStudio",
     "section": "Installing RStudio",
-    "text": "Installing RStudio\nRStudio can be downloaded from the posit.co website, which is the developer of RStudio. Make sure to pick the latest version available for your operating system."
+    "text": "Installing RStudio\nRStudio can be downloaded from the posit.co website, which is the developer of RStudio. Make sure to pick the latest version available for your operating system.",
+    "crumbs": [
+      "Getting Started",
+      "Install R and RStudio"
+    ]
   },
   {
     "objectID": "0_getting-started/index.html",
@@ -131,5 +171,71 @@
     "title": "Getting Started",
     "section": "",
     "text": "Back to top"
+  },
+  {
+    "objectID": "0_getting-started/3_names-and-values.html",
+    "href": "0_getting-started/3_names-and-values.html",
+    "title": "Names and Values",
+    "section": "",
+    "text": "In R, and in computer programming in general, the most essential operation is to assign values to names. By value, we then simply mean a piece of information. This can be a anything: a single number, a string (i.e. piece of text), a list of numbers, and even an entire data set. Assigning such values to names is essential, because it allows us to more easily refer to the values.\nIn plain terms, assignment is how you make R remember things by assigning them to a name. To assign a value to a name, we use the arrow notation: name &lt;- value. For example:\nx &lt;- 2\nBy running the code x &lt;- 2, you are saying: Assign the value 2 to the name x. Any values that you assigned to names are stored in your Environment. You can see this environment in the top-right window, under the Environment tab. If you assigned 2 to x, you should see a table called Values, with in the left column the names (x) and in the right column the values (2).\nFrom hereon, when you use the name x in your code, it will refer to the value 2. So when we run the code x * 5 (x times 5) it will print the number 10\nx * 5\n\n[1] 10",
+    "crumbs": [
+      "Getting Started",
+      "Names and Values"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/3_names-and-values.html#assigning-different-types-of-values",
+    "href": "0_getting-started/3_names-and-values.html#assigning-different-types-of-values",
+    "title": "Names and Values",
+    "section": "Assigning different types of values",
+    "text": "Assigning different types of values\nYou can assign any type of value to a name, and you can use any name, as long as it starts with a letter and doesn’t contain spaces or symbols (but underscores are OK)\n\na_number = 5\nmy_cats_name = \"Hobbes\"\n\nIf you run this code and check you Environment (top-right), you should now see these name-value pairs added.",
+    "crumbs": [
+      "Getting Started",
+      "Names and Values"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/3_names-and-values.html#assigning-results",
+    "href": "0_getting-started/3_names-and-values.html#assigning-results",
+    "title": "Names and Values",
+    "section": "Assigning results",
+    "text": "Assigning results\nTill now we only directly assigned values to names. This is convenient, but the power of assignment really shines when you use it to store results. For example, we can also do this.\n\nx = 5 + 10\n\nThis a very simple example, but just think for a second what this allows us to do. Since we can assign anything to a name, we can break down any complicated procedure into multiple steps! For now, the key lesson is just to wrap your head around the syntax for assigning values to names. This is fundamental to everything you will be doing in R (and in programming in general).",
+    "crumbs": [
+      "Getting Started",
+      "Names and Values"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/2_r-in-action.html",
+    "href": "0_getting-started/2_r-in-action.html",
+    "title": "R in Action (demo)",
+    "section": "",
+    "text": "R is a very powerful tool, but it takes some time to learn how to use it before you get to fully appreciate what you can use it for. On this page we show you a quick example of some of the things you will learn here.\nAll the code that you see here will be explained in the rest of this online book. For now, don’t worry about understanding the code, and focus on thinking how the techniques we’ll be using fit into your tool belt as a communication scientist.",
+    "crumbs": [
+      "Getting Started",
+      "R in Action (demo)"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/2_r-in-action.html#loading-the-packages-well-use",
+    "href": "0_getting-started/2_r-in-action.html#loading-the-packages-well-use",
+    "title": "R in Action (demo)",
+    "section": "Loading the packages we’ll use",
+    "text": "Loading the packages we’ll use\nOne of the things that makes R so versatile, is that anyone can extend it by writing new packages. You can think of packages kind of like apps in an app-store. For this demo, we’ll need two packages, that you’ll first need to install.\n\ninstall.packages('tidyverse')\ninstall.packages('sjPlot')\n\nYou only need to install packages once, just like apps on you mobile phone. Once downloaded, they are stored in your R library. When you then use the packages in an R script, you just open them like this:\n\nlibrary(tidyverse)\nlibrary(sjPlot)",
+    "crumbs": [
+      "Getting Started",
+      "R in Action (demo)"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/2_r-in-action.html#import-data",
+    "href": "0_getting-started/2_r-in-action.html#import-data",
+    "title": "R in Action (demo)",
+    "section": "Import data",
+    "text": "Import data\nThe first step for any analysis is to import your data. Using the read_csv function from the tidyverse package, we can directly download this information from the internet and import it into R.",
+    "crumbs": [
+      "Getting Started",
+      "R in Action (demo)"
+    ]
   }
 ]
