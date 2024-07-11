@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://VU-communication-science.github.io/R-canon/2_functions/data_management/select.html</loc>
-    <lastmod>2024-07-10T07:36:40.921Z</lastmod>
+    <loc>https://VU-communication-science.github.io/R-canon/0_getting-started/1_using-rstudio.html</loc>
+    <lastmod>2024-07-11T08:13:12.603Z</lastmod>
+  </url>
+  <url>
+    <loc>https://VU-communication-science.github.io/R-canon/0_getting-started/5_packages.html</loc>
+    <lastmod>2024-07-11T08:13:11.959Z</lastmod>
+  </url>
+  <url>
+    <loc>https://VU-communication-science.github.io/R-canon/0_getting-started/2_names-and-values.html</loc>
+    <lastmod>2024-07-11T08:13:11.439Z</lastmod>
+  </url>
+  <url>
+    <loc>https://VU-communication-science.github.io/R-canon/tips-and-best-practices/0_use-help-pages.html</loc>
+    <lastmod>2024-07-11T08:13:10.615Z</lastmod>
+  </url>
+  <url>
+    <loc>https://VU-communication-science.github.io/R-canon/0_getting-started/4_functions.html</loc>
+    <lastmod>2024-07-11T08:13:11.035Z</lastmod>
+  </url>
+  <url>
+    <loc>https://VU-communication-science.github.io/R-canon/0_getting-started/3_r-in-action.html</loc>
+    <lastmod>2024-07-11T08:13:11.767Z</lastmod>
   </url>
   <url>
     <loc>https://VU-communication-science.github.io/R-canon/0_getting-started/0_install-r-and-rstudio.html</loc>
-    <lastmod>2024-07-10T07:36:39.849Z</lastmod>
-  </url>
-  <url>
-    <loc>https://VU-communication-science.github.io/R-canon/0_getting-started/1_using-rstudio.html</loc>
-    <lastmod>2024-07-10T07:36:40.349Z</lastmod>
+    <lastmod>2024-07-11T08:13:12.183Z</lastmod>
   </url>
 </urlset>

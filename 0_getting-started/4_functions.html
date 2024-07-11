@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Communication Science R Book - Getting Started</title>
+<title>Communication Science R Book - Functions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,6 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../0_getting-started/5_packages.html" rel="next">
+<link href="../0_getting-started/3_r-in-action.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -72,9 +108,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Communication Science R Book
-      </li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../0_getting-started/0_install-r-and-rstudio.html">Getting Started</a></li><li class="breadcrumb-item"><a href="../0_getting-started/4_functions.html">Functions</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -134,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../0_getting-started/4_functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../0_getting-started/4_functions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Functions</span></a>
   </div>
 </li>
@@ -169,14 +203,21 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link active" data-scroll-target="#optional-arguments">Optional arguments</a></li>
+  <li><a href="#using-pipes" id="toc-using-pipes" class="nav-link" data-scroll-target="#using-pipes">Using pipes</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Getting Started</h1>
+<h1 class="title">Functions</h1>
 </div>
 
 
@@ -191,8 +232,104 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>99% of what you do in R will involve using functions. A function in R is like a mini-program that you can use to perform specific tasks. It takes <em>input</em>, processes it, and gives you an <em>output</em>. For example, there are functions for:</p>
+<ul>
+<li>importing data</li>
+<li>computing descriptive statistics</li>
+<li>performing statistical tests</li>
+<li>visualizing data</li>
+</ul>
+<p>A function in R has the form: <code>output = function_name(argument1, argument2, ...)</code></p>
+<ul>
+<li><strong>function_name</strong> is a name to indicate which function you want to use. It is followed by parentheses.</li>
+<li><strong>arguments</strong> are the input of the function, and are inserted within the parentheses.</li>
+<li><strong>output</strong> is anything that is returned by the function.</li>
+</ul>
+<p>For example, the function <code>c</code> <em>c</em>ombines multiple values into a <em>vector</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, we can use the <code>mean</code> function to calculate the mean of these numbers:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">=</span> <span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The calculated mean, <code>2.5</code>, is now assigned to the name <code>m</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.5</code></pre>
+</div>
+</div>
+<section id="optional-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="optional-arguments">Optional arguments</h2>
+<p>In the <code>c</code> and <code>mean</code> functions above, all the arguments were <strong>required</strong>. To <strong>c</strong>ombine numbers into a vector, we <em>needed</em> to provide a list of numbers. To calculate a <strong>mean</strong>, we <em>needed</em> to provide a numeric vector.</p>
+<p>In addition to the <strong>required</strong> arguments, a function can also have <strong>optional</strong> arguments, that give you more control over what a function does. For example, suppose we have a range of numbers that also contains a missing value. In R a missing value is called <code>NA</code>, which stands for <code>Not Available</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x_with_missing <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, if we call the <code>mean</code> function, R will say that the mean is unknown, since the third value is unknown:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x_with_missing)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+</div>
+<p>This is statistically a very correct answer. But often, if some values happen to be missing in your data, you want to be able to calculate the mean just for the numbers that are not missing. Fortunately, the mean function has an <strong>optional argument</strong> <code>na.rm</code> (remove NAs) that you can set to <code>TRUE</code> (or to <code>T</code>, which is short for <code>TRUE</code>) to ignore the NAs:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.5</code></pre>
+</div>
+</div>
+<p>Notice that for the <strong>required</strong> argument, we directly provide the input <code>x</code>, but for the <strong>optional</strong> argument we include the argument name <code>na.rm = TRUE</code>. The reason is simply that there are other optional arguments, so we need to specify which one we’re using.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="How do I know what arguments a function has?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How do I know what arguments a function has?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>To learn more about what a function does and what arguments it has, you can look it up in the ‘Help’ pane in the bottom right, or run <code>?function_name</code> in R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>?mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here you can learn about the <code>na.rm</code> argument that we just used!</p>
+<p>If you are just getting to know R, we recommend first finishing the rest of the <code>Getting Started</code> section. Then once you get the hang of things, have a look at the <a href="99_tips-and-best-practises/0_use-help-pages.qmd">Use ?function help page</a> tutorial.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="using-pipes" class="level2">
+<h2 class="anchored" data-anchor-id="using-pipes">Using pipes</h2>
+<p>There are two ways for using functions.</p>
+<ul>
+<li>The first is the one shown above, where we <strong>put all the arguments between the parentheses</strong>: <code>function_name(argument1, argument2, ...)</code>.</li>
+<li>The second way is to <strong>pipe the first argument into the function</strong>: <code>argument1 |&gt; function_name(argument2, ...)</code></li>
+</ul>
+<p>If this is your first time seeing pipes, you’re probably wondering why you would want to do this? Why bother having two ways to do the exact same thing? The reason is that when writing code, you shouldn’t just think about <strong>what the code does</strong>, but also about <strong>how easy the code is to read</strong>. This not only helps you prevent mistakes, but also makes your analysis <strong>transparent</strong>.</p>
+<p>As you’ll see later, you’ll encounter many cases where your analysis requires you to string together multiple functions. In these cases, pipes make your code much easier to read. let’s rewrite our code from above using the <strong>pipe</strong> notation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x_with_missing <span class="sc">|&gt;</span> <span class="fu">mean</span>(<span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Notice how our first argument, the <strong>required</strong> argument <code>x_with_missing</code>, is <em>piped</em> into the mean function. Inside the mean function, we only specify the second argument, the <strong>optional</strong> argument <code>na.rm</code>.</p>
+<p>Now imagine we would want to round the result (<code>2.5</code>) up to a round number (<code>3</code>). We can do this without pipe notation, but it would be quite ugly and hard to read:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">mean</span>(x_with_missing, <span class="at">na.rm=</span>T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The pipe notation allows us to break this down into a nice pipeline:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x_with_missing <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(<span class="at">na.rm=</span>T) <span class="sc">|&gt;</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -428,6 +565,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../0_getting-started/3_r-in-action.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">R in Action</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../0_getting-started/5_packages.html" class="pagination-link">
+        <span class="nav-page-text">Packages</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

@@ -64,6 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../0_getting-started/2_names-and-values.html" rel="next">
+<link href="../0_getting-started/0_install-r-and-rstudio.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -152,34 +154,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">How to use RStudio</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../0_getting-started/2_names-and-values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Names and Values</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../0_getting-started/3_r-in-action.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R in Action</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../0_getting-started/4_functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../0_getting-started/5_packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Packages</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Functions</span></a>
+ <span class="menu-text">Tips and Best Practices</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">Data management</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../2_functions/data_management/select.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">select</span></a>
+  <a href="../tips-and-best-practices/0_use-help-pages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Use ?function help pages</span></a>
   </div>
 </li>
-      </ul>
-  </li>
       </ul>
   </li>
     </ul>
@@ -193,7 +208,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#running-code-from-the-r-script" id="toc-running-code-from-the-r-script" class="nav-link active" data-scroll-target="#running-code-from-the-r-script">Running code from the R script</a></li>
-  <li><a href="#assigning-values-to-names" id="toc-assigning-values-to-names" class="nav-link" data-scroll-target="#assigning-values-to-names">Assigning values to names</a></li>
   <li><a href="#using-rstudio-projects" id="toc-using-rstudio-projects" class="nav-link" data-scroll-target="#using-rstudio-projects">Using RStudio projects</a></li>
   </ul>
 </nav>
@@ -239,26 +253,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">"some more text"</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You can <strong>run</strong> parts of the code in an R script by pressing Ctrl + Enter (on mac this is command + Enter). This can be done in two ways:</p>
+<p>You can <strong>run</strong> code by selecting the code and clicking on the <strong>Run</strong> button in the toolbar. However, we highly recommend getting used to using the keyboard shortcut, because this will greatly speed up your process. On Windows (and Linux) the shortcut is <strong>Ctrl + Enter</strong>. On Mac it’s <strong>Command + Enter</strong>.</p>
+<p>There are two ways to run code:</p>
 <ul>
-<li>If you select a piece of text (so that it is highlighted) you can press Ctrl + Enter to run the selection. For example, select the first three lines (the three mathematical operations) and press Ctrl + Enter.</li>
-<li>If you haven’t made a selection, but your text cursor is in the editor, you can press Ctrl + Enter to run the line where the cursor is at. This will also move the cursor to the next line, so you can <em>walk</em> through the code from top to bottom, running each line. Try starting on the first line, and pressing Ctrl + Enter six times, to run each line separately.</li>
+<li>If you select a specific piece of code (so that it is highlighted) you can run this specific selection. For example, select the first three lines (the three mathematical operations) and press Ctrl + Enter. This should then print the results for these three mathematical expressions. Note that you can also select a specific part on a line. Try selecting just the second <code>3</code> on the first line. This should just print the number 3.</li>
+<li>If you haven’t made a selection, but your text cursor is somewhere on a line in your editor, you can press Ctrl + Enter to run the line where the cursor is at. This will also move the cursor to the next line, so you can <em>walk</em> through the code from top to bottom, running each line. Try starting on the first line, and pressing Ctrl + Enter six times, to run each line separately.</li>
 </ul>
-</section>
-<section id="assigning-values-to-names" class="level2">
-<h2 class="anchored" data-anchor-id="assigning-values-to-names">Assigning values to names</h2>
-<p>When running the example code, you saw that R automatically <strong>evaluates</strong> expressions. The calculation 3+3 evaluates to 6, and 2*5 evaluates to 10. You also saw that the <strong>function</strong> <em>sum(1,2,3,4,5)</em> evaluates to 15 (the sum of the numbers). We’ll address how to use R as a calculator and how to perform functions at a later time. For now, one more thing that you need to know about the R syntax is how values can be <strong>assigned</strong> to names.</p>
-<p>In plain terms, <strong>assignment</strong> is how you make R remember things by assigning them to a name. This works the same way for all sorts of values, from single numbers to entire datasets. You can choose whether you prefer the equal sign (=) or the arrow (&lt;-) for assignment.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">2</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="st">"some text"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Here we have remembered the number 2 as <strong>x</strong> and the text “some text” as <strong>y</strong>. If you are working in RStudio (which you should), you can now also see these names and values in the topright window, under the “Environment” tab.</p>
-<p>We can now use the names to retrieve the values, or to use these values in new commands.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>This should print the value <code>10</code> in your R Console (bottom-left window)</p>
 </section>
 <section id="using-rstudio-projects" class="level2">
 <h2 class="anchored" data-anchor-id="using-rstudio-projects">Using RStudio projects</h2>
@@ -269,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </section>
 
-</main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -503,6 +503,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../0_getting-started/0_install-r-and-rstudio.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Install R and RStudio</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../0_getting-started/2_names-and-values.html" class="pagination-link">
+        <span class="nav-page-text">Names and Values</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
