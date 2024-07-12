@@ -3,11 +3,10 @@ project:
 
 website:
   title: "Communication Science R Book"
-  navbar: 
+  navbar:
     search: true
   sidebar:
     style: "docked"
-    search: true
     contents: auto
   back-to-top-navigation: true
   page-navigation: true
