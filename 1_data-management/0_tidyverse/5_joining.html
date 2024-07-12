@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Kasper Welbers, Wouter van Atteveldt &amp; Philipp Masur">
+<meta name="dcterms.date" content="2021-10-01">
 
-<title>Communication Science R Book - Function Help Pages</title>
+<title>Communication Science R Book - 13a_joining_data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,23 +59,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../2_statistics/2_tests/t-test.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../1_data-management/0_tidyverse/6_strings.html" rel="next">
+<link href="../../1_data-management/0_tidyverse/4_reshaping.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -112,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Communication Science R Book</span>
     </a>
   </div>
@@ -126,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tips-and-best-practices/0_use-help-pages.html">Tips and Best Practices</a></li><li class="breadcrumb-item"><a href="../tips-and-best-practices/0_use-help-pages.html">Function Help Pages</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../1_data-management/index.html">Data management</a></li><li class="breadcrumb-item"><a href="../../1_data-management/0_tidyverse/index.html">The Tidyverse Toolkit</a></li><li class="breadcrumb-item"><a href="../../1_data-management/0_tidyverse/5_joining.html">13a_joining_data</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -140,7 +143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../0_getting-started/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../0_getting-started/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -149,37 +152,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../0_getting-started/0_install-r-and-rstudio.html" class="sidebar-item-text sidebar-link">
+  <a href="../../0_getting-started/0_install-r-and-rstudio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Install R and RStudio</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../0_getting-started/1_using-rstudio.html" class="sidebar-item-text sidebar-link">
+  <a href="../../0_getting-started/1_using-rstudio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">How to use RStudio</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../0_getting-started/2_r-in-action.html" class="sidebar-item-text sidebar-link">
+  <a href="../../0_getting-started/2_r-in-action.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R in Action (demo)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../0_getting-started/3_names-and-values.html" class="sidebar-item-text sidebar-link">
+  <a href="../../0_getting-started/3_names-and-values.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Names and Values</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../0_getting-started/4_functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../0_getting-started/4_functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../0_getting-started/5_packages.html" class="sidebar-item-text sidebar-link">
+  <a href="../../0_getting-started/5_packages.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Packages</span></a>
   </div>
 </li>
@@ -187,7 +190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../1_data-management/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../1_data-management/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data management</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -196,52 +199,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../1_data-management/0_tidyverse/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../1_data-management/0_tidyverse/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">The Tidyverse Toolkit</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../1_data-management/0_tidyverse/0_read-data.html" class="sidebar-item-text sidebar-link">
+  <a href="../../1_data-management/0_tidyverse/0_read-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Read data into R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../1_data-management/0_tidyverse/1_selecting-renaming-and-filtering.html" class="sidebar-item-text sidebar-link">
+  <a href="../../1_data-management/0_tidyverse/1_selecting-renaming-and-filtering.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data transformation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../1_data-management/0_tidyverse/2_summarizing.html" class="sidebar-item-text sidebar-link">
+  <a href="../../1_data-management/0_tidyverse/2_summarizing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R Tidyverse: Data Summarization with group_by, summarize, and mutate</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../1_data-management/0_tidyverse/3_visualization.html" class="sidebar-item-text sidebar-link">
+  <a href="../../1_data-management/0_tidyverse/3_visualization.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basics of data visualization</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../1_data-management/0_tidyverse/4_reshaping.html" class="sidebar-item-text sidebar-link">
+  <a href="../../1_data-management/0_tidyverse/4_reshaping.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reshaping data: wide, long, and tidy</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../1_data-management/0_tidyverse/5_joining.html" class="sidebar-item-text sidebar-link">
+  <a href="../../1_data-management/0_tidyverse/5_joining.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">13a_joining_data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../1_data-management/0_tidyverse/6_strings.html" class="sidebar-item-text sidebar-link">
+  <a href="../../1_data-management/0_tidyverse/6_strings.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Working with textual data: stringr</span></a>
   </div>
 </li>
@@ -251,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../2_statistics/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../2_statistics/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Statistics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -260,7 +263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../2_statistics/0_general-concepts/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../2_statistics/0_general-concepts/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">General Concepts</span></a>
   </div>
 </li>
@@ -275,31 +278,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../2_statistics/2_tests/0_selecting-the-right-test.html" class="sidebar-item-text sidebar-link">
+  <a href="../../2_statistics/2_tests/0_selecting-the-right-test.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Selecting the right test</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../2_statistics/2_tests/anova.html" class="sidebar-item-text sidebar-link">
+  <a href="../../2_statistics/2_tests/anova.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Anova</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../2_statistics/2_tests/chi2.html" class="sidebar-item-text sidebar-link">
+  <a href="../../2_statistics/2_tests/chi2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Chi2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../2_statistics/2_tests/regression.html" class="sidebar-item-text sidebar-link">
+  <a href="../../2_statistics/2_tests/regression.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../2_statistics/2_tests/t-test.html" class="sidebar-item-text sidebar-link">
+  <a href="../../2_statistics/2_tests/t-test.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">T Test</span></a>
   </div>
 </li>
@@ -318,7 +321,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tips-and-best-practices/0_use-help-pages.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../tips-and-best-practices/0_use-help-pages.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Function Help Pages</span></a>
   </div>
 </li>
@@ -330,21 +333,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#joining-data" id="toc-joining-data" class="nav-link active" data-scroll-target="#joining-data">Joining data</a>
+  <ul class="collapse">
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#downloading-and-preparing-the-data" id="toc-downloading-and-preparing-the-data" class="nav-link" data-scroll-target="#downloading-and-preparing-the-data">Downloading and preparing the data</a></li>
+  </ul></li>
+  <li><a href="#simplest-case-inner_join" id="toc-simplest-case-inner_join" class="nav-link" data-scroll-target="#simplest-case-inner_join">Simplest case: <code>inner_join</code></a></li>
+  <li><a href="#specifying-columns" id="toc-specifying-columns" class="nav-link" data-scroll-target="#specifying-columns">Specifying columns</a></li>
+  <li><a href="#left-and-right-joins" id="toc-left-and-right-joins" class="nav-link" data-scroll-target="#left-and-right-joins">Left and right joins</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tips-and-best-practices/0_use-help-pages.html">Tips and Best Practices</a></li><li class="breadcrumb-item"><a href="../tips-and-best-practices/0_use-help-pages.html">Function Help Pages</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../1_data-management/index.html">Data management</a></li><li class="breadcrumb-item"><a href="../../1_data-management/0_tidyverse/index.html">The Tidyverse Toolkit</a></li><li class="breadcrumb-item"><a href="../../1_data-management/0_tidyverse/5_joining.html">13a_joining_data</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Function Help Pages</h1>
+<h1 class="title">13a_joining_data</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Kasper Welbers, Wouter van Atteveldt &amp; Philipp Masur </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 1, 2021</p>
+    </div>
+  </div>
   
     
   </div>
@@ -354,13 +382,94 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The help page tells you how you can use the function. For <code>mean</code>, it shows you that the main form is</p>
+<section id="joining-data" class="level1">
+<h1>Joining data</h1>
+<p>In many cases, you need to combine data from multiple data sources. For example, you can combine a sentiment analysis of tweets with metadata about the tweets; or data on election results with data about the candidates ideological positions or details on the races.</p>
+<p>This tutorial will teach you the <code>inner_join</code> and other <code>_join</code> commands used to combine two data sets on shared columns. See <a href="http://r4ds.had.co.nz/relational-data.html">R4DS Chapter 13: Relational Data</a> for more information and examples.</p>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>For this tutorial, we will look at data describing the US presidential primaries. These data can be downloaded from the <a href="https://github.com/houstondatavis/data-jam-august-2016">Houston Data Visualisation github page</a>, who in turn got it from <a href="https://www.kaggle.com/benhamner/2016-us-election">Kaggle</a>.</p>
+<p>In the CSV folder on the github, you can find (among others)</p>
+<ul>
+<li><code>primary_results.csv</code> Number of votes in the primary per county per candidate</li>
+<li><code>primary_schedule.csv</code> Dates of each primary per state and per party</li>
+<li><code>county_facts.csv</code> Information about the counties and states, including population, ethnicity, age, etc.</li>
+</ul>
+<p>For many research questions, we need to be able to combine the data from these files. For example, we might want to know if Clinton did better in counties or states with more women (needing results and facts), or how Trump’s performance evolved over time (requiring results and calendar).</p>
+</section>
+<section id="downloading-and-preparing-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="downloading-and-preparing-the-data">Downloading and preparing the data</h2>
+<p>Before we start, let’s download the three data files:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">trim =</span> <span class="dv">0</span>, <span class="at">na.rm =</span> <span class="cn">FALSE</span>, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>csv_folder_url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/houstondatavis/data-jam-august-2016/master/csv"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">paste</span>(csv_folder_url, <span class="st">"primary_results.csv"</span>, <span class="at">sep =</span> <span class="st">"/"</span>))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>facts <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">paste</span>(csv_folder_url, <span class="st">"county_facts.csv"</span>, <span class="at">sep =</span> <span class="st">"/"</span>))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>schedule  <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">paste</span>(csv_folder_url, <span class="st">"primary_schedule.csv"</span>, <span class="at">sep =</span> <span class="st">"/"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>What this means is that</p>
+<p>Note: I use <code>paste</code> to join the base url with the filenames, using a <code>/</code> as a <code>sep</code>arator.</p>
+<p>Have a look at all three data sets. Before we proceed, there are some things we want to do. First, the <code>facts</code> data frame is really large, with 54 columns. Let’s select a couple interesting ones to work with:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>facts_subset <span class="ot">&lt;-</span> facts <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(area_name, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">population =</span> Pop_2014_count, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">pop_change =</span> Pop_change_pct, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">over65 =</span> Age_over_65_pct, </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">female =</span> Sex_female_pct, </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">white =</span> Race_white_pct, </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">college =</span> Pop_college_grad_pct, </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">income =</span> Income_per_capita)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, the schedule dates are now a character (textual) field rather than date, so let’s fix that using the <code>as.Date</code> function, specifying the dates to be formatted as month/day/year:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>schedule <span class="ot">&lt;-</span> schedule <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">as.Date</span>(date, <span class="at">format=</span><span class="st">"%m/%d/%y"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Last, let’s create a data set with per-state (rather than per-country) election results using <code>group_by</code> and <code>summarize</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>results_state <span class="ot">&lt;-</span> results <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(state, party, candidate) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">votes =</span> <span class="fu">sum</span>(votes))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>results_state</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note: see <a href="R-tidy-5-transformation.md">R-tidy-5-transformations</a> if you are unsure about the transformations above!</p>
+</section>
+</section>
+<section id="simplest-case-inner_join" class="level1">
+<h1>Simplest case: <code>inner_join</code></h1>
+<p>The basic command for joining data in R is the <code>inner join</code>. It takes two data frames and joins it on any variable that occurs in both. It results in a new data frame with the information in both frames joined together. For example, this adds the dates to all primary results (per state)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inner_join</span>(results_state, schedule)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="specifying-columns" class="level1">
+<h1>Specifying columns</h1>
+<p>By default, joining is performed with all shared columns as joining <em>keys</em>. If this is not correct, you can specify the joining key with the <code>by=</code> option. A common use case is if the variable names are not the same, for example the state in the <code>facts</code> data is coded as <code>area_name</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inner_join</span>(results_state, facts_subset, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"state"</span> <span class="ot">=</span> <span class="st">"area_name"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="left-and-right-joins" class="level1">
+<h1>Left and right joins</h1>
+<p>As seen above, <code>inner_join</code> keeps only rows that occur in both data sets: the county-level facts are (silently) dropped because their names don’t occur in the state results.</p>
+<p>Sometimes this is undesirable. For example, suppose we have data on candidate age, but not on all candidates:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">candidate =</span> <span class="fu">c</span>(<span class="st">"Hillary Clinton"</span>, <span class="st">"Bernie Sanders"</span>, <span class="st">"Donald Trump"</span>), </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">77</span>, <span class="dv">72</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, if we would do an <code>inner_join</code> with the election results it would drop all other candidates (since they do not occur in the age dataset):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inner_join</span>(results_state, age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can prevent this from occurring by using <code>left_join</code>, which always keeps all rows in the first dataset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(results_state, age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As you can see, Ben Carson and others are still in the data, with missing values (NA) in their age column. Left join keeps all rows in the first data sets, but drops rows in the second data set that don’t occur in the first. Right join does the opposite, keeping all rows in the second data set but potentially dropping rows in the first. Finally, <code>full_join</code> keeps all rows that occur in either data set.</p>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -774,11 +883,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../2_statistics/2_tests/t-test.html" class="pagination-link" aria-label="T Test">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">T Test</span>
+      <a href="../../1_data-management/0_tidyverse/4_reshaping.html" class="pagination-link" aria-label="Reshaping data: wide, long, and tidy">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Reshaping data: wide, long, and tidy</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../1_data-management/0_tidyverse/6_strings.html" class="pagination-link" aria-label="Working with textual data: stringr">
+        <span class="nav-page-text">Working with textual data: stringr</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

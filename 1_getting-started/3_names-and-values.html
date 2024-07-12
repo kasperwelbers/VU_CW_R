@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Communication Science R Book - Function Help Pages</title>
+<title>Communication Science R Book - Names and Values</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../2_statistics/2_tests/t-test.html" rel="prev">
+<link href="../1_getting-started/4_functions.html" rel="next">
+<link href="../1_getting-started/2_r-in-action.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -126,9 +127,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tips-and-best-practices/0_use-help-pages.html">Tips and Best Practices</a></li><li class="breadcrumb-item"><a href="../tips-and-best-practices/0_use-help-pages.html">Function Help Pages</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../1_getting-started/index.html">Getting Started</a></li><li class="breadcrumb-item"><a href="../1_getting-started/3_names-and-values.html">Names and Values</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
     </div>
   </nav>
 </header>
@@ -136,11 +140,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../0_getting-started/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../1_getting-started/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -149,176 +158,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../0_getting-started/0_install-r-and-rstudio.html" class="sidebar-item-text sidebar-link">
+  <a href="../1_getting-started/0_install-r-and-rstudio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Install R and RStudio</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../0_getting-started/1_using-rstudio.html" class="sidebar-item-text sidebar-link">
+  <a href="../1_getting-started/1_using-rstudio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">How to use RStudio</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../0_getting-started/2_r-in-action.html" class="sidebar-item-text sidebar-link">
+  <a href="../1_getting-started/2_r-in-action.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R in Action (demo)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../0_getting-started/3_names-and-values.html" class="sidebar-item-text sidebar-link">
+  <a href="../1_getting-started/3_names-and-values.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Names and Values</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../0_getting-started/4_functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../1_getting-started/4_functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../0_getting-started/5_packages.html" class="sidebar-item-text sidebar-link">
+  <a href="../1_getting-started/5_packages.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Packages</span></a>
   </div>
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../1_data-management/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data management</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../2_statistics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistics</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../1_data-management/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data management</span></a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Tips and Best Practices</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../1_data-management/0_tidyverse/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Tidyverse Toolkit</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../1_data-management/0_tidyverse/0_read-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Read data into R</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../1_data-management/0_tidyverse/1_selecting-renaming-and-filtering.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data transformation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../1_data-management/0_tidyverse/2_summarizing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R Tidyverse: Data Summarization with group_by, summarize, and mutate</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../1_data-management/0_tidyverse/3_visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of data visualization</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../1_data-management/0_tidyverse/4_reshaping.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Reshaping data: wide, long, and tidy</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../1_data-management/0_tidyverse/5_joining.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">13a_joining_data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../1_data-management/0_tidyverse/6_strings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Working with textual data: stringr</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../2_statistics/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Statistics</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../2_statistics/0_general-concepts/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">General Concepts</span></a>
-  </div>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
- <span class="menu-text">Tests</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../2_statistics/2_tests/0_selecting-the-right-test.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Selecting the right test</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../2_statistics/2_tests/anova.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Anova</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../2_statistics/2_tests/chi2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Chi2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../2_statistics/2_tests/regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Regression</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../2_statistics/2_tests/t-test.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">T Test</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
- <span class="menu-text">Tips and Best Practices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../tips-and-best-practices/0_use-help-pages.html" class="sidebar-item-text sidebar-link active">
+  <a href="../tips-and-best-practices/0_use-help-pages.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Function Help Pages</span></a>
   </div>
 </li>
@@ -330,14 +229,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#assigning-different-types-of-values" id="toc-assigning-different-types-of-values" class="nav-link active" data-scroll-target="#assigning-different-types-of-values">Assigning different types of values</a></li>
+  <li><a href="#assigning-results" id="toc-assigning-results" class="nav-link" data-scroll-target="#assigning-results">Assigning results</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tips-and-best-practices/0_use-help-pages.html">Tips and Best Practices</a></li><li class="breadcrumb-item"><a href="../tips-and-best-practices/0_use-help-pages.html">Function Help Pages</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../1_getting-started/index.html">Getting Started</a></li><li class="breadcrumb-item"><a href="../1_getting-started/3_names-and-values.html">Names and Values</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Function Help Pages</h1>
+<h1 class="title">Names and Values</h1>
 </div>
 
 
@@ -354,13 +260,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The help page tells you how you can use the function. For <code>mean</code>, it shows you that the main form is</p>
+<p>In R, and in computer programming in general, the most essential operation is to assign <strong>values</strong> to <strong>names</strong>. By <strong>value</strong>, we then simply mean a piece of information. This can be a anything: a single number, a string (i.e.&nbsp;piece of text), a list of numbers, and even an entire data set. <strong>Assigning</strong> such values to names is essential, because it allows us to more easily refer to the values.</p>
+<p>In plain terms, <strong>assignment</strong> is how you make R remember things by assigning them to a name. To assign a value to a name, we use the <strong>arrow notation</strong>: <code>name &lt;- value</code>. For example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">trim =</span> <span class="dv">0</span>, <span class="at">na.rm =</span> <span class="cn">FALSE</span>, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>What this means is that</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Good to know: you can also use `x = 2`">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Good to know: you can also use <code>x = 2</code>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Instead of using the <strong>arrow</strong> notation, you can also use the <strong>equal sign</strong> notation: <code>name = value</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We will in general always use the <strong>arrow</strong> notation. But if you encounter the <strong>equal sign</strong> notation, just remember that it’s the same thing.</p>
+</div>
+</div>
+</div>
+<p>By <strong>running</strong> the code <code>x &lt;- 2</code>, you are saying: <strong>Assign the value <code>2</code> to the name <code>x</code></strong>. Any values that you assigned to names are stored in your <strong>Environment</strong>. You can see this environment in the top-right window, under the <strong>Environment</strong> tab. If you assigned <code>2</code> to <code>x</code>, you should see a table called <strong>Values</strong>, with in the left column the names (<code>x</code>) and in the right column the values (<code>2</code>).</p>
+<p>From hereon, when you use the name <code>x</code> in your code, it will <strong>refer</strong> to the value <code>2</code>. So when we run the code <code>x * 5</code> (x times 5) it will print the number <code>10</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Why does R print a [1] before the result?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why does R print a [1] before the result?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>When running <code>x * 5</code>, R correctly prints the value 10. But why does it say <code>[1] 10</code>? The reason is that R always thinks of a number (or string) as a <strong>vector</strong> (i.e.&nbsp;list of values), that can have 1 or multiple values. The <code>[1]</code> indicates that 10 is the first (and only) value.</p>
+<p>If you print a longer <strong>vector</strong>, you can see that R prints <code>[...]</code> at the start of each line, just to help you see the position of individual values. The following code generates a vector with numbers from 1 to 50</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">50</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+[26] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="assigning-different-types-of-values" class="level2">
+<h2 class="anchored" data-anchor-id="assigning-different-types-of-values">Assigning different types of values</h2>
+<p>You can assign any type of value to a name, and you can use any name, as long as it starts with a letter and doesn’t contain spaces or symbols (but underscores are OK)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>a_number <span class="ot">=</span> <span class="dv">5</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>my_cats_name <span class="ot">=</span> <span class="st">"Hobbes"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you run this code and check you <strong>Environment</strong> (top-right), you should now see these name-value pairs added.</p>
+</section>
+<section id="assigning-results" class="level2">
+<h2 class="anchored" data-anchor-id="assigning-results">Assigning results</h2>
+<p>Till now we only directly assigned values to names. This is convenient, but the power of assignment really shines when you use it to store <strong>results</strong>. For example, we can also do this.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This a very simple example, but just think for a second what this allows us to do. Since we can assign anything to a name, we can break down any complicated procedure into multiple steps! For now, the key lesson is just to wrap your head around the syntax for assigning values to names. This is fundamental to everything you will be doing in R (and in programming in general).</p>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -444,7 +419,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/VU-communication-science\.github\.io\/R-canon\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -774,11 +749,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../2_statistics/2_tests/t-test.html" class="pagination-link" aria-label="T Test">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">T Test</span>
+      <a href="../1_getting-started/2_r-in-action.html" class="pagination-link" aria-label="R in Action (demo)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">R in Action (demo)</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../1_getting-started/4_functions.html" class="pagination-link" aria-label="Functions">
+        <span class="nav-page-text">Functions</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

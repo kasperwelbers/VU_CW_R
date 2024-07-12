@@ -7,129 +7,788 @@
     "text": "Back to top"
   },
   {
-    "objectID": "0_getting-started/1_using-rstudio.html",
-    "href": "0_getting-started/1_using-rstudio.html",
-    "title": "How to use RStudio",
+    "objectID": "2_statistics/2_tests/index.html",
+    "href": "2_statistics/2_tests/index.html",
+    "title": "Tests",
     "section": "",
-    "text": "Once you have installed R and RStudio, you can start by launching RStudio. If everything was installed correctly, RStudio will automatically launch R as well.\nThe first time you open RStudio, you will likely see three separate windows. The first thing you want to do is open an R Script (!!) to work in. To do so, go to the toolbar and select File -&gt; New File -&gt; R Script.\nYou will now see four windows split evenly over the four corners of your screen:\nWhile you can directly enter code into your console (bottom-left), you should always work with R scripts (top-left). This allows you to keep track of what you are doing and save every step."
+    "text": "Back to top"
   },
   {
-    "objectID": "0_getting-started/1_using-rstudio.html#running-code-from-the-r-script",
-    "href": "0_getting-started/1_using-rstudio.html#running-code-from-the-r-script",
-    "title": "How to use RStudio",
-    "section": "Running code from the R script",
-    "text": "Running code from the R script\nCopy and paste the following example code into your R Script. For now, don’t bother understanding the syntax itself. Just focus on running it.\n\n3 + 3\n2 * 5\n6 / 2\n\"some text\"\n\"some more text\"\nsum(1,2,3,4,5)\n\nYou can run code by selecting the code and clicking on the Run button in the toolbar. However, we highly recommend getting used to using the keyboard shortcut, because this will greatly speed up your process. On Windows (and Linux) the shortcut is Ctrl + Enter. On Mac it’s Command + Enter.\nThere are two ways to run code:\n\nIf you select a specific piece of code (so that it is highlighted) you can run this specific selection. For example, select the first three lines (the three mathematical operations) and press Ctrl + Enter. This should then print the results for these three mathematical expressions. Note that you can also select a specific part on a line. Try selecting just the second 3 on the first line. This should just print the number 3.\nIf you haven’t made a selection, but your text cursor is somewhere on a line in your editor, you can press Ctrl + Enter to run the line where the cursor is at. This will also move the cursor to the next line, so you can walk through the code from top to bottom, running each line. Try starting on the first line, and pressing Ctrl + Enter six times, to run each line separately."
-  },
-  {
-    "objectID": "0_getting-started/1_using-rstudio.html#using-rstudio-projects",
-    "href": "0_getting-started/1_using-rstudio.html#using-rstudio-projects",
-    "title": "How to use RStudio",
-    "section": "Using RStudio projects",
-    "text": "Using RStudio projects\nIt is best to put all your code in an RStudio project. This is essentially a folder on your computer in which you can store the R files and data for a project that you are working on. While you do not necessarily need a project to work with R, they are very convenient, and we strongly recommend using them.\nTo create a new project, go to the top-right corner of your RStudio window. Look for the button labeled Project: (None). Click on this button, and select New Project. Follow the instructions to create a new directory with a new project. Name the project “R introduction”.\nNow, open a new R script and immediately save it (select File -&gt; Save in the toolbar, or press ctrl-s). Name the file my_first_r_script.r. In the bottom-right corner, under the Files tab, you’ll now see the file added to the project. The extension .r indicates that the file is an R script."
-  },
-  {
-    "objectID": "0_getting-started/5_packages.html",
-    "href": "0_getting-started/5_packages.html",
-    "title": "Packages",
+    "objectID": "2_statistics/2_tests/regression.html",
+    "href": "2_statistics/2_tests/regression.html",
+    "title": "Communication Science R Book",
     "section": "",
-    "text": "Tutorial about how to install and load packages\n\n\n\n Back to top"
+    "text": "Back to top",
+    "crumbs": [
+      "Statistics",
+      "Tests",
+      "Regression"
+    ]
   },
   {
-    "objectID": "0_getting-started/2_names-and-values.html",
-    "href": "0_getting-started/2_names-and-values.html",
-    "title": "Names and Values",
+    "objectID": "2_statistics/2_tests/chi2.html",
+    "href": "2_statistics/2_tests/chi2.html",
+    "title": "Communication Science R Book",
     "section": "",
-    "text": "In R, and in computer programming in general, the most essential operation is to assign values to names. By value, we then simply mean a piece of information. This can be a anything: a single number, a string (i.e. piece of text), a list of numbers, and even an entire data set. Assigning such values to names is essential, because it allows us to more easily refer to the values.\nIn plain terms, assignment is how you make R remember things by assigning them to a name. To assign a value to a name, we use the arrow notation: name &lt;- value. For example:\nx &lt;- 2\nBy running the code x &lt;- 2, you are saying: Assign the value 2 to the name x. Any values that you assigned to names are stored in your Environment. You can see this environment in the top-right window, under the Environment tab. If you assigned 2 to x, you should see a table called Values, with in the left column the names (x) and in the right column the values (2).\nFrom hereon, when you use the name x in your code, it will refer to the value 2. So when we run the code x * 5 (x times 5) it will print the number 10\nx * 5\n\n[1] 10"
+    "text": "Back to top",
+    "crumbs": [
+      "Statistics",
+      "Tests",
+      "Chi2"
+    ]
   },
   {
-    "objectID": "0_getting-started/2_names-and-values.html#assigning-different-types-of-values",
-    "href": "0_getting-started/2_names-and-values.html#assigning-different-types-of-values",
-    "title": "Names and Values",
-    "section": "Assigning different types of values",
-    "text": "Assigning different types of values\nYou can assign any type of value to a name, and you can use any name, as long as it starts with a letter and doesn’t contain spaces or symbols (but underscores are OK)\n\na_number = 5\nmy_cats_name = \"Hobbes\"\n\nIf you run this code and check you Environment (top-right), you should now see these name-value pairs added."
-  },
-  {
-    "objectID": "0_getting-started/2_names-and-values.html#assigning-results",
-    "href": "0_getting-started/2_names-and-values.html#assigning-results",
-    "title": "Names and Values",
-    "section": "Assigning results",
-    "text": "Assigning results\nTill now we only directly assigned values to names. This is convenient, but the power of assignment really shines when you use it to store results. For example, we can also do this.\n\nx = 5 + 10\n\nThis a very simple example, but just think for a second what this allows us to do. Since we can assign anything to a name, we can break down any complicated procedure into multiple steps! For now, the key lesson is just to wrap your head around the syntax for assigning values to names. This is fundamental to everything you will be doing in R (and in programming in general)."
-  },
-  {
-    "objectID": "tips-and-best-practices/0_use-help-pages.html",
-    "href": "tips-and-best-practices/0_use-help-pages.html",
-    "title": "Use ?function help pages",
+    "objectID": "2_statistics/0_general-concepts/index.html",
+    "href": "2_statistics/0_general-concepts/index.html",
+    "title": "General Concepts",
     "section": "",
-    "text": "The help page tells you how you can use the function. For mean, it shows you that the main form is\n\nmean(x, trim = 0, na.rm = FALSE, ...)\n\nWhat this means is that\n\n\n\n Back to top"
+    "text": "In this folder we can put explanations of general concepts, like p-values, distributions, etc.\n\n\n\n Back to top",
+    "crumbs": [
+      "Statistics",
+      "General Concepts"
+    ]
   },
   {
-    "objectID": "0_getting-started/4_functions.html",
-    "href": "0_getting-started/4_functions.html",
-    "title": "Functions",
+    "objectID": "1_data-management/0_tidyverse/3_visualization.html",
+    "href": "1_data-management/0_tidyverse/3_visualization.html",
+    "title": "Basics of data visualization",
     "section": "",
-    "text": "99% of what you do in R will involve using functions. A function in R is like a mini-program that you can use to perform specific tasks. It takes input, processes it, and gives you an output. For example, there are functions for:\nA function in R has the form: output = function_name(argument1, argument2, ...)\nFor example, the function c combines multiple values into a vector.\nx = c(1,2,3,4)\nNow, we can use the mean function to calculate the mean of these numbers:\nm = mean(x)\nThe calculated mean, 2.5, is now assigned to the name m:\nm\n\n[1] 2.5"
+    "text": "This tutorial teaches the basics of data visualization using the ggplot2 package (included in tidyverse). For more information, see R4DS Chapter 3: Da`ta Visualization and R4DS Chapter 7: Exploratory Data Analysis.\nFor many cool visualization examples using gplot2 (with R code included!) see the R Graph Gallery. For inspiration (but unfortunately no R code), there is also a 538 blog post on data visualization from 2016. Finally, see the article on ‘the grammar of graphics’ published by Hadley Wickham for more insight into the ideas behind ggplot.",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Basics of data visualization"
+    ]
   },
   {
-    "objectID": "0_getting-started/4_functions.html#optional-arguments",
-    "href": "0_getting-started/4_functions.html#optional-arguments",
-    "title": "Functions",
-    "section": "Optional arguments",
-    "text": "Optional arguments\nIn the c and mean functions above, all the arguments were required. To combine numbers into a vector, we needed to provide a list of numbers. To calculate a mean, we needed to provide a numeric vector.\nIn addition to the required arguments, a function can also have optional arguments, that give you more control over what a function does. For example, suppose we have a range of numbers that also contains a missing value. In R a missing value is called NA, which stands for Not Available:\n\nx_with_missing = c(1, 2, 3, NA, 4)\n\nNow, if we call the mean function, R will say that the mean is unknown, since the third value is unknown:\n\nmean(x_with_missing)\n\n[1] NA\n\n\nThis is statistically a very correct answer. But often, if some values happen to be missing in your data, you want to be able to calculate the mean just for the numbers that are not missing. Fortunately, the mean function has an optional argument na.rm (remove NAs) that you can set to TRUE (or to T, which is short for TRUE) to ignore the NAs:\n\nmean(x, na.rm=TRUE)\n\n[1] 2.5\n\n\nNotice that for the required argument, we directly provide the input x, but for the optional argument we include the argument name na.rm = TRUE. The reason is simply that there are other optional arguments, so we need to specify which one we’re using.\n\n\n\n\n\n\nHow do I know what arguments a function has?\n\n\n\n\n\nTo learn more about what a function does and what arguments it has, you can look it up in the ‘Help’ pane in the bottom right, or run ?function_name in R.\n\n?mean\n\nHere you can learn about the na.rm argument that we just used!\nIf you are just getting to know R, we recommend first finishing the rest of the Getting Started section. Then once you get the hang of things, have a look at the Use ?function help page tutorial."
+    "objectID": "1_data-management/0_tidyverse/3_visualization.html#important-note-on-ggplot-command-syntax",
+    "href": "1_data-management/0_tidyverse/3_visualization.html#important-note-on-ggplot-command-syntax",
+    "title": "Basics of data visualization",
+    "section": "Important note on ggplot command syntax",
+    "text": "Important note on ggplot command syntax\nFor the plot to work, R needs to execute the whole ggplot call and all layers as a single statement. Practically, that means that if you combine a plot over multiple lines, the plus sign needs to be at the end of the line, so R knows more is coming. The general syntax is always:\n\nggplot(data = &lt;DATA&gt;) + \n  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;))\n\nSo, the following is good:\n\nggplot(data = facts_state) + \n  geom_point(mapping = aes(x = college, y = income))\n\nBut this is not:\n\nggplot(data = facts_state) \n  + geom_point(mapping = aes(x = college, y = income))\n\nAlso note that the data and mapping arguments are the first arguments the functions expect, so you can also leave them out:\n\nggplot(facts_state) + \n  geom_point(aes(x = college, y = income))",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Basics of data visualization"
+    ]
   },
   {
-    "objectID": "0_getting-started/4_functions.html#using-pipes",
-    "href": "0_getting-started/4_functions.html#using-pipes",
-    "title": "Functions",
-    "section": "Using pipes",
-    "text": "Using pipes\nThere are two ways for using functions.\n\nThe first is the one shown above, where we put all the arguments between the parentheses: function_name(argument1, argument2, ...).\nThe second way is to pipe the first argument into the function: argument1 |&gt; function_name(argument2, ...)\n\nIf this is your first time seeing pipes, you’re probably wondering why you would want to do this? Why bother having two ways to do the exact same thing? The reason is that when writing code, you shouldn’t just think about what the code does, but also about how easy the code is to read. This not only helps you prevent mistakes, but also makes your analysis transparent.\nAs you’ll see later, you’ll encounter many cases where your analysis requires you to string together multiple functions. In these cases, pipes make your code much easier to read. let’s rewrite our code from above using the pipe notation:\n\nx_with_missing |&gt; mean(na.rm=T)\n\nNotice how our first argument, the required argument x_with_missing, is piped into the mean function. Inside the mean function, we only specify the second argument, the optional argument na.rm.\nNow imagine we would want to round the result (2.5) up to a round number (3). We can do this without pipe notation, but it would be quite ugly and hard to read:\n\nround(mean(x_with_missing, na.rm=T))\n\nThe pipe notation allows us to break this down into a nice pipeline:\n\nx_with_missing |&gt; \n  mean(na.rm=T) |&gt; \n  round()"
+    "objectID": "1_data-management/0_tidyverse/3_visualization.html#other-aesthetics",
+    "href": "1_data-management/0_tidyverse/3_visualization.html#other-aesthetics",
+    "title": "Basics of data visualization",
+    "section": "Other aesthetics",
+    "text": "Other aesthetics\nTo find out which visual elements can be used in a layer, use e.g. ?geom_point. According to the help file, we can (among others) set the colour, alpha (transparency), and size of points. Let’s first set the size of points to the (log) population of each state, creating a bubble plot:\n\nggplot(data = facts_state) + \n  geom_point(aes(x = college, y = income, size = population))\n\nSince it is difficult to see overlapping points, let’s make all points somewhat transparent. Note: Since we want to set the alpha of all points to a single value, this is not a mapping (as it is not mapped to a column from the data frame), but a constant. These are set outside the mapping argument:\n\nggplot(data = facts_state) + \n  geom_point(aes(x = college, y = income, size = population), \n             alpha = .5, \n             colour = \"red\")\n\nInstead of setting colour to a constant value, we can also let it vary with the data. For example, we can colour the states by percentage of population that is identified as ‘white’:\n\nggplot(data = facts_state) + \n  geom_point(aes(x=college, y=income, size=population, colour=white), \n             alpha=.9)\n\nFinally, you can map to a categorical value as well. Let’s categorize states into whether population is growing (at least 1%) or stable or declining. We use the if_else(condition, iftrue, iffalse) function, which assigns the iftrue value if the condition is true, and iffalse otherwise:\n\nfacts_state &lt;- facts_state %&gt;% \n  mutate(growth = ifelse(pop_change &gt; 1, \"Growing\", \"Stable\"))\n\nggplot(data=facts_state) + \n  geom_point(aes(x = college, y = income, size = population, colour = growth), \n             alpha=.9)\n\nAs you can see in these examples, ggplot tries to be smart about the mapping you ask. It automatically sets the x and y ranges to the values in your data. It mapped the size such that there are small and large points, but not e.g. a point so large that it would dominate the graph. For the colour, for interval variables it created a colour scale, while for a categorical variable it automatically assigned a colour to each group.\nOf course, each of those choices can be customized, and sometimes it makes a lot of sense to do so. For example, you might wish to use red for republicans and blue for democrats, if your audience is used to those colors; or you may wish to use grayscale for an old-fashioned paper publication. We’ll explore more options in a later tutorial, but for now let’s be happy that ggplot does a lot of work for us!",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Basics of data visualization"
+    ]
   },
   {
-    "objectID": "0_getting-started/3_r-in-action.html",
-    "href": "0_getting-started/3_r-in-action.html",
-    "title": "R in Action",
+    "objectID": "1_data-management/0_tidyverse/3_visualization.html#setting-graph-options",
+    "href": "1_data-management/0_tidyverse/3_visualization.html#setting-graph-options",
+    "title": "Basics of data visualization",
+    "section": "Setting graph options",
+    "text": "Setting graph options\nSome options, like labels, legends, and the coordinate system are graph-wide rather than per layer. You add these options to the graph by adding extra functions to the call. For example, we can use coord_flip() to swap the x and y axes:\n\nggplot(nh_gop) + \n  geom_col(aes(x=candidate, y=votes)) +\n  coord_flip()\n\nYou can also reorder categories with the fct_reorder function, for example to sort by number of votes. Also, let’s add some colour (just because we can!):\n\nggplot(nh_gop) + \n  geom_bar(aes(x=fct_reorder(candidate, votes), y=votes, fill=candidate), \n           stat='identity') + \n  coord_flip()\n\n(Note: this works because ggplot assumes all labels are factors, which have an ordering; you can use other functions from the forcats package (generally starting with fct_) to do other things such as reversing the order, manually specifying the order, etc).\nThis is getting somewhere, but the y-axis label is not very pretty and we don’t need guides for the fill mapping. This can be remedied by more graph-level options. Also, we can use a theme to alter the appearance of the graph, for example using the minimal theme:\n\nggplot(nh_gop) + \n  geom_bar(aes(x=reorder(candidate, votes), y=votes, fill=candidate), \n           stat='identity') + \n  coord_flip() + \n  xlab(\"Candidate\") + \n  guides(fill=\"none\") + \n  theme_minimal()",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Basics of data visualization"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/3_visualization.html#grouped-bar-plots",
+    "href": "1_data-management/0_tidyverse/3_visualization.html#grouped-bar-plots",
+    "title": "Basics of data visualization",
+    "section": "Grouped bar plots",
+    "text": "Grouped bar plots\nWe can also add groups to bar plots. For example, we can set the x category to state (taking only NH and IA to keep the plot readable), and then group by candidate:\n\ngop2 &lt;- results_state %&gt;% \n  filter(party == \"Republican\" & (state == \"New Hampshire\" | state == \"Iowa\")) \nggplot(gop2) + geom_col(aes(x=state, y=votes, fill=candidate))\n\nBy default, the groups are stacked. This can be controlled with the position parameter, which can be dodge (for grouped bars) or fill (stacking to 100%): (note that the position is a constant, not an aesthetic mapping, so it goes outside the aes argument)\n\nggplot(gop2) + geom_col(aes(x=state, y=votes, fill=candidate), position='dodge')\nggplot(gop2) + geom_col(aes(x=state, y=votes, fill=candidate), position='fill')\n\nOf course, you can also make the grouped bars add up to 100% by computing the proportion manually, which can give you a bit more control over the process.\nNote that the example below pipes the preprocessing output directly into the ggplot command, that is, it doesn’t create a new temporary data set like gop2 above. This is entirely a stylistic choice, but can be useful for operations that are only intended for a single visualization.\n\ngop2 %&gt;% \n  group_by(state) %&gt;% \n  mutate(vote_prop=votes/sum(votes)) %&gt;%\n  ggplot() + \n    geom_col(aes(x=state, y=vote_prop, fill=candidate), position='dodge') + \n    ylab(\"Votes (%)\")\n\nNote that where group_by %&gt;% summarize replaces the data frame by a summarization, group_by %&gt;% mutate adds a column to the existing data frame, using the grouped values for e.g. sums. See our tutorial on Data Summarization for more details.",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Basics of data visualization"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/4_reshaping.html",
+    "href": "1_data-management/0_tidyverse/4_reshaping.html",
+    "title": "Reshaping data: wide, long, and tidy",
     "section": "",
-    "text": "R is a very powerful tool, but it takes some time to learn how to use it before you get to fully appreciate what you can use it for. On this page we show you a quick example of some of the things you will learn here.\nAll the code that you see here will be explained in the rest of this online book. For now, don’t worry about understanding the code, and focus on thinking how the techniques we’ll be using fit into your tool belt as a communication scientist."
+    "text": "This tutorial discusses how to reshape data, particularly from long to wide format and vice versa. It mostly follows Chapter 12 of the R4DS book, but uses the pivot_longer and pivot_wider functions that replace gather and spread1. At the time of writing these functions are not yet in the book, but the writers explain the change and the new functions here.",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Reshaping data: wide, long, and tidy"
+    ]
   },
   {
-    "objectID": "0_getting-started/3_r-in-action.html#loading-the-packages-well-use",
-    "href": "0_getting-started/3_r-in-action.html#loading-the-packages-well-use",
-    "title": "R in Action",
-    "section": "Loading the packages we’ll use",
-    "text": "Loading the packages we’ll use\nOne of the things that makes R so versatile, is that anyone can extend it by writing new packages. You can think of packages kind of like apps in an app-store. For this demo, we’ll need two packages, that you’ll first need to install.\n\ninstall.packages('tidyverse')\ninstall.packages('sjPlot')\n\nYou only need to install packages once, just like apps on you mobile phone. Once downloaded, they are stored in your R library. When you then use the packages in an R script, you just open them like this:\n\nlibrary(tidyverse)\nlibrary(sjPlot)"
+    "objectID": "1_data-management/0_tidyverse/4_reshaping.html#pivot-longer-wide-to-long",
+    "href": "1_data-management/0_tidyverse/4_reshaping.html#pivot-longer-wide-to-long",
+    "title": "Reshaping data: wide, long, and tidy",
+    "section": "Pivot longer (wide to long)",
+    "text": "Pivot longer (wide to long)\nWe will tidy this data in three steps. First, we pivot_longer the columns into a single column with all measurements. Then, we separate the country from the measurement level. Finally, we pivot_wider the measurement levels to columns again (since they are measurements on the same observation).\nThe first step is the same as above: we gather all columns except for the year column into a single column:\n\nwealth = pivot_longer(wealth_raw, -Year, names_to=\"key\", values_to=\"value\")\nwealth",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Reshaping data: wide, long, and tidy"
+    ]
   },
   {
-    "objectID": "0_getting-started/3_r-in-action.html#import-data",
-    "href": "0_getting-started/3_r-in-action.html#import-data",
-    "title": "R in Action",
-    "section": "Import data",
-    "text": "Import data\nThe first step for any analysis is to import your data. Using the read_csv function from the tidyverse package, we can directly download this information from the internet and import it into R."
+    "objectID": "1_data-management/0_tidyverse/4_reshaping.html#separating-columns-splitting-one-column-into-two",
+    "href": "1_data-management/0_tidyverse/4_reshaping.html#separating-columns-splitting-one-column-into-two",
+    "title": "Reshaping data: wide, long, and tidy",
+    "section": "Separating columns (splitting one column into two)",
+    "text": "Separating columns (splitting one column into two)\nThe next step is to split the ‘key’ column into two columns, for country and for measurement. This can be done using the separate command, for which you specify the column to split, the new column names, and what separator to split on:\n\nwealth = separate(wealth, key, into = c(\"country\",\"measurement\"), sep=\":\")\nwealth\n\nThe measurement column is quoted in the output because it stars with a space. We could resolve this by specifying sep=\": \" (i.e. adding the space to the separator). We can also solve this by changing the column after the split with mutate. The code below removes the space using the trimws (trim white space) function:\n\nwealth %&gt;% mutate(measurement = trimws(measurement))\n\nWe can also use sub to search and replace (substitute) within a column, in this case changing ” top ” into “capital_top_”:\n\nwealth = wealth %&gt;% mutate(measurement = sub(\" top \", \"capital_top_\", measurement))\nwealth",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Reshaping data: wide, long, and tidy"
+    ]
   },
   {
-    "objectID": "0_getting-started/0_install-r-and-rstudio.html",
-    "href": "0_getting-started/0_install-r-and-rstudio.html",
-    "title": "Install R and RStudio",
+    "objectID": "1_data-management/0_tidyverse/4_reshaping.html#pivot-wider-long-to-wide",
+    "href": "1_data-management/0_tidyverse/4_reshaping.html#pivot-wider-long-to-wide",
+    "title": "Reshaping data: wide, long, and tidy",
+    "section": "Pivot wider (long to wide)",
+    "text": "Pivot wider (long to wide)\nThe wealth data above is now ‘too long’ to be tidy: the measurement for each country is spread over multiple rows, listing the three different measurement levels (decile, percentile, promille). In effect, we want to undo one level of gathering, by spreading the column over multiple columns.\nThs syntax for the spread call is similar to that for pivot_longer: pivot_wider(data, names_from=key_column, values_from=value_column). Before we had the arguments names_to and values_to, to specify the column names of the new stacked (i.e. long format) columns. This time, we have the names_from and values_from arguments to reverse the process. For each unique value in the names_from column a new column will be created, with the corresponding value in the values_from column in the cell.\n\nwealth = pivot_wider(wealth, names_from=measurement, values_from=value)\nwealth\n\nSo now each row contains three measurements (columns, variables) relating to each observation (country x year).",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Reshaping data: wide, long, and tidy"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/4_reshaping.html#tidyness-as-a-matter-of-perception",
+    "href": "1_data-management/0_tidyverse/4_reshaping.html#tidyness-as-a-matter-of-perception",
+    "title": "Reshaping data: wide, long, and tidy",
+    "section": "Tidyness as a matter of perception",
+    "text": "Tidyness as a matter of perception\nAs a last exercise, suppose we would like to plot wealth and capital inequality in the same figure as separate lines. You can do this with two separate geom_line commands, and e.g. use a dashed line for income inequality:\n\nggplot(inequality) + geom_line(aes(x=Year, y=capital_top_decile, colour=country)) + \n  geom_line(aes(x=Year, y=income_topdecile, colour=country), linetype=\"dashed\")\n\nThis works, but it would be nice if we could specify the measurement as colour (or type) and have ggplot automatically make the legend. To do this, the different measurements need to be in rows rather than in columns. In other words, data that is tidy from one perspective can be ‘too wide’ for another.\nLet’s gather the data into a single column, and plot the result for the US:\n\ninequality2 = pivot_longer(inequality, income_topdecile:capital_top_promille, names_to=\"measurement\", values_to=\"value\")\n\ninequality2 %&gt;% \n  filter(country==\"US\") %&gt;% \n  ggplot() + geom_line(aes(x=Year, y=value, linetype=measurement))\n\nWe can also plot only top-decile capital and income in a paneled plot. Note the use of extra options to set legend location and title, vertical label, and main title text and location (horizontal justification):\n\ninequality2 %&gt;% \n  filter(measurement %in% c(\"income_topdecile\", \"capital_top_decile\") & country != \"Europe\") %&gt;% \n  ggplot() + geom_line(aes(x=Year, y=value, linetype=measurement)) + facet_wrap(~ country, nrow = 2) +\n  scale_linetype_discrete(name=\"Variable:\", labels=c(\"Capital\", \"Income\")) +\n  theme(legend.position=\"bottom\", plot.title = element_text(hjust = 0.5)) +\n  ylab(\"Inequality\") + \n  ggtitle(\"Capital and income inequality over time\")",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Reshaping data: wide, long, and tidy"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/4_reshaping.html#footnotes",
+    "href": "1_data-management/0_tidyverse/4_reshaping.html#footnotes",
+    "title": "Reshaping data: wide, long, and tidy",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThe replacement of spread and gather with pivot_wider and pivot_longer is a recent change, so you might still see spread and gather used in code from other. As such, it is still usefull to have a look at how spread and gather work (which is very similar to pivot_wider and pivot_longer). However, make sure to use the new pivot_ functions in your own code, because spread and gather are on their way out.↩︎",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Reshaping data: wide, long, and tidy"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/5_joining.html",
+    "href": "1_data-management/0_tidyverse/5_joining.html",
+    "title": "13a_joining_data",
     "section": "",
-    "text": "To work with R, you will need to install two pieces of software.\nBoth programs can be downloaded for free, and are available for all main operating systems (Windows, macOS and Linux)."
+    "text": "In many cases, you need to combine data from multiple data sources. For example, you can combine a sentiment analysis of tweets with metadata about the tweets; or data on election results with data about the candidates ideological positions or details on the races.\nThis tutorial will teach you the inner_join and other _join commands used to combine two data sets on shared columns. See R4DS Chapter 13: Relational Data for more information and examples.\n\n\nFor this tutorial, we will look at data describing the US presidential primaries. These data can be downloaded from the Houston Data Visualisation github page, who in turn got it from Kaggle.\nIn the CSV folder on the github, you can find (among others)\n\nprimary_results.csv Number of votes in the primary per county per candidate\nprimary_schedule.csv Dates of each primary per state and per party\ncounty_facts.csv Information about the counties and states, including population, ethnicity, age, etc.\n\nFor many research questions, we need to be able to combine the data from these files. For example, we might want to know if Clinton did better in counties or states with more women (needing results and facts), or how Trump’s performance evolved over time (requiring results and calendar).\n\n\n\nBefore we start, let’s download the three data files:\n\nlibrary(tidyverse)\ncsv_folder_url &lt;- \"https://raw.githubusercontent.com/houstondatavis/data-jam-august-2016/master/csv\"\nresults &lt;- read_csv(paste(csv_folder_url, \"primary_results.csv\", sep = \"/\"))\nfacts &lt;- read_csv(paste(csv_folder_url, \"county_facts.csv\", sep = \"/\"))\nschedule  &lt;- read_csv(paste(csv_folder_url, \"primary_schedule.csv\", sep = \"/\"))\n\nNote: I use paste to join the base url with the filenames, using a / as a separator.\nHave a look at all three data sets. Before we proceed, there are some things we want to do. First, the facts data frame is really large, with 54 columns. Let’s select a couple interesting ones to work with:\n\nfacts_subset &lt;- facts %&gt;% \n  select(area_name, \n         population = Pop_2014_count, \n         pop_change = Pop_change_pct, \n         over65 = Age_over_65_pct, \n         female = Sex_female_pct, \n         white = Race_white_pct, \n         college = Pop_college_grad_pct, \n         income = Income_per_capita)\n\nNext, the schedule dates are now a character (textual) field rather than date, so let’s fix that using the as.Date function, specifying the dates to be formatted as month/day/year:\n\nschedule &lt;- schedule %&gt;% \n  mutate(date = as.Date(date, format=\"%m/%d/%y\"))\n\nLast, let’s create a data set with per-state (rather than per-country) election results using group_by and summarize:\n\nresults_state &lt;- results %&gt;% \n  group_by(state, party, candidate) %&gt;% \n  summarize(votes = sum(votes))\nresults_state\n\nNote: see R-tidy-5-transformations if you are unsure about the transformations above!",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "13a_joining_data"
+    ]
   },
   {
-    "objectID": "0_getting-started/0_install-r-and-rstudio.html#installing-r",
-    "href": "0_getting-started/0_install-r-and-rstudio.html#installing-r",
-    "title": "Install R and RStudio",
-    "section": "Installing R",
-    "text": "Installing R\nTo install R, you can download it from the CRAN (comprehensive R Archive Network) website. Do not be alarmed by the website’s 90’s aesthetics. R itself is cold, dry, no-nonsense software. The decorations come with RStudio."
+    "objectID": "1_data-management/0_tidyverse/5_joining.html#data",
+    "href": "1_data-management/0_tidyverse/5_joining.html#data",
+    "title": "13a_joining_data",
+    "section": "",
+    "text": "For this tutorial, we will look at data describing the US presidential primaries. These data can be downloaded from the Houston Data Visualisation github page, who in turn got it from Kaggle.\nIn the CSV folder on the github, you can find (among others)\n\nprimary_results.csv Number of votes in the primary per county per candidate\nprimary_schedule.csv Dates of each primary per state and per party\ncounty_facts.csv Information about the counties and states, including population, ethnicity, age, etc.\n\nFor many research questions, we need to be able to combine the data from these files. For example, we might want to know if Clinton did better in counties or states with more women (needing results and facts), or how Trump’s performance evolved over time (requiring results and calendar).",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "13a_joining_data"
+    ]
   },
   {
-    "objectID": "0_getting-started/0_install-r-and-rstudio.html#installing-rstudio",
-    "href": "0_getting-started/0_install-r-and-rstudio.html#installing-rstudio",
-    "title": "Install R and RStudio",
-    "section": "Installing RStudio",
-    "text": "Installing RStudio\nRStudio can be downloaded from the posit.co website, which is the developer of RStudio. Make sure to pick the latest version available for your operating system."
+    "objectID": "1_data-management/0_tidyverse/5_joining.html#downloading-and-preparing-the-data",
+    "href": "1_data-management/0_tidyverse/5_joining.html#downloading-and-preparing-the-data",
+    "title": "13a_joining_data",
+    "section": "",
+    "text": "Before we start, let’s download the three data files:\n\nlibrary(tidyverse)\ncsv_folder_url &lt;- \"https://raw.githubusercontent.com/houstondatavis/data-jam-august-2016/master/csv\"\nresults &lt;- read_csv(paste(csv_folder_url, \"primary_results.csv\", sep = \"/\"))\nfacts &lt;- read_csv(paste(csv_folder_url, \"county_facts.csv\", sep = \"/\"))\nschedule  &lt;- read_csv(paste(csv_folder_url, \"primary_schedule.csv\", sep = \"/\"))\n\nNote: I use paste to join the base url with the filenames, using a / as a separator.\nHave a look at all three data sets. Before we proceed, there are some things we want to do. First, the facts data frame is really large, with 54 columns. Let’s select a couple interesting ones to work with:\n\nfacts_subset &lt;- facts %&gt;% \n  select(area_name, \n         population = Pop_2014_count, \n         pop_change = Pop_change_pct, \n         over65 = Age_over_65_pct, \n         female = Sex_female_pct, \n         white = Race_white_pct, \n         college = Pop_college_grad_pct, \n         income = Income_per_capita)\n\nNext, the schedule dates are now a character (textual) field rather than date, so let’s fix that using the as.Date function, specifying the dates to be formatted as month/day/year:\n\nschedule &lt;- schedule %&gt;% \n  mutate(date = as.Date(date, format=\"%m/%d/%y\"))\n\nLast, let’s create a data set with per-state (rather than per-country) election results using group_by and summarize:\n\nresults_state &lt;- results %&gt;% \n  group_by(state, party, candidate) %&gt;% \n  summarize(votes = sum(votes))\nresults_state\n\nNote: see R-tidy-5-transformations if you are unsure about the transformations above!",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "13a_joining_data"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/2_summarizing.html",
+    "href": "1_data-management/0_tidyverse/2_summarizing.html",
+    "title": "R Tidyverse: Data Summarization with group_by, summarize, and mutate",
+    "section": "",
+    "text": "The functions used in the earlier part on data preparation worked on individual rows. Sometimes, you need to compute properties of groups of rows (cases). This is called aggregation (or summarization) and in tidyverse uses the group_by function followed by either summarize or mutate.",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "R Tidyverse: Data Summarization with group_by, summarize, and mutate"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/2_summarizing.html#grouping-rows",
+    "href": "1_data-management/0_tidyverse/2_summarizing.html#grouping-rows",
+    "title": "R Tidyverse: Data Summarization with group_by, summarize, and mutate",
+    "section": "Grouping rows",
+    "text": "Grouping rows\nNow, we can use the group_by function to group by, for example, pollster:\n\nd %&gt;% \n  group_by(Question)\n\nAs you can see, the data itself didn’t actually change yet, it merely recorded (at the top) that we are now grouping by Question, and that there are 8 groups (different questions) in total.",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "R Tidyverse: Data Summarization with group_by, summarize, and mutate"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/2_summarizing.html#summarizing",
+    "href": "1_data-management/0_tidyverse/2_summarizing.html#summarizing",
+    "title": "R Tidyverse: Data Summarization with group_by, summarize, and mutate",
+    "section": "Summarizing",
+    "text": "Summarizing\nTo summarize, you follow the group_by with a call to summarize. Summarize has a syntax that is similar to mutate: summarize(column = calculation, ...). The crucial difference, however, is that you always need to use a function in the calculation, and that function needs to compute a single summary value given a vector of values. Very common summarization functions are sum, mean, and sd (standard deviation).\nFor example, the following computes the average support per question (and sorts by descending support):\n\nd %&gt;% \n  group_by(Question) %&gt;%                    # group by \"Questions\"\n  summarize(Support = mean(Support)) %&gt;%    # average \"Support\" per group\n  arrange(-Support)                         # sort based on \"Support\"\n\nAs you can see, summarize drastically changes the shape of the data. There are now rows equal to the number of groups (8), and the only columns left are the grouping variables and the summarized values.\nYou can also compute summaries of multiple values, and even do ad hoc calculations:\n\nd %&gt;% \n  group_by(Question) %&gt;% \n  summarize(Dem = mean(Dem), \n            Rep = mean(Rep), \n            diff = mean(Dem-Rep)) %&gt;% \n  arrange(-diff)\n\nSo, Democrats are more in favor of all proposed gun laws except arming teachers.\nYou can also compute multiple summaries of a single value. Another useful function is n() (without arguments), which simply counts the values in each group. For example, the following gives the count, mean, and standard deviation of the support:\n\nd %&gt;% \n  group_by(Question) %&gt;% \n  summarize(n = n(),\n            mean = mean(Support), \n            sd = sd(Support))\n\nNote: As you can see, one of the values has a missing value (NA) for standard deviation. Why?",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "R Tidyverse: Data Summarization with group_by, summarize, and mutate"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/2_summarizing.html#using-mutate-with-group_by",
+    "href": "1_data-management/0_tidyverse/2_summarizing.html#using-mutate-with-group_by",
+    "title": "R Tidyverse: Data Summarization with group_by, summarize, and mutate",
+    "section": "Using mutate with group_by",
+    "text": "Using mutate with group_by\nThe examples above all reduce the number of cases to the number of groups. Another option is to use mutate after a group_by, which allows you to add summary values to the rows themselves.\nFor example, suppose we wish to see whether a certain poll has a different prediction from the average polling of that question. We can group_by question and then use mutate to calculate the average support:\n\nd2 &lt;- d %&gt;% \n  group_by(Question) %&gt;%\n  mutate(avg_support = mean(Support), \n         diff = Support - avg_support)\nd2\n\nAs you can see, where summarize reduces the rows and columns to the groups and summaries, mutate adds a new column which is identical for all rows within a group.",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "R Tidyverse: Data Summarization with group_by, summarize, and mutate"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/2_summarizing.html#ungrouping",
+    "href": "1_data-management/0_tidyverse/2_summarizing.html#ungrouping",
+    "title": "R Tidyverse: Data Summarization with group_by, summarize, and mutate",
+    "section": "Ungrouping",
+    "text": "Ungrouping\nFinally, you can use ungroup to get rid of any groupings.\nFor example, the data produced by the example above is still grouped by Question as mutate does not remove grouping information. So, if we want to compute the overall standard deviation of the difference we could ungroup and then summarize:\n\nd2 %&gt;% \n  ungroup() %&gt;% \n  summarize(diff = sd(diff))\n\n(of course, running sd(d2$diff)) would yield the same result.)\nIf you run the same command without the ungroup, what would the result be? Why?",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "R Tidyverse: Data Summarization with group_by, summarize, and mutate"
+    ]
   },
   {
     "objectID": "0_getting-started/index.html",
     "href": "0_getting-started/index.html",
     "title": "Getting Started",
     "section": "",
-    "text": "Back to top"
+    "text": "Back to top",
+    "crumbs": [
+      "Getting Started"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/0_install-r-and-rstudio.html",
+    "href": "0_getting-started/0_install-r-and-rstudio.html",
+    "title": "Install R and RStudio",
+    "section": "",
+    "text": "To work with R, you will need to install two pieces of software.\nBoth programs can be downloaded for free, and are available for all main operating systems (Windows, macOS and Linux).",
+    "crumbs": [
+      "Getting Started",
+      "Install R and RStudio"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/0_install-r-and-rstudio.html#installing-r",
+    "href": "0_getting-started/0_install-r-and-rstudio.html#installing-r",
+    "title": "Install R and RStudio",
+    "section": "Installing R",
+    "text": "Installing R\nTo install R, you can download it from the CRAN (comprehensive R Archive Network) website. Do not be alarmed by the website’s 90’s aesthetics. The website is legit.",
+    "crumbs": [
+      "Getting Started",
+      "Install R and RStudio"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/0_install-r-and-rstudio.html#installing-rstudio",
+    "href": "0_getting-started/0_install-r-and-rstudio.html#installing-rstudio",
+    "title": "Install R and RStudio",
+    "section": "Installing RStudio",
+    "text": "Installing RStudio\nRStudio can be downloaded from the posit.co website, which is the developer of RStudio. Make sure to pick the latest version available for your operating system.",
+    "crumbs": [
+      "Getting Started",
+      "Install R and RStudio"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/5_packages.html",
+    "href": "0_getting-started/5_packages.html",
+    "title": "Packages",
+    "section": "",
+    "text": "Tutorial about how to install and load packages\n\n\n\n Back to top",
+    "crumbs": [
+      "Getting Started",
+      "Packages"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/4_functions.html",
+    "href": "0_getting-started/4_functions.html",
+    "title": "Functions",
+    "section": "",
+    "text": "99% of what you do in R will involve using functions. A function in R is like a mini-program that you can use to perform specific tasks. It takes input, processes it, and gives you an output. For example, there are functions for:\nA function in R has the form: output = function_name(argument1, argument2, ...)\nFor example, the function c combines multiple values into a vector.\nx = c(1,2,3,4)\nNow, we can use the mean function to calculate the mean of these numbers:\nm = mean(x)\nThe calculated mean, 2.5, is now assigned to the name m:\nm\n\n[1] 2.5",
+    "crumbs": [
+      "Getting Started",
+      "Functions"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/4_functions.html#optional-arguments",
+    "href": "0_getting-started/4_functions.html#optional-arguments",
+    "title": "Functions",
+    "section": "Optional arguments",
+    "text": "Optional arguments\nIn the c and mean functions above, all the arguments were required. To combine numbers into a vector, we needed to provide a list of numbers. To calculate a mean, we needed to provide a numeric vector.\nIn addition to the required arguments, a function can also have optional arguments, that give you more control over what a function does. For example, suppose we have a range of numbers that also contains a missing value. In R a missing value is called NA, which stands for Not Available:\n\nx_with_missing = c(1, 2, 3, NA, 4)\n\nNow, if we call the mean function, R will say that the mean is unknown, since the third value is unknown:\n\nmean(x_with_missing)\n\n[1] NA\n\n\nThis is statistically a very correct answer. But often, if some values happen to be missing in your data, you want to be able to calculate the mean just for the numbers that are not missing. Fortunately, the mean function has an optional argument na.rm (remove NAs) that you can set to TRUE (or to T, which is short for TRUE) to ignore the NAs:\n\nmean(x, na.rm=TRUE)\n\n[1] 2.5\n\n\nNotice that for the required argument, we directly provide the input x, but for the optional argument we include the argument name na.rm = TRUE. The reason is simply that there are other optional arguments, so we need to specify which one we’re using.\n\n\n\n\n\n\nHow do I know what arguments a function has?\n\n\n\n\n\nTo learn more about what a function does and what arguments it has, you can look it up in the ‘Help’ pane in the bottom right, or run ?function_name in R.\n\n?mean\n\nHere you can learn about the na.rm argument that we just used!\nIf you are just getting to know R, we recommend first finishing the rest of the Getting Started section. Then once you get the hang of things, have a look at the Use ?function help page tutorial.",
+    "crumbs": [
+      "Getting Started",
+      "Functions"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/4_functions.html#using-pipes",
+    "href": "0_getting-started/4_functions.html#using-pipes",
+    "title": "Functions",
+    "section": "Using pipes",
+    "text": "Using pipes\nThere are two ways for using functions.\n\nThe first is the one shown above, where we put all the arguments between the parentheses: function_name(argument1, argument2, ...).\nThe second way is to pipe the first argument into the function: argument1 |&gt; function_name(argument2, ...)\n\nIf this is your first time seeing pipes, you’re probably wondering why you would want to do this? Why bother having two ways to do the exact same thing? The reason is that when writing code, you shouldn’t just think about what the code does, but also about how easy the code is to read. This not only helps you prevent mistakes, but also makes your analysis transparent.\nAs you’ll see later, you’ll encounter many cases where your analysis requires you to string together multiple functions. In these cases, pipes make your code much easier to read. let’s rewrite our code from above using the pipe notation:\n\nx_with_missing |&gt; mean(na.rm=T)\n\nNotice how our first argument, the required argument x_with_missing, is piped into the mean function. Inside the mean function, we only specify the second argument, the optional argument na.rm.\nNow imagine we would want to round the result (2.5) up to a round number (3). We can do this without pipe notation, but it would be quite ugly and hard to read:\n\nround(mean(x_with_missing, na.rm=T))\n\nThe pipe notation allows us to break this down into a nice pipeline:\n\nx_with_missing |&gt; \n  mean(na.rm=T) |&gt; \n  round()",
+    "crumbs": [
+      "Getting Started",
+      "Functions"
+    ]
+  },
+  {
+    "objectID": "tips-and-best-practices/0_use-help-pages.html",
+    "href": "tips-and-best-practices/0_use-help-pages.html",
+    "title": "Function Help Pages",
+    "section": "",
+    "text": "The help page tells you how you can use the function. For mean, it shows you that the main form is\n\nmean(x, trim = 0, na.rm = FALSE, ...)\n\nWhat this means is that\n\n\n\n Back to top",
+    "crumbs": [
+      "Tips and Best Practices",
+      "Function Help Pages"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/3_names-and-values.html",
+    "href": "0_getting-started/3_names-and-values.html",
+    "title": "Names and Values",
+    "section": "",
+    "text": "In R, and in computer programming in general, the most essential operation is to assign values to names. By value, we then simply mean a piece of information. This can be a anything: a single number, a string (i.e. piece of text), a list of numbers, and even an entire data set. Assigning such values to names is essential, because it allows us to more easily refer to the values.\nIn plain terms, assignment is how you make R remember things by assigning them to a name. To assign a value to a name, we use the arrow notation: name &lt;- value. For example:\nx &lt;- 2\nBy running the code x &lt;- 2, you are saying: Assign the value 2 to the name x. Any values that you assigned to names are stored in your Environment. You can see this environment in the top-right window, under the Environment tab. If you assigned 2 to x, you should see a table called Values, with in the left column the names (x) and in the right column the values (2).\nFrom hereon, when you use the name x in your code, it will refer to the value 2. So when we run the code x * 5 (x times 5) it will print the number 10\nx * 5\n\n[1] 10",
+    "crumbs": [
+      "Getting Started",
+      "Names and Values"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/3_names-and-values.html#assigning-different-types-of-values",
+    "href": "0_getting-started/3_names-and-values.html#assigning-different-types-of-values",
+    "title": "Names and Values",
+    "section": "Assigning different types of values",
+    "text": "Assigning different types of values\nYou can assign any type of value to a name, and you can use any name, as long as it starts with a letter and doesn’t contain spaces or symbols (but underscores are OK)\n\na_number = 5\nmy_cats_name = \"Hobbes\"\n\nIf you run this code and check you Environment (top-right), you should now see these name-value pairs added.",
+    "crumbs": [
+      "Getting Started",
+      "Names and Values"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/3_names-and-values.html#assigning-results",
+    "href": "0_getting-started/3_names-and-values.html#assigning-results",
+    "title": "Names and Values",
+    "section": "Assigning results",
+    "text": "Assigning results\nTill now we only directly assigned values to names. This is convenient, but the power of assignment really shines when you use it to store results. For example, we can also do this.\n\nx = 5 + 10\n\nThis a very simple example, but just think for a second what this allows us to do. Since we can assign anything to a name, we can break down any complicated procedure into multiple steps! For now, the key lesson is just to wrap your head around the syntax for assigning values to names. This is fundamental to everything you will be doing in R (and in programming in general).",
+    "crumbs": [
+      "Getting Started",
+      "Names and Values"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/2_r-in-action.html",
+    "href": "0_getting-started/2_r-in-action.html",
+    "title": "R in Action (demo)",
+    "section": "",
+    "text": "R is a very powerful tool, but it takes some time to learn how to use it before you get to fully appreciate what you can use it for. On this page we show you a quick example of some of the things you will learn here.\nAll the code that you see here will be explained in the rest of this online book. For now, don’t worry about understanding the code, and focus on thinking how the techniques we’ll be using fit into your tool belt as a communication scientist.",
+    "crumbs": [
+      "Getting Started",
+      "R in Action (demo)"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/2_r-in-action.html#loading-the-packages-well-use",
+    "href": "0_getting-started/2_r-in-action.html#loading-the-packages-well-use",
+    "title": "R in Action (demo)",
+    "section": "Loading the packages we’ll use",
+    "text": "Loading the packages we’ll use\nOne of the things that makes R so versatile, is that anyone can extend it by writing new packages. You can think of packages kind of like apps in an app-store. For this demo, we’ll need two packages, that you’ll first need to install.\n\ninstall.packages('tidyverse')\ninstall.packages('sjPlot')\n\nYou only need to install packages once, just like apps on you mobile phone. Once downloaded, they are stored in your R library. When you then use the packages in an R script, you just open them like this:\n\nlibrary(tidyverse)\nlibrary(sjPlot)",
+    "crumbs": [
+      "Getting Started",
+      "R in Action (demo)"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/2_r-in-action.html#import-data",
+    "href": "0_getting-started/2_r-in-action.html#import-data",
+    "title": "R in Action (demo)",
+    "section": "Import data",
+    "text": "Import data\nThe first step for any analysis is to import your data. Using the read_csv function from the tidyverse package, we can directly download this information from the internet and import it into R.",
+    "crumbs": [
+      "Getting Started",
+      "R in Action (demo)"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/1_using-rstudio.html",
+    "href": "0_getting-started/1_using-rstudio.html",
+    "title": "How to use RStudio",
+    "section": "",
+    "text": "Once you have installed R and RStudio, you can start by launching RStudio. If everything was installed correctly, RStudio will automatically launch R as well.\nThe first time you open RStudio, you will likely see three separate windows. The first thing you want to do is open an R Script (!!) to work in. To do so, go to the toolbar and select File -&gt; New File -&gt; R Script.\nYou will now see four windows split evenly over the four corners of your screen:\nWhile you can directly enter code into your console (bottom-left), you should always work with R scripts (top-left). This allows you to keep track of what you are doing and save every step.",
+    "crumbs": [
+      "Getting Started",
+      "How to use RStudio"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/1_using-rstudio.html#running-code-from-the-r-script",
+    "href": "0_getting-started/1_using-rstudio.html#running-code-from-the-r-script",
+    "title": "How to use RStudio",
+    "section": "Running code from the R script",
+    "text": "Running code from the R script\nCopy and paste the following example code into your R Script. For now, don’t bother understanding the syntax itself. Just focus on running it.\n\n3 + 3\n2 * 5\n6 / 2\n\"some text\"\n\"some more text\"\nsum(1,2,3,4,5)\n\nYou can run code by selecting the code and clicking on the Run button in the toolbar. However, we highly recommend getting used to using the keyboard shortcut, because this will greatly speed up your process. On Windows (and Linux) the shortcut is Ctrl + Enter. On Mac it’s Command + Enter.\nThere are two ways to run code:\n\nIf you select a specific piece of code (so that it is highlighted) you can run this specific selection. For example, select the first three lines (the three mathematical operations) and press Ctrl + Enter. This should then print the results for these three mathematical expressions. Note that you can also select a specific part on a line. Try selecting just the second 3 on the first line. This should just print the number 3.\nIf you haven’t made a selection, but your text cursor is somewhere on a line in your editor, you can press Ctrl + Enter to run the line where the cursor is at. This will also move the cursor to the next line, so you can walk through the code from top to bottom, running each line. Try starting on the first line, and pressing Ctrl + Enter six times, to run each line separately.",
+    "crumbs": [
+      "Getting Started",
+      "How to use RStudio"
+    ]
+  },
+  {
+    "objectID": "0_getting-started/1_using-rstudio.html#using-rstudio-projects",
+    "href": "0_getting-started/1_using-rstudio.html#using-rstudio-projects",
+    "title": "How to use RStudio",
+    "section": "Using RStudio projects",
+    "text": "Using RStudio projects\nIt is best to put all your code in an RStudio project. This is essentially a folder on your computer in which you can store the R files and data for a project that you are working on. While you do not necessarily need a project to work with R, they are very convenient, and we strongly recommend using them.\nTo create a new project, go to the top-right corner of your RStudio window. Look for the button labeled Project: (None). Click on this button, and select New Project. Follow the instructions to create a new directory with a new project. Name the project “R introduction”.\nNow, open a new R script and immediately save it (select File -&gt; Save in the toolbar, or press ctrl-s). Name the file my_first_r_script.r. In the bottom-right corner, under the Files tab, you’ll now see the file added to the project. The extension .r indicates that the file is an R script.",
+    "crumbs": [
+      "Getting Started",
+      "How to use RStudio"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/0_read-data.html",
+    "href": "1_data-management/0_tidyverse/0_read-data.html",
+    "title": "Read data into R",
+    "section": "",
+    "text": "Back to top",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Read data into R"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/6_strings.html",
+    "href": "1_data-management/0_tidyverse/6_strings.html",
+    "title": "Working with textual data: stringr",
+    "section": "",
+    "text": "The goal of this tutorial is to get you acquainted with basic string handling in R. A large part of this uses the stringr included in the Tidyverse. See also chapter 14 of R for Data Science and the stringr cheat sheet\nNote that ‘string’ is not an official word in R (which uses character to denote textual data), but since it’s the word used in most documentations I will also use strings to refer to objects containing textual data. (AFAIK, the name originates from seeing a text as a string or sequence of characters)",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Working with textual data: stringr"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/6_strings.html#combining-strings",
+    "href": "1_data-management/0_tidyverse/6_strings.html#combining-strings",
+    "title": "Working with textual data: stringr",
+    "section": "Combining strings",
+    "text": "Combining strings\nTo combine two strings, you can use str_c (which is equivalent to built-in paste0):\n\nstr_c(\"john\", \"mary\")\nstr_c(\"john\", \"mary\", sep = \" & \")\n\nIt can also work of longer vectors, where shorter vectors are repeated as needed:\n\nnames = c(\"john\", \"mary\")\nstr_c(\"Hello, \", names)\n\nFinally, you can also ask it to collapse longer vectors after the initial pasting:\n\nstr_c(names, collapse=\" & \")\nstr_c(\"Hello, \", names, collapse=\" and \")",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Working with textual data: stringr"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/6_strings.html#subsetting-strings",
+    "href": "1_data-management/0_tidyverse/6_strings.html#subsetting-strings",
+    "title": "Working with textual data: stringr",
+    "section": "Subsetting strings",
+    "text": "Subsetting strings\nTo take a fixed subset of a string, you can use str_sub. This can be useful, for example, to strip the time part off dates:\n\ndates = c(\"2019-04-01T12:00\", \"2012-07-29 01:12\")\nstr_sub(dates, start = 1, end = 10)\n\nYou can also replace a substring, for example to make sure the ‘T’ notation is used in the dates:\n\nstr_sub(dates, start=11, end=11) = \"T\"\ndates",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Working with textual data: stringr"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/6_strings.html#finding-patterns",
+    "href": "1_data-management/0_tidyverse/6_strings.html#finding-patterns",
+    "title": "Working with textual data: stringr",
+    "section": "Finding patterns",
+    "text": "Finding patterns\nRegular expressions can be used e.g. to find rows containing a specific pattern. For example, if we had a data frame containing the earlier texts, we can filter for rows containing an email address:\n\nt = tibble(id=1:3, text=txt)\nt\nt |&gt; filter(str_detect(text, regex_email))\n\nYou can also str_count to count how many matches of a pattern are found in each text:\n\nt |&gt; mutate(n_hashtags = str_count(text, \"#\\\\w+\"))",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Working with textual data: stringr"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/6_strings.html#replacing-patterns",
+    "href": "1_data-management/0_tidyverse/6_strings.html#replacing-patterns",
+    "title": "Working with textual data: stringr",
+    "section": "Replacing patterns",
+    "text": "Replacing patterns\nYou can also use regular expressions to do find-an-replace. For example, you can remove all punctionation, normalize whitespace, or redact email addresses:\n\nt |&gt; mutate(nopunct = str_replace_all(text, \"[^\\\\w ]\", \"\"),\n             normalized = str_replace_all(text, \"\\\\s+\", \" \"),\n             redacted = str_replace_all(text, \"\\\\w+@\", \"****@\"),\n             text = NULL)\n\nNote the use of setting text to NULL as an alternative way to drop a column. In textr, most functions have a _all variant which replaces/finds/extracts all matches, rather than just the first.",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Working with textual data: stringr"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/6_strings.html#extracting-patterns",
+    "href": "1_data-management/0_tidyverse/6_strings.html#extracting-patterns",
+    "title": "Working with textual data: stringr",
+    "section": "Extracting patterns",
+    "text": "Extracting patterns\nBesides replacing patterns, it can also be useful to extract elements from a string, for example the email or hashtag:\n\nregex_email = regex(\"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\\\.[a-zA-Z0-9-.]+\")\nt |&gt; mutate(email = str_extract(text, regex_email),\n             hashtag = str_extract(text, \"#\\\\w+\"))\n\nNote that for the hashtag, it only extracted the first hit. You can use the str_extract_all function, but since it can match zero, once, or more often per text, it returns a list containing all matches per row (or more correctly, per element of the input vector):\n\nstr_extract_all(t$text, \"#\\\\w+\")\n\nThe best way to deal with this in the context of a data frame is to use unnest_longer to turn the list into a long format. First, use mutate to create a column containing the lists (so this is a column which itself contains complex data)\n\nhashtags = mutate(t, tags = str_extract_all(t$text, \"#\\\\w+\"))\nhashtags\n\nAs you can see, the tags column has ‘list’ as its type, with the last row containing two elements. To turn this into a more usable dataframe, we ‘unnest’ it into a ‘long’ format using unnest_longer:\n\nhashtags |&gt; unnest_longer(\"tags\")\n\nAs you can see, this creates a new data frame with one row per hash tag.",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Working with textual data: stringr"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/6_strings.html#using-separate",
+    "href": "1_data-management/0_tidyverse/6_strings.html#using-separate",
+    "title": "Working with textual data: stringr",
+    "section": "Using separate",
+    "text": "Using separate\nFirst, if the number of elements is known and you can use multiple you can use separate to separate the column into seperate columns:\n\nd |&gt; separate(person, into=c(\"firstname\", \"lastname\"), sep=\" \")\n\nAs said, this is mostly useful if a column always contains a fixed number of data points that each have a distinct meaning, e.g. first and last name or city and state.",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Working with textual data: stringr"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/6_strings.html#using-str_split",
+    "href": "1_data-management/0_tidyverse/6_strings.html#using-str_split",
+    "title": "Working with textual data: stringr",
+    "section": "Using str_split",
+    "text": "Using str_split\nIf there is variable number of data points such as the list of books in the data set above, you can use str_split, which takes a regular expression argument to split the column:\n\nd |&gt; mutate(books = str_split(books, pattern=\",\"))\n\nJust like above, this produces a column of type ‘list’ which contains multiple values per row. To normalize this, use unnest_longer as above:\n\nd |&gt; mutate(books = str_split(books, pattern=\",\")) |&gt; unnest_longer(books)\n\nAs you can also see, the spaces around the book titles are not removed. You can fix this in two ways, either by changing the pattern to incluide optional whitespace (\\\\w is white space, * means the preceding element is optional and can be repeated); or by adding a trimws call afterwards:\n\nd |&gt; mutate(books = str_split(books, pattern=\"\\\\s*,\\\\s*\")) |&gt; unnest_longer(books)\nd |&gt; mutate(books = str_split(books, pattern=\",\")) |&gt; unnest_longer(books) |&gt; mutate(books=trimws(books))",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Working with textual data: stringr"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/6_strings.html#background",
+    "href": "1_data-management/0_tidyverse/6_strings.html#background",
+    "title": "Working with textual data: stringr",
+    "section": "Background",
+    "text": "Background\nA fairly short version of the story is as follows: when computers were mostly dealing with English text, life was easy, as there are not a lot of different letters and they could easily assign each letter and some punctuation marks to a number below 128, so it could be stored as 7 bits. For example, A is number 65. This encoding was called ‘ASCII’.\nIt turned out, however, that many people needed more than 26 letters, for example to write accented letters. For this reason, the 7 bits were expanded to 8, and many accented latin letters were added. This representation is called latin-1, also known as ISO-8859-1.\nOf course, many languages don’t use the latin script, so other 8-bit encodings were invented to deal with Cyrillic, Arabic, and other scripts. Most of these are based on ASCII, meaning that 65 still refers to ‘A’ in e.g. the Hebrew encoding. However, character 228 could refer to greek δ, cyrillic ф, or hebrew ה. Things get even more complex if you consider Chinese, where you can’t fit all characters in 256 numbers, so several larger (multi-byte) encodings were used.\nThis can cause a lot of confusion if you read a text that was encoding in e.g. greek as if it were encoded in Hebrew. A famous example of this confusion is that Microsoft Exchange used the WingDings font and encoding for rendering symbols in emails, amongst others using character 74 as a smiley. For non-exchange users (who didn’t have that font), however, it renders as the ASCII character nr 74: “J”. So, if you see an email from a microsoft user with a J where you expected a smiley, now you know :).\nTo end this confusion, unicode was invented, which assigns a unique number (called a code point) to each letter. A is still 65 (or “1” in hexadecimal R notataion), but δ is now uniquely “3B4”, and ф is uniquely “444”. There are over 1M possible unicode characters, of which about 100 thousand have been currently assigned. This gives enough room for Chinese, old Nordic runes, and even Klingon to be encoded.\nYou can directly use these in an R string:\n\n\"Some Unicode letters: \\u41 \\u03B4 \\u0444\"\n\nNow, to be able to write all 1M characters to string, one would need almost 24 bits per character, tripling the storage and memory needed to handle most text. So, more efficient encodings were invented that would normally take only 8 or 16 bits per character, but can take more bits if needed. So, while the problem of defining characters is solved, unfortunately you still need to know the actual encoding of a text. Fortunately, UTF-8 (which uses 1 byte for latin characters, but more for non-western text) is emerging as a de facto standard for most texts. This is a compromise which is most efficient for latin alphabeters, but is still able to unambiguously express all languages.\nIt is still quite common, however, to encounter text in other encodings, so it can be good to understand what problems you can face and how to deal with them",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Working with textual data: stringr"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/6_strings.html#text-encoding-in-r",
+    "href": "1_data-management/0_tidyverse/6_strings.html#text-encoding-in-r",
+    "title": "Working with textual data: stringr",
+    "section": "Text encoding in R",
+    "text": "Text encoding in R\nTo show how this works in R, we can use the charToRaw function to see how a character is encoded in R:\n\ncharToRaw('A')\n\n[1] 41\n\n\nNote that the output of this function depends on your regional settings (called ‘locale’). On most computers, this should produce 41 however, as most encodings are based on ASCII.\nFor other alphabets it can be more tricky. The Chinese character “蘭” (unicode “62d”) on my computer is expressed in UTF-8, where it takes 3 bytes:",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Working with textual data: stringr"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/6_strings.html#dealing-with-encodings",
+    "href": "1_data-management/0_tidyverse/6_strings.html#dealing-with-encodings",
+    "title": "Working with textual data: stringr",
+    "section": "Dealing with encodings",
+    "text": "Dealing with encodings\nTo convert between encodings, you can use the iconv function. For example, to express the Chinese character above in GB2312 (Chinese national standard) encoding:\n\ncharToRaw(iconv('蘭', to='GB2312'))\n\nThe most common way of dealing with encodings is to ignore the problem and hope it goes away. However, outside the English world this is often not an option. Also, due to general unicode ignorance many people will use the wrong encoding, and you will even see things like double-utf8-encoded text.\nThe sane way to deal with encodings is to make sure that all text stored inside your program is encoded in a standard encoding, presumably UTF-8. This means that whenever you read text from an external source, you need to convert it to UTF-8 if it isn’t already in that form.\nThis means that when you use read_csv (on text data) or readtext, you should ideally always specify which encoding the text is encoded in:\n\nreadtext::readtext(\"file.txt\", encoding = \"utf-8\")\nread_csv(\"file.csv\", locale=locale(encoding='utf-8'))\n\nIf you don’t know what encoding a text is in, you can try utf-8 and the most common local encodings (e.g. latin-1 in many western countries), you can inspect the raw bytes, or you can use the guessEncoding function from readr:\n\nguess_encoding(\"file.txt\")",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Working with textual data: stringr"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/index.html",
+    "href": "1_data-management/0_tidyverse/index.html",
+    "title": "The Tidyverse Toolkit",
+    "section": "",
+    "text": "The tidyverse versus base R\n\n\n\n\n\nMany of the things that the tidyverse allows you to do are also possible in base R (i.e. the basic installation of R). Base R also provides functions for importing, managing and visualizing data. So why do we need the tidyverse?\nThe tidyverse is an opinionated framework, which means that it doesn’t just enable you to do things, but also suggests how you should do things. The authors have thought long and hard about how to make data management easy, effective and intuitive (they have even written papers about it). This not only makes the tidyverse much easier and intuitive to learn, but also makes sure everyone writes their code in the same way, which improves transparency and shareability.\nThis is different from base R, which is designed to be a highly flexible programming language, that allows you to do almost anything. Accordingly, it is still worthwhile to learn base R at some point if you want to specialize more in computational research methods. But for our Communication Science program, and for many data science applications in general, you can do all your data management in the tidyverse.\nThe tidyverse is collection of R packages that makes it much easier to import, manage and visualize data. To use the tidyverse, you only need to open the tidyverse package, and it will automatically open all of the tidyverse R packages.\nLike any normal package, you need to first install it once:\ninstall.packages('tidyverse')\nThen in every script that you use the package, you open it with library:\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/index.html#what-packages-does-the-tidyverse-contain",
+    "href": "1_data-management/0_tidyverse/index.html#what-packages-does-the-tidyverse-contain",
+    "title": "The Tidyverse Toolkit",
+    "section": "What packages does the tidyverse contain?",
+    "text": "What packages does the tidyverse contain?\nNotice above that when you run library(tidyverse), R prints all the tidyverse packages that it opened for you. Some of the most important ones that we’ll we using are:\n\ntibble. An optimized way for structuring rectangular data (basically: a spreadsheet of rows and columns)\ndplyr. Functions for manipulating tibbles: select and rename columns, filter rows, mutate values, etc.\nreadr. Read data into R.\nggplot2. One of the best visualization tools out there. Check out the gallery\n\n\n\n\n\n\n\nWhat about the ‘Conflicts’?\n\n\n\n\n\nWhen opening the tidyverse, and when opening packages in general, you can get a Conflicts warning. A very common warning for the tidyverse is:\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nSo what does this mean, and should we be worried?\nSince anyone can write new packages for R, it can happen that two packages provide functions with the same name. In this example, we see that the filter function exists in both the dplyr package (which we opened by opening the tidyverse), and in the stats package (which is included in base R). So now R needs to decide which version of the function to use when you type filter(). In this case, it says that the dplyr::filter() masks stats::filter(), meaning that it will now use the dplyr version.\nIn practice, this will rarely be a problem, because you seldom need two versions of a function in the same script. But if you ever do, there is a simple solution. Instead of just using filter(), you can type dplyr::filter() to specifically use this version. In the following code, we use this notation to specifically open the help page for dplyr::filter and stats::filter.\n\n?dplyr::filter()\n?stats::filter()",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/1_selecting-renaming-and-filtering.html",
+    "href": "1_data-management/0_tidyverse/1_selecting-renaming-and-filtering.html",
+    "title": "Data transformation",
+    "section": "",
+    "text": "The goal of this tutorial is to get you acquainted with the Tidyverse. Tidyverse is a collection of packages that have been designed around a singular and clearly defined set of principles about what data should look like and how we should work with it. It comes with a nice introduction in the R for Data Science book, for which the digital version is available for free. This tutorial deals with most of the material in chapter 5 of that book.\nIn this part of the tutorial, we’ll focus on working with data using the tidyverse package. This package includes the dplyr (data-pliers) packages, which contains most of the tools we’re using below, but it also contains functions for reading, analysing and visualising data that will be explained later.\n\n\nAs before, install.packages() is used to download and install the package (you only need to do this once on your computer) and library() is used to make the functions from this package available for use (required each session that you use the package).\n\ninstall.packages('tidyverse') # only needed once\n\n\nlibrary(tidyverse)\n\nNote: don’t be scared if you see a red message after calling library. RStudio doesn’t see the difference between messages, warnings, and errors, so it displays all three in red. You need to read the message, and it will contain the word ‘error’ if there is an error, such as a misspelled package:\n\nlibrary(tidyvers) # this will cause an error!",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Data transformation"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/1_selecting-renaming-and-filtering.html#installing-tidyverse",
+    "href": "1_data-management/0_tidyverse/1_selecting-renaming-and-filtering.html#installing-tidyverse",
+    "title": "Data transformation",
+    "section": "",
+    "text": "As before, install.packages() is used to download and install the package (you only need to do this once on your computer) and library() is used to make the functions from this package available for use (required each session that you use the package).\n\ninstall.packages('tidyverse') # only needed once\n\n\nlibrary(tidyverse)\n\nNote: don’t be scared if you see a red message after calling library. RStudio doesn’t see the difference between messages, warnings, and errors, so it displays all three in red. You need to read the message, and it will contain the word ‘error’ if there is an error, such as a misspelled package:\n\nlibrary(tidyvers) # this will cause an error!",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Data transformation"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/1_selecting-renaming-and-filtering.html#reading-data-read_csv",
+    "href": "1_data-management/0_tidyverse/1_selecting-renaming-and-filtering.html#reading-data-read_csv",
+    "title": "Data transformation",
+    "section": "Reading data: read_csv",
+    "text": "Reading data: read_csv\nThe example above manually created a data set, but in most cases you will start with data that you get from elsewhere, such as a csv file (e.g. downloaded from an online dataset or exported from excel) or an SPSS or Stata data file.\nTidyverse contains a function read_csv that allows you to read a csv file directly into a data frame. You specify the location of the file, either on your local drive or directly from the Internet!\nThe example below downloads an overview of gun polls from the data analytics site 538, and reads it into a tibble using the read_csv function:\n\nurl &lt;- \"https://raw.githubusercontent.com/fivethirtyeight/data/master/poll-quiz-guns/guns-polls.csv\"\nd &lt;- read_csv(url)\nd\n\n(Note that you can safely ignore the (red) message, they simply tell you how each column was parsed)\nThe shows the first ten rows of the data set, and if the columns don’t fit they are not printed. The remaining rows and columns are printed at the bottom. For each column the data type is also mentioned ( stands for integer, which is a numeric value;  is textual or character data). If you want to browse through your data, you can also click on the name of the data.frame (d) in the top-right window “Environment” tab or call View(d).",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Data transformation"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/1_selecting-renaming-and-filtering.html#subsetting-with-filter",
+    "href": "1_data-management/0_tidyverse/1_selecting-renaming-and-filtering.html#subsetting-with-filter",
+    "title": "Data transformation",
+    "section": "Subsetting with filter()",
+    "text": "Subsetting with filter()\nThe filter function can be used to select a subset of rows. In the guns data, the Question column specifies which question was asked. We can select only those rows (polls) that asked whether the minimum purchage age for guns should be raised to 21:\n\nage21 &lt;- filter(d, Question == 'age-21')\nage21\n\nThis call is typical for a tidyverse function: the first argument is the data to be used (d), and the remaining argument(s) contain information on what should be done to the data.\nNote the use of == for comparison: In R, = means assingment and == means equals. Other comparisons are e.g. &gt; (greather than), &lt;= (less than or equal) and != (not equal). You can also combine multiple conditions with logical (boolean) operators: & (and), | or, and ! (not), and you can use parentheses like in mathematics.\nSo, we can find all surveys where support for raising the gun age was at least 80%:\n\nfilter(d, Question == 'age-21' & Support &gt;= 80)\n\nNote that this command did not assign the result to an object, so the result is only displayed on the screen but not remembered. This can be a great way to quickly inspect your data, but if you want to continue analysing this subset you need to assign it to an object as above.",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Data transformation"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/1_selecting-renaming-and-filtering.html#aside-getting-help-on-tidy-function",
+    "href": "1_data-management/0_tidyverse/1_selecting-renaming-and-filtering.html#aside-getting-help-on-tidy-function",
+    "title": "Data transformation",
+    "section": "Aside: getting help on (tidy) function",
+    "text": "Aside: getting help on (tidy) function\nAs explained earlier, to get help on a function you can type ?filter in the console or search for filter in the help pane. In both cases, you need to specify that you mean filter from the dplyr package, as there is also a filter function in other packages.\nIf you look at the help page, you will first see the general description. This is followed by Usage, which shows how the function should be called. In this case, it lists filter(.data, ...). The first argument (.data) makes sense, but the ... is confusing. What is means is that you can give an arbitrary number of extra arguments, that will (in this case) all be used as filters. This is explained in the Arguments: the ... arguments are ‘Logical predicates defined in terms of the variables in .data’.\nThe remainder give extra information on what exactly the function does (Details), the output it produces (Value), and links to other useful packages, functions, and finally a number examples.\nAlthough it may seem intimidating at first, it is important to get used to style of the R documentation as it is the primary source of information on most functions and packages you will be using!",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Data transformation"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/1_selecting-renaming-and-filtering.html#selecting-certain-columns",
+    "href": "1_data-management/0_tidyverse/1_selecting-renaming-and-filtering.html#selecting-certain-columns",
+    "title": "Data transformation",
+    "section": "Selecting certain columns",
+    "text": "Selecting certain columns\nWhere filter selects specific rows, select allows you to select specific columns. Most simply, we can simply name the columns that we want to retrieve them in that particular order.\n\nselect(age21, Population, Support, Pollster)\n\nYou can also specify a range of columns, for example all columns from Support to Democratic Support:\n\nselect(age21, Support:`Democratic Support`)\n\nNote the use of ‘backticks’ (reverse quotes) to specify the column name, as R does not normally allow spaces in names.\nSelect can also be used to rename columns when selecting them, for example to get rid of the spaces:\n\nselect(age21, Pollster, rep = `Republican Support`, dem = `Democratic Support`)\n\nNote that select drops all columns not selected. If you only want to rename columns, you can use the rename function:\n\nrename(age21, start_date = Start, end_date = End)\n\nFinally, you can drop a variable by adding a minus sign in front of a name:\n\nselect(age21, -Question, -URL)",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Data transformation"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/1_selecting-renaming-and-filtering.html#sorting-with-arrange",
+    "href": "1_data-management/0_tidyverse/1_selecting-renaming-and-filtering.html#sorting-with-arrange",
+    "title": "Data transformation",
+    "section": "Sorting with arrange()",
+    "text": "Sorting with arrange()\nYou can easily sort a data set with arrange: you first specify the data, and then the column(s) to sort on. To sort in descending order, put a minus in front of a variable. For example, the following orders by population and then by support (descending):\n\nage21 &lt;- arrange(age21, Population, -Support)\nage21\n\nNote that I assigned the result of arranging to the age21 object again, i.e. I replace the object by its sorted version. If I wouldn’t assign it to anything, it would display it on screen but not remember the sorting. Assigning a result to the same name means I don’t create a new object, preventing the environment from being cluttered (and saving me from the bother of thinking up yet another object name). For sorting, this should generally be fine as the sorted data should contain the same data as before. For subsetting, this means that the rows or columns are actually deleted from the dataset (in memory), so you will have to read the file again (or start from an earlier object) if you need those rows or columns later.",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Data transformation"
+    ]
+  },
+  {
+    "objectID": "1_data-management/0_tidyverse/1_selecting-renaming-and-filtering.html#adding-or-transforming-variables-with-mutate",
+    "href": "1_data-management/0_tidyverse/1_selecting-renaming-and-filtering.html#adding-or-transforming-variables-with-mutate",
+    "title": "Data transformation",
+    "section": "Adding or transforming variables with mutate()",
+    "text": "Adding or transforming variables with mutate()\nThe mutate function makes it easy to create new variables or to modify existing ones. For those more familiar with SPSS, this is what you would do with compute and recode.\nIf you look at the documentation page, you see that mutate works similarly to filter() and select(), in the sense that the first argument is the tibble, and then any number of additional arguments can be given to perform mutations. The mutations themselves are named arguments, in which you can provide any calculations using the existing columns.\nHere we’ll first create some variables and then look at the variables (using the select function to focus on the changes). Specifically, we’ll make a column for the absolute difference between the support scores for republicans and democrats, as a measure of how much they disagree.\n\nage21 &lt;- mutate(age21, party_diff = abs(`Republican Support` - `Democratic Support`))\nselect(age21, Question, Pollster, party_diff)\nage21 &lt;- arrange(age21, Population, -Support)\n\nTo transform (recode) a variable in the same column, you can simply use an existing name in mutate() to overwrite it.",
+    "crumbs": [
+      "Data management",
+      "The Tidyverse Toolkit",
+      "Data transformation"
+    ]
+  },
+  {
+    "objectID": "1_data-management/index.html",
+    "href": "1_data-management/index.html",
+    "title": "Data management",
+    "section": "",
+    "text": "Here we’ll add tutorials for\n\nimporting data as a tibble\nselecting and renaming columns\nfiltering rows\njoining data\nreshaping data (long - wide)\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data management"
+    ]
+  },
+  {
+    "objectID": "2_statistics/2_tests/0_selecting-the-right-test.html",
+    "href": "2_statistics/2_tests/0_selecting-the-right-test.html",
+    "title": "Selecting the right test",
+    "section": "",
+    "text": "On this page we can explain when to use what test, and link to the right page.\n\n\n\n Back to top",
+    "crumbs": [
+      "Statistics",
+      "Tests",
+      "Selecting the right test"
+    ]
+  },
+  {
+    "objectID": "2_statistics/2_tests/t-test.html",
+    "href": "2_statistics/2_tests/t-test.html",
+    "title": "Communication Science R Book",
+    "section": "",
+    "text": "Back to top",
+    "crumbs": [
+      "Statistics",
+      "Tests",
+      "T Test"
+    ]
+  },
+  {
+    "objectID": "2_statistics/2_tests/anova.html",
+    "href": "2_statistics/2_tests/anova.html",
+    "title": "Communication Science R Book",
+    "section": "",
+    "text": "Back to top",
+    "crumbs": [
+      "Statistics",
+      "Tests",
+      "Anova"
+    ]
+  },
+  {
+    "objectID": "2_statistics/index.html",
+    "href": "2_statistics/index.html",
+    "title": "Statistics",
+    "section": "",
+    "text": "Back to top",
+    "crumbs": [
+      "Statistics"
+    ]
   }
 ]
