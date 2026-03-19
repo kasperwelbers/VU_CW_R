@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -86,17 +86,18 @@ div.csl-indent {
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../good-to-know/function-documentation.html" rel="next">
-<link href="../../analysis/tests/linear-regression.html" rel="prev">
+<link href="../../analysis/tests/ancova.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-34f2f06d33e71b70b9871a5af9c4576e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-253db45321dc0ff2a21d7478b11bfee4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -141,7 +142,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -183,7 +184,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="https://vu.nl/en/about-vu/faculties/faculty-of-social-sciences/departments/communication-science" class="sidebar-logo-link">
-      <img src="../../data/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../../data/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../data/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Communication Science R Book</a> 
@@ -416,6 +418,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../analysis/tests/ancova.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ANOVA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../analysis/tests/anova.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">ANOVA</span></a>
   </div>
@@ -555,9 +563,9 @@ But as you'll see in the code, we do need to specify ourselves that we want to u
 <h1>How to use it</h1>
 <p>We’ll use the <code>afex</code> and <code>emmeans</code> packages to perform ANOVA tests and compare means, and we’ll use the <code>sjPlot</code> package to visualize the results.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(afex)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(afex)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>For our examples we’ll use our <a href="../../data-management/index.html#practice-data">Practice data</a>. In this data have a (fictional) experiment where we study the effect of popular media on people’s trust in journalists. Specifically, we’re using the following variables:</p>
 <ul>
@@ -568,12 +576,12 @@ But as you'll see in the code, we do need to specify ourselves that we want to u
 </ul>
 <p>The <strong>experiment_group</strong> and <strong>np_subscription</strong> variables are our independent variable. To use these in the ANOVA, we’ll explicitly convert them to factors, to indicate that they are categorical variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://dataliteracy.cc/data/practice_data.csv"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">experiment_group =</span> <span class="fu">as.factor</span>(experiment_group),</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">np_subscription =</span> <span class="fu">as.factor</span>(np_subscription)) <span class="sc">|&gt;</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(id, experiment_group, np_subscription, trust_t1, trust_t2)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -587,8 +595,8 @@ But as you'll see in the code, we do need to specify ourselves that we want to u
 <p>In one-way ANOVA we compare the means of a dependent variable between two or more groups in a single independent variable. We can use this to test the main question of our experiment: whether the movie (<em>experimental_group</em>) has an effect on the trust in journalists (<em>trust_t2</em>).<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 <p>We use the <code>aov_car</code> function from the <code>afex</code> package to fit the ANOVA model. The formula that we use in this function is, as usual, <code>dependent_variable ~ independent_variable</code>. However, we also need to specify the unique user id (<code>id</code>) using the <code>Error</code> function. This way we explicitly clarify that each row in the data belongs to a unique participant in the study, which prevents you from mixing up between-subjects and within-subjects effects (more on this in the <em>repeated measures</em> section) So the full formula is <code>dependent_variable ~ independent_variable + Error(id)</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">=</span> <span class="fu">aov_car</span>(trust_t2 <span class="sc">~</span> experiment_group <span class="sc">+</span> <span class="fu">Error</span>(id), <span class="at">data=</span>d)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">=</span> <span class="fu">aov_car</span>(trust_t2 <span class="sc">~</span> experiment_group <span class="sc">+</span> <span class="fu">Error</span>(id), <span class="at">data=</span>d)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>m</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Anova Table (Type 3 tests)
 
@@ -602,12 +610,12 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '+' 0.1 ' ' 1</code></pre>
 <p>When we print the output of the <code>aov_car</code> function, we get the main results of the ANOVA test. In this one-way ANOVA we have a single independent variable, which is the <code>experiment_group</code>. The output shows us the results of the F-test (<span class="math inline">\(F_{2, 597} = 26.26, p &lt; 0.001\)</span>) which tells us that the difference between the groups is <strong>significant</strong>. In other words, the movie that participants watched had a significant effect on their trust in journalists.</p>
 <p>We also get an <span class="math inline">\(eta^2\)</span> (eta squared) value in the <code>ges</code> column (generalized eta squared<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>), This is a measure of <strong>effect size</strong> that tells us how much variance in the dependent variable is explained by the independent variable (similar to the <span class="math inline">\(R^2\)</span> value in regression).</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Comparing between groups">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Comparing between groups
+<span class="screen-reader-only">Note</span>Comparing between groups
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -615,8 +623,8 @@ Comparing between groups
 <div class="callout-body-container callout-body">
 <p>The <span class="math inline">\(eta^2\)</span> and F-test only tell us that there is a difference between the groups, but not <em>where</em> the difference is. To compare bewteen the groups, we can first of all look at their means. For this we’ll use the <code>emmeans</code> function from the <code>emmeans</code> package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>means <span class="ot">=</span> <span class="fu">emmeans</span>(m, <span class="st">"experiment_group"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>means</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>means <span class="ot">=</span> <span class="fu">emmeans</span>(m, <span class="st">"experiment_group"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>means</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> experiment_group emmean    SE  df lower.CL upper.CL
  control            4.44 0.106 597     4.24     4.65
@@ -628,12 +636,12 @@ Confidence level used: 0.95 </code></pre>
 </div>
 <p>Now we can see that the lowest trust score is in the <em>negative</em> group, and the highest in the <em>positive</em> group. However, we do not yet know whether the diffences between all the groups are significant. It could be that the <em>positive</em> group is significantly higher than the <em>negative</em> group, but not significantly higher than the <em>control</em> group. To test this we can use the <code>pairs</code> function to get the pairwise comparisons for the means we just computed.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(means)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> contrast            estimate   SE  df t.ratio p.value
- control - negative     0.765 0.15 597   5.095  &lt;.0001
+ control - negative     0.765 0.15 597   5.095 &lt;0.0001
  control - positive    -0.287 0.15 597  -1.915  0.1354
- negative - positive   -1.052 0.15 597  -7.010  &lt;.0001
+ negative - positive   -1.052 0.15 597  -7.010 &lt;0.0001
 
 P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
 </div>
@@ -641,229 +649,7 @@ P value adjustment: tukey method for comparing a family of 3 estimates </code></
 <p>Here we see all possible combinations of groups. The <strong>control - negative</strong> (control <em>minus</em> negative) row tells us how much the trust score in the control group is higher than in the negative group, and whether this difference is significant.</p>
 <p>Finally, we can visualize the results. <code>afex</code> has a built-in plot function (afex_plot), but throughout this book we often use the flexible <code>plot_model</code> function from the <code>sjPlot</code> package, and we can use this here as well! We can get the linear model from the <code>aov_car</code> output using <code>$lm</code>, and then use the <code>plot_model</code> function to visualize the results.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(m<span class="sc">$</span>lm, <span class="at">type=</span><span class="st">'pred'</span>, <span class="at">terms=</span><span class="st">'experiment_group'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"
-Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): no font could
-be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(m<span class="sc">$</span>lm, <span class="at">type=</span><span class="st">'pred'</span>, <span class="at">terms=</span><span class="st">'experiment_group'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -886,7 +672,7 @@ font could be found for family "Arial"</code></pre>
 </ul>
 <p>Let’s see how this works in practice, using the <code>np_subscription</code> variable as an observed factor. With <code>observed='np_subscription'</code> we tell the <code>aov_car</code> function that the <code>np_subscription</code> variable is an observed factor.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aov_car</span>(trust_t2 <span class="sc">~</span> np_subscription <span class="sc">+</span> <span class="fu">Error</span>(id), <span class="at">observed=</span><span class="st">'np_subscription'</span>, <span class="at">data=</span>d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aov_car</span>(trust_t2 <span class="sc">~</span> np_subscription <span class="sc">+</span> <span class="fu">Error</span>(id), <span class="at">observed=</span><span class="st">'np_subscription'</span>, <span class="at">data=</span>d)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Anova Table (Type 3 tests)
 
@@ -905,17 +691,17 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '+' 0.1 ' ' 1</code></pre>
 <p>In a two-way ANOVA we compare the means of a dependent variable between two or more groups in two independent variables. To demonstrate this we’ll use the <code>np_subscription</code> variable as a second independent variable.</p>
 <p>The formula for a two-way ANOVA is <code>dependent_variable ~ independent_variable_1*independent_variable_2 + Error(id)</code>. The <code>*</code> symbol is a shorthand for including both the main effects and the interaction effect between the two independent variables. Note that we also again specify that <code>np_subscription</code> is an observed factor.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">=</span> <span class="fu">aov_car</span>(trust_t2 <span class="sc">~</span> experiment_group<span class="sc">*</span>np_subscription <span class="sc">+</span> <span class="fu">Error</span>(id), </span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">observed=</span><span class="st">'np_subscription'</span>, <span class="at">data=</span>d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">=</span> <span class="fu">aov_car</span>(trust_t2 <span class="sc">~</span> experiment_group<span class="sc">*</span>np_subscription <span class="sc">+</span> <span class="fu">Error</span>(id), </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">observed=</span><span class="st">'np_subscription'</span>, <span class="at">data=</span>d)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now our output shows three F-tests: one for the main effect of <code>experiment_group</code>, one for the main effect of <code>np_subscription</code>, and one for the interaction effect between the two. We also get three <span class="math inline">\(eta^2\)</span> values, one for each effect, which tell us how much variance is explained by each effect.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Comparing between groups">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Comparing between groups
+<span class="screen-reader-only">Note</span>Comparing between groups
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -923,228 +709,11 @@ Comparing between groups
 <div class="callout-body-container callout-body">
 <p>We can again use the <code>emmeans</code> function to get the means for each group. Let’s visualize the results first to get a better idea of how the two independent variables interact to affect the trust in journalists.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(m<span class="sc">$</span>lm, <span class="at">type=</span><span class="st">'pred'</span>, <span class="at">terms=</span><span class="fu">c</span>(<span class="st">'experiment_group'</span>, <span class="st">'np_subscription'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(m<span class="sc">$</span>lm, <span class="at">type=</span><span class="st">'pred'</span>, <span class="at">terms=</span><span class="fu">c</span>(<span class="st">'experiment_group'</span>, <span class="st">'np_subscription'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-Unable to calculate text width/height (using zero)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"
-Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : no
-font could be found for family "Arial"</code></pre>
+<pre><code>Ignoring unknown labels:
+• linetype : "np_subscription"
+• shape : "np_subscription"</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -1157,8 +726,8 @@ font could be found for family "Arial"</code></pre>
 <p>Here we see that the effect of <code>np_subscription</code> (having a newspaper subscription) mostly matters for the <em>negative</em> group. It seems that overall people that watched a <em>negative</em> movie have a lower trust in journalists, but this is mostly true for people that do not have a newspaper subscription. In other words, people that have a newspaper subscription might not be as affected by the negative movie.</p>
 <p>We can now use the <code>emmeans</code> function to test these differences. To see how the effect of <code>experimental_group</code> is different for people that do or do not have a newspaper subscription, we can look at means of the <code>experiment_group</code> variable <strong>conditional on</strong> (<code>by</code>) the <code>np_subscription</code> variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>means <span class="ot">=</span> <span class="fu">emmeans</span>(m, <span class="st">'experiment_group'</span>, <span class="at">by=</span><span class="st">'np_subscription'</span>)</span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>means</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>means <span class="ot">=</span> <span class="fu">emmeans</span>(m, <span class="st">'experiment_group'</span>, <span class="at">by=</span><span class="st">'np_subscription'</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>means</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>np_subscription = no:
  experiment_group emmean    SE  df lower.CL upper.CL
@@ -1174,13 +743,13 @@ np_subscription = yes:
 
 Confidence level used: 0.95 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(means)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>np_subscription = no:
  contrast            estimate    SE  df t.ratio p.value
- control - negative    1.2093 0.220 594   5.497  &lt;.0001
+ control - negative    1.2093 0.220 594   5.497 &lt;0.0001
  control - positive   -0.6194 0.219 594  -2.830  0.0133
- negative - positive  -1.8286 0.213 594  -8.587  &lt;.0001
+ negative - positive  -1.8286 0.213 594  -8.587 &lt;0.0001
 
 np_subscription = yes:
  contrast            estimate    SE  df t.ratio p.value
@@ -1194,15 +763,15 @@ P value adjustment: tukey method for comparing a family of 3 estimates </code></
 <p>We can now compare how the movie affects the trust in journalists, while taking into account how this is conditional on whether people have a newspaper subscription.</p>
 <p>Likewise, we could also compare how the newspaper subscription affects the trust in journalists, while taking into account how this is conditional on the movie that people watched.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>means <span class="ot">=</span> <span class="fu">emmeans</span>(m, <span class="st">'np_subscription'</span>, <span class="at">by=</span><span class="st">'experiment_group'</span>)</span>
-<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>means</span>
-<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>means <span class="ot">=</span> <span class="fu">emmeans</span>(m, <span class="st">'np_subscription'</span>, <span class="at">by=</span><span class="st">'experiment_group'</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>means</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(means)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And finally, we could also compare between ALL the groups.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>means <span class="ot">=</span> <span class="fu">emmeans</span>(m, <span class="fu">c</span>(<span class="st">'experiment_group'</span>, <span class="st">'np_subscription'</span>))</span>
-<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>means</span>
-<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>means <span class="ot">=</span> <span class="fu">emmeans</span>(m, <span class="fu">c</span>(<span class="st">'experiment_group'</span>, <span class="st">'np_subscription'</span>))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>means</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(means)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1224,8 +793,8 @@ P value adjustment: tukey method for comparing a family of 3 estimates </code></
 <p>We can test this with the Levene’s test, which is a test for homogeneity of variance. The null hypothesis of the Levene’s test is that the variance is equal in each group. If the p-value of the test is less than 0.05, we reject the null hypothesis and conclude that the variance is not equal in each group.</p>
 <p>To perform the Levene’s test we can use the <code>leveneTest</code> function from the <code>car</code> package. To test whether the variance of the trust score (dependent variable) is equal in each group of the independent variable, we use the formula <code>dependent_variable ~ independent_variable</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">leveneTest</span>(trust_t2 <span class="sc">~</span> experiment_group, <span class="at">data=</span>d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">leveneTest</span>(trust_t2 <span class="sc">~</span> experiment_group, <span class="at">data=</span>d)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -1237,7 +806,7 @@ P value adjustment: tukey method for comparing a family of 3 estimates </code></
 <p>In this case the Levene’s test is not significant, which means that we can assume that the variance of the trust score is sufficiently equal in each group.</p>
 <p>For two-way anova, we can also perform the Levene’s test for each combination of the two independent variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leveneTest</span>(trust_t2 <span class="sc">~</span> experiment_group<span class="sc">*</span>np_subscription, <span class="at">data=</span>d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leveneTest</span>(trust_t2 <span class="sc">~</span> experiment_group<span class="sc">*</span>np_subscription, <span class="at">data=</span>d)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -1252,11 +821,11 @@ P value adjustment: tukey method for comparing a family of 3 estimates </code></
 <p>So how much difference in variance is too much? One strategy is to look at the ratio of the largest to the smallest variance across the groups. A common rule of thumb is that this ratio should not be more than 3.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> However, note that this is just a rule of thumb, and if the sample size is small (less than 30 per group), or the groups are very unbalanced (i.e.&nbsp;one group has much more observations than the others), it is better to be more conservative.</p>
 <p>In any case, it is always a good starting point to look at the sample size and variances across groups to see where potential problems might be.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">=</span> d <span class="sc">|&gt;</span></span>
-<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(experiment_group, np_subscription) <span class="sc">|&gt;</span></span>
-<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">variance =</span> <span class="fu">var</span>(trust_t2)) </span>
-<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>vars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">=</span> d <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(experiment_group, np_subscription) <span class="sc">|&gt;</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">variance =</span> <span class="fu">var</span>(trust_t2)) </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>vars</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -1264,8 +833,8 @@ P value adjustment: tukey method for comparing a family of 3 estimates </code></
   </script>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="do">## ratio of largest to smallest variance</span></span>
-<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(vars<span class="sc">$</span>variance) <span class="sc">/</span> <span class="fu">min</span>(vars<span class="sc">$</span>variance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="do">## ratio of largest to smallest variance</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(vars<span class="sc">$</span>variance) <span class="sc">/</span> <span class="fu">min</span>(vars<span class="sc">$</span>variance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.32406</code></pre>
 </div>
@@ -1351,13 +920,14 @@ Olejnik, Stephen, and James Algina. 2003. <span>“Generalized Eta and Omega Squ
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1701,8 +1271,8 @@ Olejnik, Stephen, and James Algina. 2003. <span>“Generalized Eta and Omega Squ
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../analysis/tests/linear-regression.html" class="pagination-link" aria-label="Linear regression">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Linear regression</span>
+      <a href="../../analysis/tests/ancova.html" class="pagination-link" aria-label="ANOVA">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">ANOVA</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

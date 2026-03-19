@@ -5,42 +5,52 @@ format:
   html:
     df-print: paged
 order: 4
+editor: 
+  markdown: 
+    wrap: sentence
 ---
-
 
 # What is an ANOVA?
 
-Analysis of Variance, or ANOVA, is a statistical technique used to compare the means of several groups at once. ANOVA tests whether any of the group means differ more than would be expected by random variation alone.
+Analysis of Variance, or ANOVA, is a statistical technique used to compare the means of several groups at once.
+ANOVA tests whether any of the group means differ more than would be expected by random variation alone.
 This makes it particularly suitable for experimental research, where participants are randomly assigned to different groups, and the researcher wants to know whether the groups differ on some outcome variable.
-Because of the random assignment, all possible confounding variables should be equally distributed over the groups, which allows us to make causal inferences about the effect of the independent variable on the dependent variable.[^observational]
+Because of the random assignment, all possible confounding variables should be equally distributed over the groups, which allows us to make causal inferences about the effect of the independent variable on the dependent variable.[^1]
 
-[^observational]: It is also possible to use ANOVA with non-experimental (i.e. observational) data. However, this limits our ability to make causal inferences. For observational data it is more common to use [regression analysis](../tests/linear-regression.qmd), because this provides more flexibility to control for confounding variables. (This is also possible with more advanced forms of ANOVA, like ANCOVA and MANOVA).   
+[^1]: It is also possible to use ANOVA with non-experimental (i.e. observational) data.
+    However, this limits our ability to make causal inferences.
+    For observational data it is more common to use [regression analysis](../tests/linear-regression.qmd), because this provides more flexibility to control for confounding variables.
+    (This is also possible with more advanced forms of ANOVA, like ANCOVA and MANOVA).
 
 There are different types of ANOVA to cover a wide range of research designs.
 The most common ones are:
 
 ### One-way ANOVA
-  * **Purpose**. Compare means *between-subjects* in different groups.[^independent_samples] 
-  * **Example**. We want to know how the design of a health care robot affects how *comfortable* people feel about interacting with the robot. To test this we *randomly* asign participants to three experimental groups, that are shown three different robot designs ([Alice, Nao](https://vu.nl/nl/onderzoek/meer-over/sociale-robots-voor-de-samenleving-mediapsychologie), and RoboCop). They then answer multiple questions based on which we measure a *comfort rating* [scale](../techniques/scale-construction.qmd). We can now use One-way ANOVA to compare the mean comfort rating between the three groups.
+
+-   **Purpose**. Compare means *between-subjects* in different groups.[^2]
+-   **Example**. We want to know how the design of a health care robot affects how *comfortable* people feel about interacting with the robot. To test this we *randomly* asign participants to three experimental groups, that are shown three different robot designs ([Alice, Nao](https://vu.nl/nl/onderzoek/meer-over/sociale-robots-voor-de-samenleving-mediapsychologie), and RoboCop). They then answer multiple questions based on which we measure a *comfort rating* [scale](../techniques/scale-construction.qmd). We can now use One-way ANOVA to compare the mean comfort rating between the three groups.
+
+[^2]: This is similar to an independent samples t-test, but can be used for more than two groups.
 
 ### Two-way ANOVA
-  * **Purpose**. Compare means *between-subjects* in different groups, for two independent variables. 
-  * **Example**. In addition to comparing three different designs of a health care robot, we could also compare between using a *male* or *female* voice. We then randomly assign participants to six groups (3 designs * 2 voices), and use two-way ANOVA to test whether the design and voice have an effect on the perceived attractiveness. We can then also test whether there is an *interaction* between the two variables, to see if specific combinations of design and voice are particularly comforting.
+
+-   **Purpose**. Compare means *between-subjects* in different groups, for two independent variables.
+-   **Example**. In addition to comparing three different designs of a health care robot, we could also compare between using a *male* or *female* voice. We then randomly assign participants to six groups (3 designs \* 2 voices), and use two-way ANOVA to test whether the design and voice have an effect on the perceived attractiveness. We can then also test whether there is an *interaction* between the two variables, to see if specific combinations of design and voice are particularly comforting.
 
 ### Repeated measures ANOVA
-  * **Purpose**. Compare means *within-subjects* measured at different timepoints.[^repeated_measures] 
-  * **Example**. Instead of the self-reporting comfort rating, we could measure how people react to interacting with a health care robot by measuring their *heart rate*. We could then measure the *heart rate* of participants *before*, *during*, and *after* interacting with the robot. We can then use repeated measures ANOVA to compare the *heart rate* at each stage.
+
+-   **Purpose**. Compare means *within-subjects* measured at different timepoints.[^3]
+-   **Example**. Instead of the self-reporting comfort rating, we could measure how people react to interacting with a health care robot by measuring their *heart rate*. We could then measure the *heart rate* of participants *before*, *during*, and *after* interacting with the robot. We can then use repeated measures ANOVA to compare the *heart rate* at each stage.
+
+[^3]: This is similar to a paired samples t-test, but can be used for more than two groups.
+    This is primarily used for within-subjects designs, where the same participants are measured multiple times.
 
 ### Mixed-design ANOVA
-  * **Purpose**. Combine *between-subjects* and *within-subjects* factors. 
-  * **Example**. This allows us to measure simultaneously the effect of the design of a health care robot (one-way anova example) on the change in *heart rate* (repeated measures example). We divide participants into three groups that are shown the three different designs, and measure the *heart rate* of participants *before*, *during*, and *after* interacting with the robot. We can then use mixed-design ANOVA to test whether the three designs of a health care robot affect the change in hearthrate differently.
 
+-   **Purpose**. Combine *between-subjects* and *within-subjects* factors.
+-   **Example**. This allows us to measure simultaneously the effect of the design of a health care robot (one-way anova example) on the change in *heart rate* (repeated measures example). We divide participants into three groups that are shown the three different designs, and measure the *heart rate* of participants *before*, *during*, and *after* interacting with the robot. We can then use mixed-design ANOVA to test whether the three designs of a health care robot affect the change in hearthrate differently.
 
-[^independent_samples]: This is similar to an independent samples t-test, but can be used for more than two groups.
-
-[^repeated_measures]: This is similar to a paired samples t-test, but can be used for more than two groups. This is primarily used for within-subjects designs, where the same participants are measured multiple times. 
-
-
+```{=html}
 <!-- # How does it work
 
 Underneath the hood, ANOVA is a linear model just like [regression analysis](../tests/linear-regression.qmd).
@@ -63,7 +73,7 @@ To understand how ANOVA is *different* from *regular regression*, you need to un
 In the social sciences, when researchers use ANOVA, they usually use Type III sums of squares and effect coding. In popular statistics software like SPSS, this is also the default approach.
 In this tutorial we will also stick to this default.
 But as you'll see in the code, we do need to specify ourselves that we want to use Type II sums of squares and effect coding (specifically we'll use Helmert coding). -->
-
+```
 
 # How to use it
 
@@ -79,12 +89,13 @@ For our examples we'll use our [Practice data](../../data-management/index.qmd#p
 In this data have a (fictional) experiment where we study the effect of popular media on people's trust in journalists.
 Specifically, we're using the following variables:
 
-* **id**. A unique identifier for each participant.
-* **experiment_group**. The group that participants were assigned to. Each group viewed a different movie that was either *neutral* (control), *positive*, or *negative* about journalism.
-* **np_subscription**. Whether participants have a subscription to a national newspaper, with values *yes* or *no*.
-* **trust_t1** and **trust_t2**. The trust in journalists, measured before (t1) and after (t2) watching a movie about journalism.
+-   **id**. A unique identifier for each participant.
+-   **experiment_group**. The group that participants were assigned to. Each group viewed a different movie that was either *neutral* (control), *positive*, or *negative* about journalism.
+-   **np_subscription**. Whether participants have a subscription to a national newspaper, with values *yes* or *no*.
+-   **trust_t1** and **trust_t2**. The trust in journalists, measured before (t1) and after (t2) watching a movie about journalism.
 
-The **experiment_group** and **np_subscription** variables are our independent variable. To use these in the ANOVA, we'll explicitly convert them to factors, to indicate that they are categorical variables.
+The **experiment_group** and **np_subscription** variables are our independent variable.
+To use these in the ANOVA, we'll explicitly convert them to factors, to indicate that they are categorical variables.
 
 ```{r, message=F}
 library(tidyverse)
@@ -98,15 +109,17 @@ d
 ## One-way ANOVA
 
 In one-way ANOVA we compare the means of a dependent variable between two or more groups in a single independent variable.
-We can use this to test the main question of our experiment: whether the movie (*experimental_group*) has an effect on the trust in journalists (*trust_t2*).[^trust_t2]
+We can use this to test the main question of our experiment: whether the movie (*experimental_group*) has an effect on the trust in journalists (*trust_t2*).[^4]
 
-[^trust_t2]: We're using the trust score *after* watching the movie. It is *ok* to ignore the trust score before watching the movie, because we've randomly assigned participants to the different groups. This means that the trust score before watching the movie should be the same in each group. However, as we'll show below, we could also use a repeated measures ANOVA to compare the trust score before and after watching the movie.
+[^4]: We're using the trust score *after* watching the movie.
+    It is *ok* to ignore the trust score before watching the movie, because we've randomly assigned participants to the different groups.
+    This means that the trust score before watching the movie should be the same in each group.
+    However, as we'll show below, we could also use a repeated measures ANOVA to compare the trust score before and after watching the movie.
 
 We use the `aov_car` function from the `afex` package to fit the ANOVA model.
 The formula that we use in this function is, as usual, `dependent_variable ~ independent_variable`.
 However, we also need to specify the unique user id (`id`) using the `Error` function.
-This way we explicitly clarify that each row in the data belongs to a unique participant in the study, which prevents you from mixing up between-subjects and within-subjects effects (more on this in the *repeated measures* section)
-So the full formula is `dependent_variable ~ independent_variable + Error(id)`.
+This way we explicitly clarify that each row in the data belongs to a unique participant in the study, which prevents you from mixing up between-subjects and within-subjects effects (more on this in the *repeated measures* section) So the full formula is `dependent_variable ~ independent_variable + Error(id)`.
 
 ```{r, message=F}
 m = aov_car(trust_t2 ~ experiment_group + Error(id), data=d)
@@ -125,15 +138,14 @@ In this one-way ANOVA we have a single independent variable, which is the `exper
 The output shows us the results of the F-test ($F_{`r num_df`, `r den_df`} = `r f`, p < 0.001$) which tells us that the difference between the groups is **significant**.
 In other words, the movie that participants watched had a significant effect on their trust in journalists.
 
-We also get an $eta^2$ (eta squared) value in the `ges` column (generalized eta squared[^ges]),
-This is a measure of **effect size** that tells us how much variance in the dependent variable is explained by the independent variable (similar to the $R^2$ value in regression).
+We also get an $eta^2$ (eta squared) value in the `ges` column (generalized eta squared[^5]), This is a measure of **effect size** that tells us how much variance in the dependent variable is explained by the independent variable (similar to the $R^2$ value in regression).
 
-[^ges]: The generalized $eta2$ is a generalization of the (partial) $eta2$ value that is often reported in ANOVA output. It was proposed by @olejnik03 because regular partial $eta2$ values can be misleading when comparing between studies with different designs. Specifically, it allows taking into account whether factors in the model are *experimentally manipulated* or *observed*. In the **When factors are observed** subsection below we show how to specify this in the `aov_car` function.
-
-
+[^5]: The generalized $eta2$ is a generalization of the (partial) $eta2$ value that is often reported in ANOVA output.
+    It was proposed by @olejnik03 because regular partial $eta2$ values can be misleading when comparing between studies with different designs.
+    Specifically, it allows taking into account whether factors in the model are *experimentally manipulated* or *observed*.
+    In the **When factors are observed** subsection below we show how to specify this in the `aov_car` function.
 
 ::: {.callout-note title="Comparing between groups" collapse="true"}
-
 The $eta^2$ and F-test only tell us that there is a difference between the groups, but not *where* the difference is.
 To compare bewteen the groups, we can first of all look at their means.
 For this we'll use the `emmeans` function from the `emmeans` package.
@@ -162,8 +174,7 @@ We can get the linear model from the `aov_car` output using `$lm`, and then use 
 ```{r, fig.height=3}
 plot_model(m$lm, type='pred', terms='experiment_group')
 ```
-::: 
-
+:::
 
 ### *Experimental* versus *observed* factors
 
@@ -176,8 +187,8 @@ This is the case for variables like *age* and *gender*, and in our case also for
 
 When factors are observed, it has two implications for the ANOVA test:
 
-* **Causality**. It limits the ability to make causal inferences about the effect of the independent variable on the dependent variable. 
-* **Effect size**. We need to correct the $eta^2$ value to get more reliable effect sizes. The `afex` package does this automatically for us by using the generalized $eta^2$ value (`ges` column in the output).However, we do need to tell it when a factor is observed, using the `observed` argument in the `aov_car` function.
+-   **Causality**. It limits the ability to make causal inferences about the effect of the independent variable on the dependent variable.
+-   **Effect size**. We need to correct the $eta^2$ value to get more reliable effect sizes. The `afex` package does this automatically for us by using the generalized $eta^2$ value (`ges` column in the output).However, we do need to tell it when a factor is observed, using the `observed` argument in the `aov_car` function.
 
 Let's see how this works in practice, using the `np_subscription` variable as an observed factor.
 With `observed='np_subscription'` we tell the `aov_car` function that the `np_subscription` variable is an observed factor.
@@ -187,9 +198,8 @@ aov_car(trust_t2 ~ np_subscription + Error(id), observed='np_subscription', data
 ```
 
 In this case our results only tell us that there is a significant difference between people with and without a newspaper subscription.
-We cannot conclude that this is because having a newspaper subscription causes people to trust journalists more. 
+We cannot conclude that this is because having a newspaper subscription causes people to trust journalists more.
 We are no longer certain about the order of the effect (trust in journalists might also cause people to get a newspaper subscription), and there can be confounding variables that influence both (e.g., education level, socio-economic status).
-
 
 ## Two-way ANOVA
 
@@ -205,10 +215,10 @@ m = aov_car(trust_t2 ~ experiment_group*np_subscription + Error(id),
             observed='np_subscription', data=d)
 ```
 
-Now our output shows three F-tests: one for the main effect of `experiment_group`, one for the main effect of `np_subscription`, and one for the interaction effect between the two. We also get three $eta^2$ values, one for each effect, which tell us how much variance is explained by each effect.
+Now our output shows three F-tests: one for the main effect of `experiment_group`, one for the main effect of `np_subscription`, and one for the interaction effect between the two.
+We also get three $eta^2$ values, one for each effect, which tell us how much variance is explained by each effect.
 
 ::: {.callout-note title="Comparing between groups" collapse="true"}
-
 We can again use the `emmeans` function to get the means for each group.
 Let's visualize the results first to get a better idea of how the two independent variables interact to affect the trust in journalists.
 
@@ -239,7 +249,7 @@ means
 pairs(means)
 ```
 
-And finally, we could also compare between ALL the groups. 
+And finally, we could also compare between ALL the groups.
 
 ```{r, results=F, message=F}
 means = emmeans(m, c('experiment_group', 'np_subscription'))
@@ -254,9 +264,9 @@ ANOVA is a parametric test, which means that it makes assumptions about the data
 If these assumptions are violated, the results of the ANOVA can be unreliable.
 The most important assumptions are:
 
-1. **Normality**. The dependent variable should be normally distributed in each group.
-2. **Homogeneity of variance**. The variance of the dependent variable should (approximately) be equal in each group.
-3. **Independence**. Observations should be independent of each other. 
+1.  **Normality**. The dependent variable should be normally distributed in each group.
+2.  **Homogeneity of variance**. The variance of the dependent variable should (approximately) be equal in each group.
+3.  **Independence**. Observations should be independent of each other.
 
 Here we will only discuss the assumption of **homogeneity of variance**, because it is more specific to ANOVA.
 For the other assumptions, which are more general to linear models, we refer to the [regression tutorial](../tests/linear-regression.qmd).
@@ -294,10 +304,15 @@ ANOVA is fairly robust to violations of the assumption of homogeneity of varianc
 
 So how much difference in variance is too much?
 One strategy is to look at the ratio of the largest to the smallest variance across the groups.
-A common rule of thumb is that this ratio should not be more than 3.[^maxratio]
+A common rule of thumb is that this ratio should not be more than 3.[^6]
 However, note that this is just a rule of thumb, and if the sample size is small (less than 30 per group), or the groups are very unbalanced (i.e. one group has much more observations than the others), it is better to be more conservative.
 
-[^maxratio]: By 'rule of thumb', we mean that it's a general guideline, and not a number that is set in stone. Different authors have also proposed different values for this ratio. One source for the 3:1 ratio is @dean00. There is also Hartley's Fmax test, which is a more formal test that looks at the ratio of the largest to the smallest variance, and can take sample size and number of groups into account. However, this test is in turn sensitive to normal distribution of data, and requires groups to be balanced. Ultimately, there is no simple solution answer to the question "how much difference in variance is too much?". 
+[^6]: By 'rule of thumb', we mean that it's a general guideline, and not a number that is set in stone.
+    Different authors have also proposed different values for this ratio.
+    One source for the 3:1 ratio is @dean00.
+    There is also Hartley's Fmax test, which is a more formal test that looks at the ratio of the largest to the smallest variance, and can take sample size and number of groups into account.
+    However, this test is in turn sensitive to normal distribution of data, and requires groups to be balanced.
+    Ultimately, there is no simple solution answer to the question "how much difference in variance is too much?".
 
 In any case, it is always a good starting point to look at the sample size and variances across groups to see where potential problems might be.
 
@@ -318,14 +333,15 @@ maxvar = sprintf("%.2f", max(vars$variance))
 ratio = sprintf("%.2f", max(vars$variance) / min(vars$variance))
 ```
 
-In this case we have quite a lot of observations in each group, so if the ratio of the largest to the smallest variance ($S_{max}^2 / S_{min}^2 = `r maxvar` / `r minvar` =  `r ratio`$)[^ratio] is less than 3, we can assume that the variance is sufficiently equal in each group (and we already know that the Levene's test is not significant).
+In this case we have quite a lot of observations in each group, so if the ratio of the largest to the smallest variance ($S_{max}^2 / S_{min}^2 = `r maxvar` / `r minvar` =  `r ratio`$)[^7] is less than 3, we can assume that the variance is sufficiently equal in each group (and we already know that the Levene's test is not significant).
 
-[^ratio]: The $S_{max}^2$ and $S_{min}^2$ are the largest and smallest variance across the groups, which you can look up in the data frame above. Note that $S^2$ is just the mathematical notation for variance ($S$ is the standard deviation, so $S^2$ is the variance).
+[^7]: The $S_{max}^2$ and $S_{min}^2$ are the largest and smallest variance across the groups, which you can look up in the data frame above.
+    Note that $S^2$ is just the mathematical notation for variance ($S$ is the standard deviation, so $S^2$ is the variance).
 
 But what if the homogeneity of variance assumption *is* violated?
 One option would be to use a different model, like ANOVA with Welch's correction, or a non-parametric test like the Kruskal-Wallis test.
 But perhaps more importantly, if you do find such strong differences in variance, you should look more closely at the data and think about what might be causing these differences.
-Why is the variance higher in one group than in the other? 
+Why is the variance higher in one group than in the other?
 Is there perhaps a confounding variable or moderator that you have not yet taken into account?
 Perhaps an experimental treatment was not applied correctly, or it might only have an effect in a specific subgroup of participants.
 
@@ -333,6 +349,3 @@ Most importantly, do not think of testing these assumptions as a *hurdle* that y
 At the end of the day, the purpose of statistics is to help us better understand our data.
 If you find that your data does not meet the assumptions of ANOVA, this is not a failure, but an observation in itself that might warrant exploration.
 When in doubt, you can still use ANOVA, as long as you're transparent about the assumptions that are violated, and exert caution in your interpretation of the results.
-
-
-
