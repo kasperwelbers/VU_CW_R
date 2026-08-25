@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>ANCOVA – Communication Science R Book</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -65,19 +68,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../analysis/tests/anova.html" rel="next">
-<link href="../../analysis/tests/linear-regression.html" rel="prev">
+<link href="../../good-to-know/function-documentation.html" rel="next">
+<link href="../../analysis/tests/anova.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-253db45321dc0ff2a21d7478b11bfee4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2b9358b3e81e17012c1caba5829223d0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -369,14 +371,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../analysis/tests/ancova.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">ANCOVA</span></a>
+  <a href="../../analysis/tests/anova.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ANOVA</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../analysis/tests/anova.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">ANOVA</span></a>
+  <a href="../../analysis/tests/ancova.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">ANCOVA</span></a>
   </div>
 </li>
       </ul>
@@ -556,22 +558,21 @@ robot_data &lt;- read_csv("robot_data.csv")</code></pre>
 </div>
 </div>
 <p>The plot above indicates that there is indeed a linear relationship between <code>familiarity</code> and <code>comfort</code>, suggesting it’s relevant to include the effect of one’s (prior) familiarity with robots on their comfort level in the analysis.</p>
-<p>We estimate the model using the function <code>aov_car()</code> from the <code>afex</code> package. For <code>Error()</code>, we specify that our individual cases can be distinguised by the variable <code>id</code>. After <code>observed =</code> with specify which independent variables in the model are observed, i.e.: not (experimentally) manipulated. In this context it’s only our covariate <code>familiarity</code>. Finally, we specify <code>factorize = FALSE</code>, which means that we don’t want R to turn our (numeric) covariate into a factor variable. With this we do assume, though, that our other independent variable(s) is/are correctly coded as factors.</p>
+<p>We estimate the model using the function <code>aov_car()</code> from the <code>afex</code> package. For <code>Error()</code>, we specify that our individual cases can be distinguised by the variable <code>id</code>. Finally, we specify <code>factorize = FALSE</code>, which means that we don’t want R to turn our (numeric) covariate into a factor variable. With this we do assume, though, that our other independent variable(s) is/are correctly coded as factors.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>model_ancova <span class="ot">&lt;-</span> <span class="fu">aov_car</span>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  comfort <span class="sc">~</span> robot_design <span class="sc">+</span> familiarity <span class="sc">+</span> <span class="fu">Error</span>(id),</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> robot_data,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">observed =</span> <span class="st">"familiarity"</span>, </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">factorize =</span> <span class="cn">FALSE</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>model_ancova</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">factorize =</span> <span class="cn">FALSE</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>model_ancova</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Anova Table (Type 3 tests)
 
 Response: comfort
         Effect     df  MSE          F  ges p.value
-1 robot_design 2, 236 2.49    6.09 ** .034    .003
+1 robot_design 2, 236 2.49    6.09 ** .049    .003
 2  familiarity 1, 236 2.49 105.94 *** .310   &lt;.001
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '+' 0.1 ' ' 1</code></pre>
@@ -669,19 +670,18 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '+' 0.1 ' ' 1</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>model_slopes <span class="ot">&lt;-</span> <span class="fu">aov_car</span>(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  comfort <span class="sc">~</span> robot_design <span class="sc">*</span> familiarity <span class="sc">+</span> <span class="fu">Error</span>(id),</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> robot_data,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">observed =</span> <span class="st">"familiarity"</span>,</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">factorize =</span> <span class="cn">FALSE</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>model_slopes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">factorize =</span> <span class="cn">FALSE</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>model_slopes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Anova Table (Type 3 tests)
 
 Response: comfort
                     Effect     df  MSE          F  ges p.value
-1             robot_design 2, 234 2.51       0.61 .004    .546
-2              familiarity 1, 234 2.51 105.54 *** .310   &lt;.001
-3 robot_design:familiarity 2, 234 2.51       0.22 .001    .803
+1             robot_design 2, 234 2.51       0.61 .005    .546
+2              familiarity 1, 234 2.51 105.54 *** .311   &lt;.001
+3 robot_design:familiarity 2, 234 2.51       0.22 .002    .803
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '+' 0.1 ' ' 1</code></pre>
 </div>
@@ -731,20 +731,19 @@ Type: Factor
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  comfort <span class="sc">~</span> robot_design <span class="sc">*</span> interaction_type <span class="sc">+</span> </span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    familiarity <span class="sc">+</span> <span class="fu">Error</span>(id),</span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> robot_data,</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">observed =</span> <span class="st">"familiarity"</span>, </span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">factorize =</span> <span class="cn">FALSE</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>model_two_way</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">factorize =</span> <span class="cn">FALSE</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>model_two_way</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Anova Table (Type 3 tests)
 
 Response: comfort
                          Effect     df  MSE          F  ges p.value
-1                  robot_design 2, 233 2.36    6.43 ** .036    .002
-2              interaction_type 1, 233 2.36  15.54 *** .043   &lt;.001
+1                  robot_design 2, 233 2.36    6.43 ** .052    .002
+2              interaction_type 1, 233 2.36  15.54 *** .063   &lt;.001
 3                   familiarity 1, 233 2.36 113.83 *** .328   &lt;.001
-4 robot_design:interaction_type 2, 233 2.36       0.18 .001    .838
+4 robot_design:interaction_type 2, 233 2.36       0.18 .002    .838
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '+' 0.1 ' ' 1</code></pre>
 </div>
@@ -1215,13 +1214,13 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '+' 0.1 ' ' 1</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../analysis/tests/linear-regression.html" class="pagination-link" aria-label="Linear regression">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Linear regression</span>
+      <a href="../../analysis/tests/anova.html" class="pagination-link" aria-label="ANOVA">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">ANOVA</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../analysis/tests/anova.html" class="pagination-link" aria-label="ANOVA">
-        <span class="nav-page-text">ANOVA</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../good-to-know/function-documentation.html" class="pagination-link" aria-label="Function Documentation">
+        <span class="nav-page-text">Function Documentation</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

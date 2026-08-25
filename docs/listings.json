@@ -5,7 +5,16 @@
       "/analysis/tests/t-test.html",
       "/analysis/tests/correlation.html",
       "/analysis/tests/linear-regression.html",
-      "/analysis/tests/anova.html"
+      "/analysis/tests/anova.html",
+      "/analysis/tests/ancova.html"
+    ]
+  },
+  {
+    "listing": "/analysis/concepts/index.html",
+    "items": [
+      "/analysis/concepts/hypotheses.html",
+      "/analysis/concepts/covariance-and-correlation.html",
+      "/analysis/concepts/causality.html"
     ]
   },
   {
@@ -17,14 +26,6 @@
       "/analysis/techniques/controlling.html",
       "/analysis/techniques/mediation.html",
       "/analysis/techniques/standardization.html"
-    ]
-  },
-  {
-    "listing": "/analysis/concepts/index.html",
-    "items": [
-      "/analysis/concepts/hypotheses.html",
-      "/analysis/concepts/covariance-and-correlation.html",
-      "/analysis/concepts/causality.html"
     ]
   }
 ]

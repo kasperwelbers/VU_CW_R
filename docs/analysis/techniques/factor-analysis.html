@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Factor Analysis – Communication Science R Book</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -69,15 +72,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../analysis/techniques/scale-construction.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-253db45321dc0ff2a21d7478b11bfee4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2b9358b3e81e17012c1caba5829223d0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -371,6 +373,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">ANOVA</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../analysis/tests/ancova.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ANCOVA</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -491,7 +499,7 @@ N: 200
 
                       ml_1    ml_10     ml_2     ml_3     ml_4     ml_5     ml_6     ml_7     ml_8     ml_9
 ----------------- -------- -------- -------- -------- -------- -------- -------- -------- -------- --------
-             Mean     3.71     2.80     2.79     3.32     3.60     3.36     2.75     3.73     3.26     3.21
+             Mean     3.71     2.80     2.79     3.32     3.60     3.36     2.75     3.73     3.27     3.21
           Std.Dev     1.06     1.03     1.04     1.08     1.07     0.93     0.95     1.18     0.98     0.99
               Min     1.00     1.00     1.00     1.00     1.00     1.00     1.00     1.00     1.00     1.00
                Q1     3.00     2.00     2.00     3.00     3.00     3.00     2.00     3.00     3.00     3.00
@@ -811,7 +819,7 @@ Parallel analysis suggests that the number of factors =  3  and the number of co
  [1]  3.77  1.52  0.87 -0.16 -0.25 -0.29 -0.35 -0.37 -0.42 -0.55
 
  eigen values of simulated factors
- [1]  0.56  0.28  0.20  0.12  0.05 -0.01 -0.07 -0.12 -0.20 -0.25
+ [1]  0.49  0.28  0.21  0.12  0.06 -0.01 -0.07 -0.13 -0.19 -0.28
 
  eigen values of components 
  [1] 4.35 2.18 1.53 0.43 0.38 0.31 0.28 0.24 0.17 0.13
@@ -844,7 +852,7 @@ Parallel analysis suggests that the number of factors =  3  and the number of co
 Call: fa(r = select(d, ml_1:ml_10), nfactors = 3, rotate = "oblimin", 
     fm = "pa")
 Standardized loadings (pattern matrix) based upon correlation matrix
-        PA3   PA1   PA2   h2   u2 com
+        PA1   PA3   PA2   h2   u2 com
 ml_1  -0.01  0.91 -0.02 0.81 0.19   1
 ml_2  -0.02  0.00  0.90 0.80 0.20   1
 ml_3   0.92  0.01 -0.03 0.85 0.15   1
@@ -856,7 +864,7 @@ ml_8   0.88 -0.03 -0.05 0.75 0.25   1
 ml_9   0.73  0.08  0.03 0.60 0.40   1
 ml_10  0.06 -0.02  0.77 0.61 0.39   1
 
-                       PA3  PA1  PA2
+                       PA1  PA3  PA2
 SS loadings           2.83 2.46 1.98
 Proportion Var        0.28 0.25 0.20
 Cumulative Var        0.28 0.53 0.73
@@ -864,9 +872,9 @@ Proportion Explained  0.39 0.34 0.27
 Cumulative Proportion 0.39 0.73 1.00
 
  With factor correlations of 
-     PA3  PA1  PA2
-PA3 1.00 0.38 0.19
-PA1 0.38 1.00 0.37
+     PA1  PA3  PA2
+PA1 1.00 0.38 0.19
+PA3 0.38 1.00 0.37
 PA2 0.19 0.37 1.00
 
 Mean item complexity =  1
@@ -878,7 +886,7 @@ df of  the model are 18  and the objective function was  0.09
 The root mean square of the residuals (RMSR) is  0.01 
 The df corrected root mean square of the residuals is  0.02 
 
-The harmonic n.obs is  200 with the empirical chi square  1.9  with prob &lt;  1 
+The harmonic n.obs is  200 with the empirical chi square  0.95  with prob &lt;  1 
 The total n.obs was  200  with Likelihood Chi Square =  16.99  with prob &lt;  0.52 
 
 Tucker Lewis Index of factoring reliability =  1.002
@@ -886,10 +894,10 @@ RMSEA index =  0  and the 90 % confidence intervals are  0 0.06
 BIC =  -78.38
 Fit based upon off diagonal values = 1
 Measures of factor score adequacy             
-                                                   PA3  PA1  PA2
-Correlation of (regression) scores with factors   0.96 0.97 0.94
-Multiple R square of scores with factors          0.93 0.94 0.88
-Minimum correlation of possible factor scores     0.85 0.88 0.75</code></pre>
+                                                   PA1  PA3  PA2
+Correlation of (regression) scores with factors   0.95 0.94 0.92
+Multiple R square of scores with factors          0.90 0.88 0.84
+Minimum correlation of possible factor scores     0.79 0.77 0.67</code></pre>
 </div>
 </div>
 <p>The output includes a <strong>pattern matrix</strong> (the first table you encounter titled <code>Standardized loadings</code>), which shows how strongly each item loads onto each factor. In Principal Axis Factoring, an item ‘loading’ strongly on a factor means that the variance in that item can be largely explained by that underlying factor. The loading is essentially a correlation: a high positive loading indicates that when the factor increases, the likelihood of agreeing with that item also increases. In other words, the factor is the hidden thread, and the loading shows how tightly the item is tied to it. increases,</p>
@@ -900,7 +908,7 @@ Minimum correlation of possible factor scores     0.85 0.88 0.75</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Loadings:
-      PA3    PA1    PA2   
+      PA1    PA3    PA2   
 ml_1          0.913       
 ml_2                 0.900
 ml_3   0.924              
@@ -912,7 +920,7 @@ ml_8   0.884
 ml_9   0.729              
 ml_10                0.775
 
-                 PA3   PA1   PA2
+                 PA1   PA3   PA2
 SS loadings    2.811 2.442 1.969
 Proportion Var 0.281 0.244 0.197
 Cumulative Var 0.281 0.525 0.722</code></pre>

@@ -142,8 +142,6 @@ We also get an $eta^2$ (eta squared) value in the `ges` column (generalized eta 
 
 [^5]: The generalized $eta2$ is a generalization of the (partial) $eta2$ value that is often reported in ANOVA output.
     It was proposed by @olejnik03 because regular partial $eta2$ values can be misleading when comparing between studies with different designs.
-    Specifically, it allows taking into account whether factors in the model are *experimentally manipulated* or *observed*.
-    In the **When factors are observed** subsection below we show how to specify this in the `aov_car` function.
 
 ::: {.callout-note title="Comparing between groups" collapse="true"}
 The $eta^2$ and F-test only tell us that there is a difference between the groups, but not *where* the difference is.
@@ -176,46 +174,25 @@ plot_model(m$lm, type='pred', terms='experiment_group')
 ```
 :::
 
-### *Experimental* versus *observed* factors
-
-In the previous example our independent variable was *experimentally manipulated*: we randomly assigned participants to the three groups.
-Accordingly, any effects that we find are likely to represent causal relationships.
-If people with different opinions about journalism were randomly distributed over the groups, we can be confident that the differences we find after showing them different movies are due to the movies themselves.
-
-However, in some cases we might have an independent variable that is *observed*, meaning that we did not manipulate it, but only *observed* a value that was already there.
-This is the case for variables like *age* and *gender*, and in our case also for *np_subscribed* (whether participants have a newspaper subscription).
-
-When factors are observed, it has two implications for the ANOVA test:
-
--   **Causality**. It limits the ability to make causal inferences about the effect of the independent variable on the dependent variable.
--   **Effect size**. We need to correct the $eta^2$ value to get more reliable effect sizes. The `afex` package does this automatically for us by using the generalized $eta^2$ value (`ges` column in the output).However, we do need to tell it when a factor is observed, using the `observed` argument in the `aov_car` function.
-
-Let's see how this works in practice, using the `np_subscription` variable as an observed factor.
-With `observed='np_subscription'` we tell the `aov_car` function that the `np_subscription` variable is an observed factor.
-
-```{r, message=F}
-aov_car(trust_t2 ~ np_subscription + Error(id), observed='np_subscription', data=d)
-```
-
-In this case our results only tell us that there is a significant difference between people with and without a newspaper subscription.
-We cannot conclude that this is because having a newspaper subscription causes people to trust journalists more.
-We are no longer certain about the order of the effect (trust in journalists might also cause people to get a newspaper subscription), and there can be confounding variables that influence both (e.g., education level, socio-economic status).
 
 ## Two-way ANOVA
 
 In a two-way ANOVA we compare the means of a dependent variable between two or more groups in two independent variables.
 To demonstrate this we'll use the `np_subscription` variable as a second independent variable.
+`np_subscription` is a factor variable with two levels: whether a participant has a newspaper subscription (`yes`) or not (`no`). 
+So by adding this variable we can see whether the effect of `experimental group` on `trust_t2` is different for people with and without newspaper subscriptions. 
 
 The formula for a two-way ANOVA is `dependent_variable ~ independent_variable_1*independent_variable_2 + Error(id)`.
 The `*` symbol is a shorthand for including both the main effects and the interaction effect between the two independent variables.
-Note that we also again specify that `np_subscription` is an observed factor.
 
 ```{r, message=F}
 m = aov_car(trust_t2 ~ experiment_group*np_subscription + Error(id), 
-            observed='np_subscription', data=d)
+            data=d)
+m
 ```
 
 Now our output shows three F-tests: one for the main effect of `experiment_group`, one for the main effect of `np_subscription`, and one for the interaction effect between the two.
+All effects are significant. 
 We also get three $eta^2$ values, one for each effect, which tell us how much variance is explained by each effect.
 
 ::: {.callout-note title="Comparing between groups" collapse="true"}

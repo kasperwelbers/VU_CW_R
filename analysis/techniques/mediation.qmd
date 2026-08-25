@@ -181,7 +181,7 @@ $$a \times b = `r a` \times `r b` = `r round(a*b,2)`$$
 
 ::: {.callout-warning title="Testing the significance of the indirect effect with the Sobel test" collapse="true"}
 
-A  method to test whether the indirect effect is statistically significant is the **Sobel test**. It is a rather outdated method, but we do include it here for educational purposes. Calculating the correct confidence interval for an indirect effect is not as straightforward and is better handled with more advanced methods such as *bootstrapping* or *Monte Carlo simulations*. There are packages in R that can do this (such as `bruceR` or `lavaan`), but we will not cover them at this point.
+A  method to test whether the indirect effect is statistically significant is the **Sobel test**. It is a somewhat outdated method, but its relatively easy to understand and intuitive, so we include it here for educational purposes. Calculating the correct confidence interval for an indirect effect is not as straightforward and is better handled with more advanced methods such as *bootstrapping* or *Monte Carlo simulations*. There are packages in R that can do this (such as `bruceR` or `lavaan`), but we will not cover them at this point.
 
 The Sobel test computes a *z*-statistic based on the regression coefficients (**a** and **b**) and their standard errors (**s<sub>a</sub>** and **s<sub>b</sub>**):
 
@@ -189,7 +189,33 @@ $$
 z = \frac{a \times b}{\sqrt{b^2 \times s_a^2 \;+\; a^2 \times s_b^2}}
 $$
 
-We can implement this in R using the results from our earlier regression models:
+We can calculate this in R using the results from our earlier regression models.
+Notice in the formula that we need the values for:
+
+* `a`: the effect of X on M
+* `s_a`: The Standard Error of `a` 
+* `b`: the effect of M on Y
+* `s_b`: The Standard Error of `b` 
+
+There are two ways to get these values. One is to simply look them up manually in the regression tables,
+and enter the values directly in our code.
+
+```{r, results=F}
+# Look up the coefficients of the regression model
+summary(m1)
+summary(m2)
+
+a  <- 0.4821  # effect of X on M
+sa <- 0.0952  # SE of a
+b  <- 0.3015  # effect of M on Y
+sb <- 0.0629  # SE of b
+
+```
+
+
+Alternatively, we can also directly extract the values. 
+We then first extract the table of coefficients from the model using `summary(m1)$coef`.
+Given this coefficients table, we can get the value for a specific row and colums using `[row,column]`.
 
 ```{r}
 # Extract coefficients and standard errors
@@ -197,7 +223,11 @@ a  <- summary(m1)$coef[2,1]   # effect of X on M
 sa <- summary(m1)$coef[2,2]   # SE of a
 b  <- summary(m2)$coef[3,1]   # effect of M on Y
 sb <- summary(m2)$coef[3,2]   # SE of b
+```
 
+Now we can calculate the formula:
+
+```{r}
 # Sobel test
 
 ## Formula for z-score

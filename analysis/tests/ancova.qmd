@@ -4,8 +4,10 @@ subtitle: Analysis of Covariance
 format:
   html:
     df-print: paged
-order: 4
+order: 5
 ---
+
+
 
 # What is ANCOVA?
 
@@ -128,14 +130,13 @@ ggplot(robot_data, aes(familiarity, comfort, color = robot_design)) +
 
 The plot above indicates that there is indeed a linear relationship between `familiarity` and `comfort`, suggesting it's relevant to include the effect of one's (prior) familiarity with robots on their comfort level in the analysis.
 
-We estimate the model using the function `aov_car()` from the `afex` package. For `Error()`, we specify that our individual cases can be distinguised by the variable `id`. After `observed =` with specify which independent variables in the model are observed, i.e.: not (experimentally) manipulated. In this context it's only our covariate `familiarity`. Finally, we specify `factorize = FALSE`, which means that we don't want R to turn our (numeric) covariate into a factor variable. With this we do assume, though, that our other independent variable(s) is/are correctly coded as factors.
+We estimate the model using the function `aov_car()` from the `afex` package. For `Error()`, we specify that our individual cases can be distinguised by the variable `id`. Finally, we specify `factorize = FALSE`, which means that we don't want R to turn our (numeric) covariate into a factor variable. With this we do assume, though, that our other independent variable(s) is/are correctly coded as factors.
 
 ```{r, warning=F, message=F}
 
 model_ancova <- aov_car(
   comfort ~ robot_design + familiarity + Error(id),
   data = robot_data,
-  observed = "familiarity", 
   factorize = FALSE
 )
 
@@ -217,7 +218,6 @@ The assumption of homogeneity of regressino slopes suggests implies that the **r
 model_slopes <- aov_car(
   comfort ~ robot_design * familiarity + Error(id),
   data = robot_data,
-  observed = "familiarity",
   factorize = FALSE
 )
 
@@ -252,7 +252,6 @@ model_two_way <- aov_car(
   comfort ~ robot_design * interaction_type + 
     familiarity + Error(id),
   data = robot_data,
-  observed = "familiarity", 
   factorize = FALSE
 )
 

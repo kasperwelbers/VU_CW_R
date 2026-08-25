@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Correlation test – Communication Science R Book</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -73,10 +76,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-34f2f06d33e71b70b9871a5af9c4576e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2b9358b3e81e17012c1caba5829223d0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -106,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -119,7 +122,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -161,7 +164,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="https://vu.nl/en/about-vu/faculties/faculty-of-social-sciences/departments/communication-science" class="sidebar-logo-link">
-      <img src="../../data/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../../data/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../data/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Communication Science R Book</a> 
@@ -398,6 +402,12 @@ window.Quarto = {
  <span class="menu-text">ANOVA</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../analysis/tests/ancova.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ANCOVA</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -477,38 +487,38 @@ window.Quarto = {
 <p>We’ll show two ways of conducting the correlation test: using the <code>cor.test</code> function and using the <code>tab_corr</code> function from the <code>sjPlot</code> package. The <code>cor.test</code> function is part of the base R package, and is usefull if you just have two variables. The <code>tab_corr</code> function is part of the <code>sjPlot</code> package, and is useful if you have multiple variables and want to see the correlations between all of them.</p>
 <p>To demonstrate the correlation test, we’ll use the practice data that we’ve used before.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://dataliteracy.cc/data/practice_data.csv"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rename</span>(<span class="at">news_consumption =</span> <span class="st">`</span><span class="at">news consumption</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rename</span>(<span class="at">news_consumption =</span> <span class="st">`</span><span class="at">news consumption</span><span class="st">`</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="between-two-variables-cor.test" class="level2">
 <h2 class="anchored" data-anchor-id="between-two-variables-cor.test">Between two variables: cor.test</h2>
 <p>In the practice data we have variables for the <code>news_consumption</code> of the participants, and their <code>trust_t1</code> in the news media (measured before the experiment). These are both numeric variables, so we can use the correlation test to see if there is a relationship between them.</p>
 <p>To perform the correlation test using the <code>cor.test</code> function, we pass the two variables to the function. Recall that we can use the <code>$</code> symbol to access variables in a data frame. So here we access the <code>news_consumption</code> and <code>trust_t1</code> variables from the <code>d</code> data frame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(d<span class="sc">$</span>news_consumption, d<span class="sc">$</span>trust_t1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(d<span class="sc">$</span>news_consumption, d<span class="sc">$</span>trust_t1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's product-moment correlation
 
 data:  d$news_consumption and d$trust_t1
-t = 3.334, df = 598, p-value = 0.000909
+t = 5.8832, df = 598, p-value = 6.702e-09
 alternative hypothesis: true correlation is not equal to 0
 95 percent confidence interval:
- 0.05564478 0.21283051
+ 0.1567994 0.3081822
 sample estimates:
-      cor 
-0.1350875 </code></pre>
+     cor 
+0.233908 </code></pre>
 </div>
 </div>
-<p>The output gives us the correlation coefficient under the <code>sample estimates</code>, which in our case is <span class="math inline">\(r = 0.135\)</span>. This means that the correlation is positive (&gt; 0), but quite weak. The test also reports a p-value (0.001), which tells us that the correlation is significant at the <span class="math inline">\(95\%\)</span> (<code>&lt; 0.05</code>) confidence level. Also note that the degrees of freedom are reported as 598, which is the number of observations minus 2.</p>
+<p>The output gives us the correlation coefficient under the <code>sample estimates</code>, which in our case is <span class="math inline">\(r = 0.234\)</span>. This means that the correlation is positive (&gt; 0), but quite weak. The test also reports a p-value (0.000), which tells us that the correlation is significant at the <span class="math inline">\(95\%\)</span> (<code>&lt; 0.05</code>) confidence level. Also note that the degrees of freedom are reported as 598, which is the number of observations minus 2.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="cor.test using the formula notation">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-cor.test using the formula notation
+<span class="screen-reader-only">Note</span>cor.test using the formula notation
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -516,7 +526,7 @@ cor.test using the formula notation
 <div class="callout-body-container callout-body">
 <p>It is also possible to use the formula notation in the <code>cor.test</code> function. However, this looks a bit weird, because in the correlation tests there are no dependent variables, since we are <strong>just looking at the relationship</strong>. The convention for formulas in R is to use the <code>~</code> symbol to separate the dependent and independent variables (<code>dependent ~ independent_1 + independent_2 + ...</code>). For the correlation test, we would just omit the dependent variable. So for the example above, the code would look like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="sc">~</span> news_consumption <span class="sc">+</span> trust_t1, <span class="at">data =</span> d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="sc">~</span> news_consumption <span class="sc">+</span> trust_t1, <span class="at">data =</span> d)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -526,59 +536,59 @@ cor.test using the formula notation
 <h2 class="anchored" data-anchor-id="between-more-variables-tab_corr">Between more variables: tab_corr</h2>
 <p>If we need to see the correlations between multiple variables, we can use the <code>tab_corr</code> function from the <code>sjPlot</code> package. For example, let’s look at the correlations between the 5 items used to calculate the <code>trust_t1</code> scale. To use <code>tab_corr</code>, we can simply pass a data frame with the variables we want to use. Here we use the <code>select</code> function to select all columns from <code>trust_t1_item1</code> to <code>trust_t1_item5</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>d <span class="sc">|&gt;</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(trust_t1_item1<span class="sc">:</span>trust_t1_item5) <span class="sc">|&gt;</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tab_corr</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tab_corr</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="caption-top table table-sm table-striped small">
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">&nbsp;</td>
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">trust_t1_item1</td>
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">trust_t1_item2</td>
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">trust_t1_item3</td>
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">trust_t1_item4</td>
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">trust_t1_item5</td>
+<th data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">&nbsp;</th>
+<th data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">trust_t1_item1</th>
+<th data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">trust_t1_item2</th>
+<th data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">trust_t1_item3</th>
+<th data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">trust_t1_item4</th>
+<th data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">trust_t1_item5</th>
 </tr>
 <tr class="even">
 <td style="font-style: italic">trust_t1_item1</td>
 <td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">0.335<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">-0.707<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">0.715<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">0.801<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">0.328<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">-0.739<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">0.727<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">0.827<span style="vertical-align:super;font-size:0.8em;">***</span></td>
 </tr>
 <tr class="odd">
 <td style="font-style: italic">trust_t1_item2</td>
-<td style="text-align: center; padding: 0.2cm;">0.335<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">0.328<span style="vertical-align:super;font-size:0.8em;">***</span></td>
 <td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">-0.301<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">0.288<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">0.321<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">-0.288<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">0.264<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">0.324<span style="vertical-align:super;font-size:0.8em;">***</span></td>
 </tr>
 <tr class="even">
 <td style="font-style: italic">trust_t1_item3</td>
-<td style="text-align: center; padding: 0.2cm;">-0.707<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">-0.301<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">-0.739<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">-0.288<span style="vertical-align:super;font-size:0.8em;">***</span></td>
 <td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">-0.633<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">-0.756<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">-0.677<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">-0.770<span style="vertical-align:super;font-size:0.8em;">***</span></td>
 </tr>
 <tr class="odd">
 <td style="font-style: italic">trust_t1_item4</td>
-<td style="text-align: center; padding: 0.2cm;">0.715<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">0.288<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">-0.633<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">0.727<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">0.264<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">-0.677<span style="vertical-align:super;font-size:0.8em;">***</span></td>
 <td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">0.744<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">0.759<span style="vertical-align:super;font-size:0.8em;">***</span></td>
 </tr>
 <tr class="even">
 <td style="font-style: italic">trust_t1_item5</td>
-<td style="text-align: center; padding: 0.2cm;">0.801<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">0.321<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">-0.756<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">0.744<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">0.827<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">0.324<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">-0.770<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">0.759<span style="vertical-align:super;font-size:0.8em;">***</span></td>
 <td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
 </tr>
 <tr class="odd">
@@ -606,11 +616,11 @@ cor.test using the formula notation
 <h2 class="anchored" data-anchor-id="spearmans-rho-and-kendalls-tau">Spearman’s <span class="math inline">\(\rho\)</span> and Kendall’s <span class="math inline">\(\tau\)</span></h2>
 <p>To use the Spearman’s <span class="math inline">\(\rho\)</span> or Kendall’s <span class="math inline">\(\tau\)</span> correlation, you need to specify the <code>method</code> argument in the <code>cor.test</code> function, or the <code>corr.method</code> argument in the <code>tab_corr</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(d<span class="sc">$</span>news_consumption, d<span class="sc">$</span>trust_t1, <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(d<span class="sc">$</span>news_consumption, d<span class="sc">$</span>trust_t1, <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(d<span class="sc">$</span>news_consumption, d<span class="sc">$</span>trust_t1, <span class="at">method =</span> <span class="st">"kendall"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>d <span class="sc">|&gt;</span> <span class="fu">select</span>(trust_t1_item1<span class="sc">:</span>trust_t1_item5) <span class="sc">|&gt;</span> <span class="fu">tab_corr</span>(<span class="at">corr.method=</span><span class="st">"spearman"</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>d <span class="sc">|&gt;</span> <span class="fu">select</span>(trust_t1_item1<span class="sc">:</span>trust_t1_item5) <span class="sc">|&gt;</span> <span class="fu">tab_corr</span>(<span class="at">corr.method=</span><span class="st">"kendall"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>d <span class="sc">|&gt;</span> <span class="fu">select</span>(trust_t1_item1<span class="sc">:</span>trust_t1_item5) <span class="sc">|&gt;</span> <span class="fu">tab_corr</span>(<span class="at">corr.method=</span><span class="st">"kendall"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -689,13 +699,14 @@ cor.test using the formula notation
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

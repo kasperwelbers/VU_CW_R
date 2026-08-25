@@ -70,6 +70,53 @@ In the second model, where we control for the area of the country, the effect of
 Instead, we see a very strong effect of the area of the country on the birth rate ($\beta = 0.85$, p < 0.001).
 So here you see the power of multiple regression in action: by controlling for `area_km2`, the spurious effect of `storks` on `birth_rate` disappears. 
 
+
+```{r, fig.height=3, echo=F, out.width='100%', message=F, warning=F}
+
+library(ggdag)
+library(gridExtra)
+library(tidyverse)
+
+coords <- list(
+    x = c(x=1, z=2, y=3),
+    y = c(x=1.5, z=1.5, y=1.5)
+)
+labels <- c("x" = "Storks", "y" = "Birth rate", "z" = "Area km2")
+
+d_cause <- dagify(y ~ x, coords = coords) |> 
+    tidy_dagitty() |> 
+    dag_label(labels) |>
+    ggdag() + theme_dag() + ggtitle("Spurious relation: It looks like Storks causes Birth rate")  +
+    geom_dag_label_repel(aes(label=label), box.padding=3, segment.color='transparent')
+
+d_conf <- dagify(y ~ x, x ~ z, y ~ z, coords = coords) |> 
+    tidy_dagitty() |> 
+    dag_label(labels) |>
+    ggdag() + theme_dag() + ggtitle("Actual relation: Both Storks and Birth rate are explained by Area") +
+    geom_dag_label_repel(aes(label=label), box.padding=3, segment.color='transparent')
+
+grid.arrange(d_cause, d_conf, ncol=1)
+
+# library(ggdag)
+# 
+# coords <- list(
+#     x = c(storks=1, area=2, birth_rate=3),
+#     y = c(storks=1, area=2, birth_rate=1)
+# )
+# 
+# dagify(birth_rate ~ area, storks ~ `area`, coords = coords) |> 
+#     tidy_dagitty() |> 
+#     mutate(edge = case_when(
+#         name == "area" & to == "storks" ~ '',
+#         name == "area" & to == "birth_rate" ~ '',
+#         name == "storks" & to == "birth_rate" ~ '',
+#         TRUE ~ NA_character_
+#     )) |>
+#     mutate(vjust = if_else(name == 'storks' & to == 'birth_rate', 2, 0.5)) |>
+#     ggdag() + theme_dag() +
+#     geom_dag_edges_fan(aes(label=edge,vjust=vjust), angle_calc="along", arrow=NULL, edge_width=0)
+```
+
 # Why controlling for confounding is important
 
 If we do not control for confounding variables, the coefficients in our regression model might be biased.
