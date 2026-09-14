@@ -140,8 +140,8 @@ dagify(Y ~ X, coords = coords) |>
 Now let's look at the model with the mediator `M`.
 We can break this model down into two separate regression models:
 
-* Model 1: `M` predicted by `X`.
-* Model 2: `Y` predicted by `X` and `M`.
+* Model 1: `Y` predicted by `X` and `M`.
+* Model 2: `M` predicted by `X`.
 
 ```{r}
 #| html-table-processing: none

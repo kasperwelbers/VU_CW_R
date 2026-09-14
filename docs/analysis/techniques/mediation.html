@@ -597,8 +597,8 @@ window.Quarto = {
 </div>
 <p>Now let’s look at the model with the mediator <code>M</code>. We can break this model down into two separate regression models:</p>
 <ul>
-<li>Model 1: <code>M</code> predicted by <code>X</code>.</li>
-<li>Model 2: <code>Y</code> predicted by <code>X</code> and <code>M</code>.</li>
+<li>Model 1: <code>Y</code> predicted by <code>X</code> and <code>M</code>.</li>
+<li>Model 2: <code>M</code> predicted by <code>X</code>.</li>
 </ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X <span class="sc">+</span> M, <span class="at">data =</span> d)</span>
@@ -765,8 +765,8 @@ z = \frac{a \times b}{\sqrt{b^2 \times s_a^2 \;+\; a^2 \times s_b^2}}
 <p>To nicely interpret the models side-by-side, we’ll add some labels and drop the confidence intervals.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>m_total <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>d_full)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(M <span class="sc">~</span> X, <span class="at">data=</span>d_full)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X <span class="sc">+</span> M, <span class="at">data=</span>d_full)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X <span class="sc">+</span> M, <span class="at">data=</span>d_full)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(M <span class="sc">~</span> X, <span class="at">data=</span>d_full)</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_model</span>(m_total, m1, m2,  </span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">dv.labels=</span><span class="fu">c</span>(<span class="st">"Y ~ X"</span>, <span class="st">"M ~ X"</span>, <span class="st">"Y ~ X + M"</span>), <span class="at">show.ci =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -791,28 +791,28 @@ z = \frac{a \times b}{\sqrt{b^2 \times s_a^2 \;+\; a^2 \times s_b^2}}
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">(Intercept)</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.48</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.263</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.01</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.973</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.48</td>
-<td style="text-align: center;">0.250</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.250</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.01</td>
+<td style="text-align: center;">0.973</td>
 </tr>
 <tr class="even">
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">X</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.71</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1.98</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.12</td>
-<td style="text-align: center;">0.522</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.522</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1.98</td>
+<td style="text-align: center;"><strong>&lt;0.001</strong></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">M</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;"></td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;"></td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;"></td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;"></td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.30</td>
-<td style="text-align: center;"><strong>&lt;0.001</strong></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">Observations</td>
@@ -823,8 +823,8 @@ z = \frac{a \times b}{\sqrt{b^2 \times s_a^2 \;+\; a^2 \times s_b^2}}
 <tr class="odd">
 <td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">R<sup>2</sup> / R<sup>2</sup> adjusted</td>
 <td colspan="2" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.052 / 0.050</td>
-<td colspan="2" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.465 / 0.464</td>
 <td colspan="2" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.094 / 0.090</td>
+<td colspan="2" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.465 / 0.464</td>
 </tr>
 </tbody>
 </table>
@@ -866,8 +866,8 @@ z = \frac{a \times b}{\sqrt{b^2 \times s_a^2 \;+\; a^2 \times s_b^2}}
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>d_no_mediation <span class="ot">&lt;-</span> <span class="fu">tibble</span>(X,M,Y)</span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>m_total <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data=</span>d_no_mediation)</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(M <span class="sc">~</span> X, <span class="at">data=</span>d_no_mediation)</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X <span class="sc">+</span> M, <span class="at">data=</span>d_no_mediation)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X <span class="sc">+</span> M, <span class="at">data=</span>d_no_mediation)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(M <span class="sc">~</span> X, <span class="at">data=</span>d_no_mediation)</span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_model</span>(m_total, m1, m2,  </span>
 <span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">dv.labels=</span><span class="fu">c</span>(<span class="st">"Y ~ X"</span>, <span class="st">"M ~ X"</span>, <span class="st">"Y ~ X + M"</span>), <span class="at">show.ci =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -892,28 +892,28 @@ z = \frac{a \times b}{\sqrt{b^2 \times s_a^2 \;+\; a^2 \times s_b^2}}
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">(Intercept)</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.48</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.250</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.01</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.973</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.48</td>
-<td style="text-align: center;">0.250</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.250</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.01</td>
+<td style="text-align: center;">0.973</td>
 </tr>
 <tr class="even">
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">X</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.94</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.48</td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.92</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.48</td>
 <td style="text-align: center;"><strong>&lt;0.001</strong></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">M</td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;"></td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;"></td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;"></td>
-<td style="text-align: left; padding: 0.2cm; vertical-align: top;"></td>
 <td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.05</td>
-<td style="text-align: center;">0.414</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.414</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">Observations</td>
@@ -924,8 +924,8 @@ z = \frac{a \times b}{\sqrt{b^2 \times s_a^2 \;+\; a^2 \times s_b^2}}
 <tr class="odd">
 <td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">R<sup>2</sup> / R<sup>2</sup> adjusted</td>
 <td colspan="2" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.091 / 0.089</td>
-<td colspan="2" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.049 / 0.047</td>
 <td colspan="2" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.092 / 0.089</td>
+<td colspan="2" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.049 / 0.047</td>
 </tr>
 </tbody>
 </table>
