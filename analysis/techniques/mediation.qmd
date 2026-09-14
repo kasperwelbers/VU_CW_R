@@ -47,6 +47,7 @@ total <- dagify(Y ~ X, coords = coords) |>
     ggdag() + theme_dag() +
     geom_dag_edges_fan(aes(label=edge,vjust=vjust), angle_calc="along", arrow=NULL, edge_width=0)
 
+
 grid.arrange(total,mediated,  ncol=2)
 ```
 
@@ -144,8 +145,8 @@ We can break this model down into two separate regression models:
 
 ```{r}
 #| html-table-processing: none
-m1 <- lm(M ~ X, data = d)
-m2 <- lm(Y ~ X + M, data = d)
+m1 <- lm(Y ~ X + M, data = d)
+m2 <- lm(M ~ X, data = d)
 
 tab_model(m1, m2)
 ```
@@ -156,9 +157,9 @@ Let's visualize the paths in the mediation model:
 dagify(Y ~ X + M, M ~ X, Y ~ M, coords = coords) |> 
     tidy_dagitty() |> 
     mutate(edge = case_when(
-        name == "X" & to == "M" ~ get_coef('a', m1, 2),
-        name == "M" & to == "Y" ~ get_coef('b', m2, 3),
-        name == "X" & to == "Y" ~ get_coef("c'", m2, 2),
+        name == "X" & to == "M" ~ get_coef('a', m2, 2),
+        name == "M" & to == "Y" ~ get_coef('b', m1, 3),
+        name == "X" & to == "Y" ~ get_coef("c'", m1, 2),
         TRUE ~ NA_character_
     )) |>
     mutate(vjust = if_else(name == 'X' & to == 'Y', 2, 0.5)) |>
@@ -172,8 +173,8 @@ In other words, this is a **partial mediation**.
 We can calculate the **indirect effect** by multiplying the coefficients of the two paths: 
 
 ```{r, echo=F, results=F}
-a <- summary(m1)$coef[2,1] |> round(3)
-b <- summary(m2)$coef[3,1] |> round(3)
+a <- summary(m2)$coef[2,1] |> round(3)
+b <- summary(m1)$coef[3,1] |> round(3)
 ```
 $$a \times b = `r a` \times `r b` = `r round(a*b,2)`$$
 
@@ -219,10 +220,10 @@ Given this coefficients table, we can get the value for a specific row and colum
 
 ```{r}
 # Extract coefficients and standard errors
-a  <- summary(m1)$coef[2,1]   # effect of X on M
-sa <- summary(m1)$coef[2,2]   # SE of a
-b  <- summary(m2)$coef[3,1]   # effect of M on Y
-sb <- summary(m2)$coef[3,2]   # SE of b
+a  <- summary(m2)$coef[2,1]   # effect of X on M
+sa <- summary(m2)$coef[2,2]   # SE of a
+b  <- summary(m1)$coef[3,1]   # effect of M on Y
+sb <- summary(m1)$coef[3,2]   # SE of b
 ```
 
 Now we can calculate the formula:
@@ -264,8 +265,8 @@ To nicely interpret the models side-by-side, we'll add some labels and drop the 
 
 ```{r}
 m_total <- lm(Y ~ X, data=d_full)
-m1 <- lm(M ~ X, data=d_full)
-m2 <- lm(Y ~ X + M, data=d_full)
+m1 <- lm(Y ~ X + M, data=d_full)
+m2 <- lm(M ~ X, data=d_full)
 tab_model(m_total, m1, m2,  
           dv.labels=c("Y ~ X", "M ~ X", "Y ~ X + M"), show.ci = FALSE)
 ```
@@ -284,9 +285,9 @@ total <- dagify(Y ~ X, coords = coords) |>
 mediated <- dagify(Y ~ X + M, M ~ X, Y ~ M, coords = coords) |> 
     tidy_dagitty() |> 
     mutate(edge = case_when(
-        name == "X" & to == "M" ~ get_coef('a',m1, 2),
-        name == "M" & to == "Y" ~ get_coef('b',m2, 3),
-        name == "X" & to == "Y" ~ get_coef("c'",m2, 2),
+        name == "X" & to == "M" ~ get_coef('a',m2, 2),
+        name == "M" & to == "Y" ~ get_coef('b',m1, 3),
+        name == "X" & to == "Y" ~ get_coef("c'",m1, 2),
         TRUE ~ NA_character_
     )) |>
     mutate(vjust = if_else(name == 'X' & to == 'Y', 2, 0.5)) |>
@@ -315,8 +316,8 @@ Y <- 0.05*M + 0.8*X + rnorm(n, 0, 3)
 d_no_mediation <- tibble(X,M,Y)
 
 m_total <- lm(Y ~ X, data=d_no_mediation)
-m1 <- lm(M ~ X, data=d_no_mediation)
-m2 <- lm(Y ~ X + M, data=d_no_mediation)
+m1 <- lm(Y ~ X + M, data=d_no_mediation)
+m2 <- lm(M ~ X, data=d_no_mediation)
 tab_model(m_total, m1, m2,  
           dv.labels=c("Y ~ X", "M ~ X", "Y ~ X + M"), show.ci = FALSE)
 ```
@@ -334,9 +335,9 @@ total <- dagify(Y ~ X, coords = coords) |>
 mediated <- dagify(Y ~ X + M, M ~ X, Y ~ M, coords = coords) |> 
     tidy_dagitty() |> 
     mutate(edge = case_when(
-        name == "X" & to == "M" ~ get_coef('a', m1, 2),
-        name == "M" & to == "Y" ~ get_coef('b', m2, 3),
-        name == "X" & to == "Y" ~ get_coef("c'", m2, 2),
+        name == "X" & to == "M" ~ get_coef('a', m2, 2),
+        name == "M" & to == "Y" ~ get_coef('b', m1, 3),
+        name == "X" & to == "Y" ~ get_coef("c'", m1, 2),
         TRUE ~ NA_character_
     )) |>
     mutate(vjust = if_else(name == 'X' & to == 'Y', 2, 0.5)) |>
